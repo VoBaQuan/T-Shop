@@ -1,0 +1,325 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Đơn hàng nhập">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý kho</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Vị trí kho hàng</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button class="flex items-center" (click)="openCreateNewImportOrder()" tds-button color="primary" size="sm">
+                <i class="tdsi-add-fill text-white text-header-2 mr-2"></i>
+                Tạo đơn nhập hàng mới
+            </button>
+        </div>
+    </div>
+    <div class="px-4 py-4 w-full h-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-between items-center">
+                <tds-filter-status [ngModel]="1" (selectChange)="onSelectChange($event)"
+                    class="flex justify-between items-center">
+                    <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Đã xử lý' [value]='2' [count]='20'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Chờ xử lý' [value]='3' [count]='20'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Đã hủy' [value]='6' [count]='2'>
+                    </tds-filter-status-item>
+                </tds-filter-status>
+                <div class="flex items-center px-4">
+                    <tds-select class="mr-2 w-28" valueField="id" textField="name" [ngModel]="pageSize"
+                        placeholder='select item' [data]="listPageSize" (ngModelChange)="onChangePageSize($event)"
+                        size="md">
+                    </tds-select>
+                    <tds-form-field class="mr-2 w-80">
+                        <input tdsInput class="text-neutral-1-600" placeholder="Nhập tên sản phẩm" autocomplete="off" />
+                        <span tdsPrefix><i class="text-neutral-1-600 tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                    <button tds-button-outline-icon color="secondary" class="mr-2">
+                        <i class="tdsi-filter-2-line"></i>
+                    </button>
+                    <button tds-button-outline-icon color="secondary">
+                        <i class="tdsi-column-setting-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <tds-table #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
+                <thead class="text-body-2 font-medium">
+                    <tr>
+                        <th width="60px"></th>
+                        <th>Mã Nhập hàng</th>
+                        <th>Hình thức</th>
+                        <th>Nhà cung cấp</th>
+                        <th>Tổng giá mua</th>
+                        <th>Trạng thái</th>
+                        <th>Thời gian tạo đơn</th>
+                        <th>cập nhật gần đây</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody class="text-body-2 font-regular">
+                    <ng-container *ngFor="let data of table.data">
+                        <tr class="text-neutral-1-900 text-body-2 font-regular">
+                            <td [expand]="expandSet.has(data.id)" (expandChange)="onExpandChange(data.id, $event)"></td>
+                            <td>
+                                <button tds-flat-button size="sm"
+                                    class="text-primary-1 font-medium">{{data.orderCode}}</button>
+                            </td>
+                            <td>
+                                {{ data.customer }}
+                            </td>
+                            <td>{{ data.total }}</td>
+                            <td>
+                                {{ data.orderstatus }}
+                            </td>
+                            <td>
+                                <tds-tag *ngIf="data.status=='Chờ xử lý'" status='secondary' type="outline">
+                                    {{data.status}}</tds-tag>
+                                <tds-tag *ngIf="data.status=='Đã xử lý'" status='success' type="outline">{{data.status}}
+                                </tds-tag>
+                                <tds-tag *ngIf="data.status=='Đã hủy'" status='error' type="outline">{{data.status}}
+                                </tds-tag>
+                            </td>
+                            <td>{{ data.trans }}</td>
+                            <td>{{ data.orderdate }}</td>
+                            <td>
+                                <button (click)="openEditOrder()" tds-flat-button size="sm"
+                                    class="text-info-500">{{data.operration}}</button>
+                            </td>
+                        </tr>
+                        <tr [expand]="expandSet.has(data.id)"
+                            class="border-b border-neutral-2-100 text-neutral-1-900 bg-light-50">
+                            <div class="bg-white rounded-md border">
+                                <div class="flex justify-between items-center px-2 py-2 border-b">
+                                    <h1 class="text-header-1 font-semibold text-neutral-1-900">Danh sách sản phẩm</h1>
+                                    <div class="flex items-center">
+                                        <button (click)="showModal()" class="mr-2" tds-button color="primary"
+                                            size="sm">Nhập hàng</button>
+                                        <button class="mr-2 text-primary-1" tds-button color="secondary" size="sm">Chọn
+                                            sản
+                                            phẩm</button>
+                                        <button class="mr-2 text-neutral-1-400" tds-button color="secondary"
+                                            size="sm">Hủy bỏ đơn</button>
+                                        <button size="sm" class="mr-2" tds-button color="secondary">
+                                            <span class="flex items-center text-neutral-1-400">
+                                                <i
+                                                    class="tdsi-setting-print-fill text-lg leading-none mr-2 text-neutral-1-400"></i>In
+                                                hóa
+                                                đơn
+                                            </span>
+                                        </button>
+                                        <button size="sm" tds-button color="secondary">
+                                            <span class="flex items-center text-neutral-1-600">
+                                                <i
+                                                    class="tdsi-excel-fill text-lg leading-none mr-2 text-neutral-1-600"></i>Xuất
+                                                file Excel
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <tds-table templateMode>
+                                    <thead>
+                                        <tr>
+                                            <th>Ảnh</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng</th>
+                                            <th class="text-right">Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                <tbody>
+                    <tr *ngFor="let data of inforOrders">
+                        <td><img src="/assets/img/Rectangle 2544.png" alt=""></td>
+                        <td>{{data.ordercode}}</td>
+                        <td>{{data.productname}}</td>
+                        <td>{{data.productcode}}</td>
+                        <td>{{data.unitprice}}</td>
+                        <td>{{data.quality}}</td>
+                        <td class="text-right"><u class="text-body-2 font-regular text-neutral-1-400">đ</u>
+                            {{data.total}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
+                                <span>2 sản phẩm</span>
+                                <span>Phí giao hàng</span>
+                                <span class="text-title-1 font-medium">Tổng tiền</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex justify-end">
+                                <div class="flex text-body-2 flex-col items-end font-medium text-neutral-1-900">
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span class="text-header-2 font-semibold text-primary-1"><u
+                                            class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.700.000</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+        </tr>
+        </ng-container>
+        </tbody>
+        </tds-table>
+    </div>
+</div>
+</div>
+<!-- modal -->
+<tds-modal size="lg" [(visible)]="isVisible" [title]="modalTitle" [content]="modalContent" [footer]="modalFooter"
+    (onCancel)="handleCancel()">
+    <ng-template #modalTitle>TH0231234</ng-template>
+
+    <ng-template #modalContent>
+        <div class="border rounded-md">
+            <div class="flex justify-between items-center px-2 py-2">
+                <h1 class="text-header-1 font-semibold text-neutral-1-900">Danh sách sản phẩm</h1>
+                <div>
+                    <button class="mr-2" tds-button color="primary" size="sm">Chọn sản phẩm</button>
+                </div>
+            </div>
+            <tds-table templateMode>
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng nhập hàng</th>
+                        <th>Gía mua trên một sản phẩm</th>
+                        <th>Tổng cộng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="flex items-start">
+                                <div class="mr-2">
+                                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                </div>
+                                <div>
+                                    <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                    <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <tds-form-field class="w-20">
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </td>
+                        <td>50.000</td>
+                        <td>600.000</td>
+                        <td>
+                            <button tds-button-icon color="secondary" size="sm">
+                                <span class="flex items-center">
+                                    <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-start">
+                                <div class="mr-2">
+                                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                </div>
+                                <div>
+                                    <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                    <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <tds-form-field class="w-20">
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </td>
+                        <td>50.000</td>
+                        <td>600.000</td>
+                        <td>
+                            <button tds-button-icon color="secondary" size="sm">
+                                <span class="flex items-center">
+                                    <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-start">
+                                <div class="mr-2">
+                                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                </div>
+                                <div>
+                                    <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                    <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <tds-form-field class="w-20">
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </td>
+                        <td>50.000</td>
+                        <td>600.000</td>
+                        <td>
+                            <button tds-button-icon color="secondary" size="sm">
+                                <span class="flex items-center">
+                                    <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
+                                <span>2 sản phẩm</span>
+                                <span>Phí giao hàng</span>
+                                <span class="text-title-1 font-medium">Tổng tiền</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex justify-end">
+                                <div class="flex text-body-2 flex-col items-end font-medium text-neutral-1-900">
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span class="text-header-2 font-semibold text-primary-1"><u
+                                            class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.700.000</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooter>
+        <div class="p-4 w-full flex justify-between items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel()">
+                    Hủy
+                </button>
+                <button tds-button color="primary" (click)="handleOk()">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

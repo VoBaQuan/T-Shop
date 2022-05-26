@@ -1,0 +1,101 @@
+<div>
+    <div class="bg-white flex items-center justify-between">
+        <div>
+            <tds-page-header title="Giảm giá vận chuyển">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Khuyến mãi</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Giảm giá vận chuyển</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4 flex items-center">
+            <button class="flex justify-center items-center" (click)="openCreateNewCode()" tds-button color="primary" size="sm">
+                <i class="tdsi-add-fill text-white text-header-2 mr-3"></i>
+                Tạo mã mới
+            </button>
+            <button class="ml-3" tds-button color="secondary">Đóng</button>
+        </div>
+    </div>
+    <div class="bg-light-50 p-4 text-neutral-1-900">
+        <div class="bg-white border rounded-md">
+            <div class="flex justify-between items-center">
+                <div>
+                    <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                        (selectChange)="onSelectChange($event)">
+                        <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                            <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                                [value]="item.value">
+                            </tds-filter-status-item>
+                        </ng-template>
+                    </tds-filter-status>
+                </div>
+                <div class="flex px-4">
+                    <tds-form-field class="mr-2 w-96">
+                        <input autocomplete="off" tdsInput placeholder="Tìm kiếm" [required]='true' />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
+
+                    <tds-select class="w-36" valueField="id" textField="name" [ngModel]="pageSize"
+                        placeholder='select item' [data]="listPageSize" (ngModelChange)="onChangePageSize($event)"
+                        size="md">
+                    </tds-select>
+                </div>
+            </div>
+            <div class="w-full" style="height: 700px;">
+                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Đã sử dụng</th>
+                            <th width="280px">Loại giảm giá</th>
+                            <th width="336px">Điều kiện giảm</th>
+                            <th width="184px">Thời gian áp dụng</th>
+                            <th width="250px">Người tạo</th>
+                            <th class="text-center">Ngày tạo</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>{{data.discountCode}}</td>
+                                <td>{{data.used}}</td>
+                                <td>
+                                    <tds-tag *ngIf="data.discountType=='Miễn phí vận chuyển'" status='success' type="outline">{{data.discountType}}</tds-tag>
+                                    <tds-tag *ngIf="data.discountType=='Giảm 15.000đ'" status='info' type="outline">{{data.discountType}}</tds-tag>
+                                </td>
+                                <td>
+                                    <p class="text-primary-1 font-medium">Áp dụng 4 sản phẩm </p>
+                                    <p>Cho tất cả khách hàng</p>    
+                                    <p> Đơn hàng từ 100.000</p>    
+                                    <p>Giới hạn sử dụng 20 lần</p>    
+                                    <p>Giới hạn 1 lần sử dụng mỗi khách hàng</p>  
+                                </td>
+                                <td>{{data.timeApply}}</td>
+                                <td>
+                                    {{data.creater}}
+                                </td>
+                                <td class="text-center">{{data.createDate}}</td>
+                                <td>
+                                    <tds-switch size="md" [checked]="true"></tds-switch>
+                                </td>
+                                <td>
+                                    <button class="mr-2" tds-button-outline-icon color="secondary">
+                                        <i class="tdsi-edit-fill"></i>
+                                    </button>
+                                    <button tds-button-outline-icon color="secondary">
+                                        <i class="tdsi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

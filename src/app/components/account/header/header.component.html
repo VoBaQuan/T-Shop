@@ -1,0 +1,17 @@
+<div class="flex flex-col w-full h-screen overflow-hidden bg-neutral-1-50">
+    <div class="flex justify-between items-center text-body-2 font-medium px-11 shadow-1-lg py-2 bg-white">
+        <div routerLink="" class="cursor-pointer">
+            <img src="/assets/img/tshop-text.png" alt="">
+        </div>
+        <div>
+            <button class="text-neutral-1-900" tds-flat-button size="sm">Trang chủ Tshop</button>
+            <button  routerLink="/account/dangky" class="text-neutral-1-900" tds-flat-button size="sm">Đăng ký</button>
+            <button  routerLink="/account/dang-nhap" class="text-neutral-1-900" tds-flat-button size="sm">Đăng nhập</button>
+            <button class="uppercase ml-2" tds-button color="primary">vn</button>
+            <button class="uppercase text-neutral-1-400" tds-flat-button size="sm">vn</button>
+        </div>
+    </div>
+    <div class="flex w-full h-full overflow-hidden">
+        <router-outlet></router-outlet>
+    </div>
+</div>

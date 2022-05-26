@@ -1,0 +1,274 @@
+<div>
+    <div class="bg-white flex items-center justify-between">
+        <div>
+            <tds-page-header title="Giảm giá sản phẩm">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Khuyến mãi</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Giảm giá sản phẩm</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4 flex items-center">
+            <button class="flex justify-center items-center" (click)="openCreateDiscount()" tds-button color="primary"
+                size="sm">
+                <i class="tdsi-add-fill text-white text-header-2 mr-3"></i>
+                Tạo giảm giá
+            </button>
+            <button (click)="showModal('create')" class="mx-3" tds-button color="secondary">
+                <span class="flex items-center">
+                    <i class="tdsi-upload-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Tạo giảm giá hàng loạt
+                </span>
+            </button>
+            <button tds-button color="secondary">
+                <span class="flex items-center">
+                    <i class="tdsi-download-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Tải mẫu giảm giá
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="bg-light-50 p-4 text-neutral-1-900">
+        <div class="bg-white border rounded-md">
+            <div class="flex justify-between items-center">
+                <div>
+                    <tds-filter-status [ngModel]='1' (selectChange)="onSelectChange($event)">
+
+                        <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
+                        </tds-filter-status-item>
+
+                        <tds-filter-status-item name='Đang hoạt động' [value]='2' [count]='10'>
+                        </tds-filter-status-item>
+
+                        <tds-filter-status-item name='Hết hạn' [value]='3' [count]='10'>
+                        </tds-filter-status-item>
+
+                        <tds-filter-status-item name='Hết lượt' [value]='4' [count]='10'>
+                        </tds-filter-status-item>
+
+                        <tds-filter-status-item name='Đã tắt' [value]='5' [count]='10' [disabled]="true">
+                        </tds-filter-status-item>
+
+                    </tds-filter-status>
+                </div>
+                <div class="flex px-4">
+                    <div class="flex mr-4">
+                        <tds-select class="w-36" valueField="id" textField="name" [ngModel]="pageSizeDate"
+                            [data]="listPageSizeDate" (ngModelChange)="onChangePageSize($event)"
+                            classIcon="tdsi-arrow-down-fill">
+                        </tds-select>
+                        <tds-date-picker class="w-60" showTime></tds-date-picker>
+                    </div>
+                    <div class="flex">
+                        <tds-select class="w-36" valueField="id" textField="name" [ngModel]="pageSizeProduct"
+                            [data]="listPageSizeProduct" (ngModelChange)="onChangePageSize($event)"
+                            classIcon="tdsi-arrow-down-fill">
+                        </tds-select>
+                        <tds-form-field>
+                            <input tdsInput placeholder="Nhập tên sản phẩm" size="md" />
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <tds-table #virtualTable #basicTable [listData]="listOfData" [scroll]="{y: '600px'}">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Tổng số giảm giá</th>
+                            <th>Số lượng đã bán</th>
+                            <th>Gía bán trước giảm(đ)</th>
+                            <th>Gía bán sau giảm(đ)</th>
+                            <th width="300px">Thời gian</th>
+                            <th>Trạng thái</th>
+                            <th>Kích hoạt</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template tds-virtual-scroll ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td class="w-80">
+                                    <div class="flex items-start">
+                                        <div class="mr-2">
+                                            <tds-avatar  [shape]="'square'" [size]="'xl'" tdsSrc="error" [isAvatar]="false"></tds-avatar>
+                                        </div>
+                                        <div>
+                                            <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                            <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{data.totalDiscount}}</td>
+                                <td>{{data.qualitySell}}</td>
+                                <td>{{data.priceAfterDiscount}}</td>
+                                <td>{{data.priceBeforeDiscount}}</td>
+                                <td [width]="">
+                                    <h1>Bắt đầu: 20/10/2021 <span>10:10</span></h1>
+                                    <h1>Kết thúc: 30/10/2021 <span>10:10</span></h1>
+                                </td>
+                                <td>
+                                    <tds-tag *ngIf="data.status=='Đang hoạt động'" status='success' type="outline">{{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Chưa hoạt động'" status='info' type="outline">{{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Hết hiệu lực'" status='secondary' type="outline">{{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Tạm ngưng'" status='error' type="outline">{{data.status}}</tds-tag>
+                                </td>
+                                <td>
+                                    <tds-switch *ngIf="data.status=='Đang hoạt động'" size="md" [checked]="true"></tds-switch>
+                                    <tds-switch *ngIf="data.status=='Chưa hoạt động'" size="md"></tds-switch>
+                                    <tds-switch *ngIf="data.status=='Hết hiệu lực'" size="md" [checked]='true' [disabled]='true'></tds-switch>
+                                    <tds-switch *ngIf="data.status=='Tạm ngưng'" size="md"></tds-switch>
+                                </td>
+                                <td>
+                                    <div class="flex text-neutral-1-500">
+                                        <button (click)="showModal('edit')" tds-button-outline-icon color="secondary" class="mr-2">
+                                            <i class="tdsi-edit-fill"></i>
+                                        </button>
+                                        <button tds-button-outline-icon color="secondary">
+                                            <i class="tdsi-trash-fill"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal chỉnh sửa giảm giá-->
+<tds-modal size="lg" [(visible)]="isVisibleEdit" [title]="modalTitleEdit" [content]="modalContentEdit"
+    [footer]="modalFooterEdit" (onCancel)="handleCancel('edit')">
+    <ng-template #modalTitleEdit>Chỉnh sửa giảm giá</ng-template>
+
+    <ng-template #modalContentEdit>
+        <div class="flex">
+            <div class="flex justify-center w-2/5">
+                <div class="flex flex-col justify-between items-center w-1/2 text-center">
+                    <div><img src="/assets/img/mamama.png" alt=""></div>
+                    <span class="text-title-1 font-medium text-black">Tên sản phẩm tên dài xuống dòng, quá 2 dòng thì
+                        mình...</span>
+                    <span class="text-body-1 font-regular text-neutral-1-400">SP0910232</span>
+                    <tds-rate size="sm" [ngModel]="5" allowHalf></tds-rate>
+                    <span class="text-title-1 font-medium text-primary-1">900.000</span>
+                </div>
+            </div>
+            <div class="flex flex-col w-3/5 text-body-2 font-medium text-neutral-1-900">
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Thời gian <span class="text-error-500">*</span></h1>
+                    </div>
+                    <div class="w-3/5">
+                        <tds-date-picker placeholder="Chọn ngày bắt đầu và kết thúc" [format]="'dd-MM-yyyy'">
+                        </tds-date-picker>
+                    </div>
+                </div>
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Tồn kho</h1>
+                    </div>
+                    <div class="w-3/5">
+                        <span class="text-title-1 font-medium text-primary-1">100</span>
+                    </div>
+                </div>
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Số lượng giảm giá <span class="text-error-500">*</span></h1>
+                    </div>
+                    <div class="w-3/5">
+                        <tds-form-field>
+                            <input type="number" tdsInput placeholder="Nhập số lượng giá" size="md" />
+                        </tds-form-field>
+                    </div>
+                </div>
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Số lượng tối đa <span class="text-error-500">*</span></h1>
+                    </div>
+                    <div class="w-3/5">
+                        <tds-form-field>
+                            <input type="number" tdsInput placeholder="Nhập số lượng giá" size="md" />
+                        </tds-form-field>
+                    </div>
+                </div>
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Gía khuyến mãi <span class="text-error-500">*</span></h1>
+                    </div>
+                    <div class="w-3/5">
+                        <tds-form-field>
+                            <input type="number" tdsInput placeholder="Nhập số lượng giá" size="md" />
+                        </tds-form-field>
+                    </div>
+                </div>
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Trạng thái</h1>
+                    </div>
+                    <div class="w-3/5">
+                        <tds-tag status='success' type="outline">Đang hoạt động</tds-tag>
+                    </div>
+                </div>
+                <div class="flex items-center pb-4 w-full">
+                    <div class="w-2/5">
+                        <h1>Kích hoạt</h1>
+                    </div>
+                    <div class="w-3/5">
+                        <tds-switch size="md"></tds-switch>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterEdit>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('edit')">
+                    Hủy
+                </button>
+                <button tds-button color="primary" (click)="handleOk('edit')">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>
+
+<!-- modal tạo giảm giá hàng loạt -->
+<tds-modal [(visible)]="isVisibleCreateDiscount" [title]="modalTitleCreateDiscount"
+    [content]="modalContentCreateDiscount" [footer]="modalFooterCreateDiscount" (onCancel)="handleCancel('create')">
+    <ng-template #modalTitleCreateDiscount>Tải file tạo sản phẩm hàng loạt</ng-template>
+
+    <ng-template #modalContentCreateDiscount>
+        <div>
+            <div class="w-full">
+                <tds-steps [current]="1" labelPlacement="horizontal" [showStep]="true">
+                    <tds-step tdsTitle="Chọn file"></tds-step>
+                    <tds-step tdsTitle="Kiểm tra dữ liệu"></tds-step>
+                </tds-steps>
+            </div>
+            <div class="border border-dotted rounded-md h-24 flex flex-col justify-center items-center">
+                <i class="tdsi-download-fill text-neutral-1-500 text-heading-2 py-2"></i>
+                <span class="text-body-2 font-regular text-neutral-1-900 py-2">Chọn file hoặc kéo thả tập tin vào để tải
+                    lên</span>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterCreateDiscount>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('create')">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk('create')">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

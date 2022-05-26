@@ -1,0 +1,291 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Danh sách sản phẩm">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>sản phẩm</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Danh sách sản phẩm</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <button tds-button color="primary" size="sm" class="flex justify-center items-center">
+            <i class="tdsi-add-fill text-white mr-3 text-header-2"></i>
+            Thêm mới
+        </button>
+    </div>
+    <div class="px-4 py-4 w-full h-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex items-center justify-end p-3">
+                <tds-form-field class="pr-4">
+                    <input tdsInput class="text-neutral-1-600 w-80" placeholder="Tìm kiếm" autocomplete="off" />
+                    <span tdsPrefix><i class="text-neutral-1-600 tdsi-search-fill"></i></span>
+                </tds-form-field>
+                <tds-select class="w-28 mr-2" valueField="id" textField="name" [ngModel]="pageSize"
+                    [data]="listPageSize" (ngModelChange)="onChangePageSize($event)" classIcon="tdsi-arrow-down-fill">
+                </tds-select>
+                <button tds-button-outline-icon color="secondary" class="mr-2">
+                    <i class="tdsi-filter-2-line"></i>
+                </button>
+                <button tds-button-outline-icon color="secondary">
+                    <i class="tdsi-column-setting-fill"></i>
+                </button>
+            </div>
+            <tds-table #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
+                <thead class="text-body-2 font-medium">
+                    <tr>
+                        <th width="60px"></th>
+                        <th width="60px">
+                            <tds-checkbox></tds-checkbox>
+                        </th>
+                        <th>Ảnh</th>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Đánh giá</th>
+                        <th>Đơn vị</th>
+                        <th>Gía bán</th>
+                        <th>Kho hàng</th>
+                        <th>Đã bán</th>
+                        <th>Hiệu lực</th>
+                        <th>Hiệu lực</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody class="text-body-2 font-regular">
+                    <ng-container *ngFor="let data of table.data">
+                        <tr class="text-neutral-1-900 text-body-2 font-regular">
+                            <td [expand]="expandSet.has(data.id)" (expandChange)="onExpandChange(data.id, $event)"></td>
+                            <td>
+                                <tds-checkbox></tds-checkbox>
+                            </td>
+                            <td>
+                                <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error" [isAvatar]="false">
+                                </tds-avatar>
+                            </td>
+                            <td>
+                                <button routerLink="/pages/sanpham/chitietsp" tds-flat-button size="sm">
+                                    <span class="hover:text-primary-1">{{data.productcode}}</span>
+                                </button>
+                                </td>
+                            <td>{{ data.productname }}</td>
+                            <td>{{data.evaluate}} <i class="tdsi-star-1-fill text-warning-400 text-title-1"></i></td>
+                            <td>{{data.unit}}</td>
+                            <td>{{ data.price }}</td>
+                            <td>{{ data.warehouse }}</td>
+                            <td>{{data.sold}}</td>
+                            <td>
+                                <tds-switch size="md" [checked]="true"></tds-switch>
+                            </td>
+                            <td>{{data.createdate}}</td>
+                            <td>
+                                <button tds-button-outline-icon color="secondary" class="mr-2">
+                                    <i class="tdsi-edit-fill"></i>
+                                </button>
+                                <button tds-button-outline-icon color="secondary">
+                                    <i class="tdsi-trash-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr [expand]="expandSet.has(data.id)"
+                            class="border-b border-neutral-2-100 text-neutral-1-900 bg-gray-200">
+                            <tds-tabset class="bg-white border border-neutral-2-200 rounded-md">
+                                <tds-tab [title]="titleTemplate"
+                                    clsContent="border-t border-neutral-2-200 w-full h-full p-4 -mt-px">
+                                    <ng-template #titleTemplate let-active="active">
+                                        <div class="flex items-center font-semibold cursor-pointer text-body-2 p-4 relative ml-4 group"
+                                            [ngClass]='{"text-neutral-1-900":active,"text-neutral-1-400 hover:text-neutral-1-900":!active}'>
+                                            <span class="mr-2">Thông tin</span>
+                                            <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
+                                                class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <div class="w-full h-full">
+                                        <div class="grid grid-cols-3 gap-8">
+                                            <div class="">
+                                                <div class="flex w-full">
+                                                    <div>
+                                                        <tds-avatar class="rounded-lg" [shape]="'square'" [size]="120"
+                                                            tdsSrc="/assets/img/Rectangle 1671.png">
+                                                        </tds-avatar>
+                                                    </div>
+                                                    <div class="flex flex-col flex-auto pl-8 text-neutral-1-900">
+                                                        <div class="w-full mb-4">
+                                                            <div class="grid grid-cols-3 gap-4 ">
+                                                                <div class="text-body-2 font-regular">
+                                                                    Tên sản phẩm
+                                                                </div>
+                                                                <div class="text-body-2 font-medium col-span-2">
+                                                                    Giày thể thao hiphop đen trắng
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="w-full mb-4">
+                                                            <div class="grid grid-cols-3 gap-4 ">
+                                                                <div class="text-body-2 font-regular">
+                                                                    Mã sản phẩm
+                                                                </div>
+                                                                <div class="text-body-2 font-medium col-span-2">
+                                                                    JD123781b
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="w-full mb-4">
+                                                            <div class="grid grid-cols-3 gap-4 ">
+                                                                <div class="text-body-2 font-regular">
+                                                                    Danh mục
+                                                                </div>
+                                                                <div class="text-body-2 font-medium col-span-2">
+                                                                    Giày
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="w-full mb-4">
+                                                            <div class="grid grid-cols-3 gap-4 ">
+                                                                <div class="text-body-2 font-regular">
+                                                                    Thương hiệu
+                                                                </div>
+                                                                <div class="text-body-2 font-medium col-span-2">
+                                                                    Jordan
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="w-full mb-4">
+                                                    <div class="grid grid-cols-3 gap-4 ">
+                                                        <div class="text-body-2 font-regular">
+                                                            Xuất sứ
+                                                        </div>
+                                                        <div class="text-body-2 font-medium col-span-2">
+                                                            Mỹ
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full mb-4">
+                                                    <div class="grid grid-cols-3 gap-4 ">
+                                                        <div class="text-body-2 font-regular">
+                                                            Giá mua
+                                                        </div>
+                                                        <div class="text-body-2 font-medium col-span-2">
+                                                            2.000.000
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full mb-4">
+                                                    <div class="grid grid-cols-3 gap-4 ">
+                                                        <div class="text-body-2 font-regular">
+                                                            Giá bán
+                                                        </div>
+                                                        <div class="text-body-2 font-medium col-span-2">
+                                                            3.000.000
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full mb-4">
+                                                    <div class="grid grid-cols-3 gap-4 ">
+                                                        <div class="text-body-2 font-regular">
+                                                            Đơn vị
+                                                        </div>
+                                                        <div class="text-body-2 font-medium col-span-2">
+                                                            Đôi
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="w-full mb-4">
+                                                    <div class="grid grid-cols-3 gap-4 ">
+                                                        <div class="text-body-2 font-regular">
+                                                            Hình thức bảo hành
+                                                        </div>
+                                                        <div class="text-body-2 font-medium col-span-2">
+                                                            Hóa đơn sản phẩm
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full">
+                                                    <div class="grid grid-cols-3 gap-4 ">
+                                                        <div class="text-body-2 font-regular">
+                                                            Thời gian bảo hành
+                                                        </div>
+                                                        <div class="text-body-2 font-medium col-span-2">
+                                                            12 tháng
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tds-tab>
+                                <tds-tab [title]="titleBienTheTemplate"
+                                    clsContent="border-t border-neutral-2-200 w-full h-full p-4 -mt-px">
+                                    <ng-template #titleBienTheTemplate let-active="active">
+                                        <div class="flex items-center font-semibold text-body-2 p-4 relative group cursor-pointer"
+                                            [ngClass]='{"text-neutral-1-900":active,"text-neutral-1-400 hover:text-neutral-1-900":!active}'>
+                                            <span class="mr-2">Biến thể</span>
+                                            <div class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
+                                                [ngClass]="{'text-white bg-primary-1':active,'text-neutral-1-500 bg-neutral-3-100 group-hover:text-white group-hover:bg-primary-1':!active}">
+                                                4
+                                            </div>
+                                            <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
+                                                class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <div class="w-full h-full">
+                                        <tds-table templateMode>
+                                            <thead>
+                                                <tr>
+                                                    <th>Size</th>
+                                                    <th>Màu</th>
+                                                    <th>Gía</th>
+                                                    <th>Số lượng</th>
+                                                    <th>SKU</th>
+                                                    <th>Hiển thị</th>
+                                                </tr>
+                                            </thead>
+                <tbody>
+                    <tr *ngFor="let data of listOfVariant">
+                        <td>{{data.size}}</td>
+                        <td>{{data.colors}}</td>
+                        <td>{{data.price}}</td>
+                        <td>{{data.quality}}</td>
+                        <td>{{data.SKU}}</td>
+                        <td>
+                            <tds-switch [checked]='true' size="md"></tds-switch>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+        </tds-tab>
+        <tds-tab [title]="titleBienTheTemplate" clsContent="border-t border-neutral-2-200 w-full h-full p-4 -mt-px">
+            <ng-template #titleBienTheTemplate let-active="active">
+                <div class="flex items-center font-semibold text-body-2 p-4 relative group cursor-pointer"
+                    [ngClass]='{"text-neutral-1-900":active,"text-neutral-1-400 hover:text-neutral-1-900":!active}'>
+                    <span class="mr-2">Hình ảnh</span>
+                    <div class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
+                        [ngClass]="{'text-white bg-primary-1':active,'text-neutral-1-500 bg-neutral-3-100 group-hover:text-white group-hover:bg-primary-1':!active}">
+                        8
+                    </div>
+                    <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
+                        class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
+                    </div>
+                </div>
+            </ng-template>
+            <div class="w-full h-full">
+                Nội dung biến thể
+            </div>
+        </tds-tab>
+        </tds-tabset>
+        </tr>
+        </ng-container>
+        </tbody>
+        </tds-table>
+    </div>
+</div>
+</div>

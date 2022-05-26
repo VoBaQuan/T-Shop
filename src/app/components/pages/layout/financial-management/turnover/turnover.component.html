@@ -1,0 +1,165 @@
+<div class="bg-light-50 w-full flex flex-col h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Doanh thu">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý tài chính</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Doanh thu</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button class="flex items-center" tds-button color="primary" size="sm">
+                <i class="tdsi-download-fill text-white text-header-2 mr-2"></i>
+                Xuất báo cáo tài chính
+            </button>
+        </div>
+    </div>
+    <div class="flex flex-col justify-center items-center p-4 w-full text-neutral-1-900">
+        <div class="w-11/12 flex">
+            <div class="w-3/4 border rounded-md bg-white">
+                <div class="text-header-1 font-semibold p-4">
+                    <h1>Tổng quan tài chính</h1>
+                </div>
+                <div class="p-4 flex">
+                    <div class="w-1/4 border-r flex flex-col py-4">
+                        <h1 class="text-title-1 font-semibold">Sắp thanh toán</h1>
+                        <div class="flex flex-col mt-4">
+                            <span class="text-body-1 text-neutral-1-400">Tổng cộng</span>
+                            <div class="flex items-start">
+                                <span class="text-primary-1 mr-1 mt-1 font-semibold"><u>đ</u></span>
+                                <span class="text-primary-1 text-heading-4 font-semibold">5.000.000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-3/4 flex flex-col py-4 ml-4">
+                        <h1 class="text-title-1 font-semibold">Sắp thanh toán</h1>
+                        <div class="flex justify-between">
+                            <div class="flex flex-col mt-4">
+                                <span class="text-body-1 text-neutral-1-400">Tổng cộng</span>
+                            <div class="flex items-start">
+                                <span class="text-primary-1 mr-1 mt-1 font-semibold"><u>đ</u></span>
+                                <span class="text-primary-1 text-heading-4 font-semibold">5.000.000</span>
+                            </div>
+                            </div>
+                            <div class="flex flex-col mt-4">
+                                <span class="text-body-1 text-neutral-1-400">Tuần này</span>
+                                <div class="flex items-start">
+                                    <span class="text-neutral-1-900 mr-1 mt-1 font-semibold"><u>đ</u></span>
+                                    <span class="text-neutral-1-900 text-heading-4 font-semibold">5.000.000</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-4">
+                                <span class="text-body-1 text-neutral-1-400">Tháng này</span>
+                                <div class="flex items-start">
+                                    <span class="text-neutral-1-900 mr-1 mt-1 font-semibold"><u>đ</u></span>
+                                    <span class="text-neutral-1-900 text-heading-4 font-semibold">5.000.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/4 flex flex-col ml-4 border rounded-md bg-white text-neutral-1-900">
+                <div class="flex justify-between items-center border-b p-4">   
+                    <h1 class="text-header-1 font-semibold">Báo cáo thu nhập tự động</h1>
+                    <button (click)="reportAutoIncome()" class="text-info-500" tds-flat-button size="md">Xem tất cả</button>
+                </div>
+                <div class="flex justify-between items-center p-4 border-b text-body-1">
+                    <p>01/08/2021 - 01/09/2021</p>
+                    <i class="tdsi-download-fill text-neutral-1-300 text-header-2"></i>
+                </div>
+                <div class="flex justify-between items-center p-4 border-b text-body-1">
+                    <p>01/08/2021 - 01/09/2021</p>
+                    <i class="tdsi-download-fill text-neutral-1-300 text-header-2"></i>
+                </div>
+                <div class="flex justify-between items-center p-4 text-body-1">
+                    <p>01/08/2021 - 01/09/2021</p>
+                    <i class="tdsi-download-fill text-neutral-1-300 text-header-2"></i>
+                </div>
+            </div>
+        </div>
+        <div class="w-11/12 bg-white mt-4 border rounded-md">
+            <tds-tabset>
+                <tds-tab title="Sắp thanh toán">
+                    <tds-table #basicTable [listData]="listOfData1">
+                        <thead>
+                              <tr>
+                                    <th>Đơn hàng</th>
+                                    <th>Người mua</th>
+                                    <th>Ngày thanh toán dự kiến</th>
+                                    <th>trạng thái</th>
+                                    <th>Số tiền</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <ng-template ngFor let-data [ngForOf]="basicTable.data" >
+                                <tr>
+                                    <td>
+                                        <div class="flex items-start">
+                                            <tds-avatar class="mr-2" [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                            <h1 class="text-body-2 font-medium">{{data.orderName}}</h1>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="flex justify-start items-center">
+                                            {{ data.customer }}
+                                            <i class="tdsi-send-fill text-primary-1 ml-1"></i>
+                                        </div>
+                                        <div class="flex justify-start items-center">
+                                            <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                            <span class="text-neutral-1-400">{{data.numberphone}}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{data.paydate}}</td>
+                                    <td>{{data.status}}</td>
+                                    <td class="text-body-2 font-medium">{{data.total}}</td>
+                                </tr>
+                            </ng-template>
+                        </tbody>
+                    </tds-table>
+                </tds-tab>
+                <tds-tab title="Đã thanh toán">
+                    <tds-table #basicTable1 [listData]="listOfData2">
+                        <thead>
+                              <tr>
+                                    <th>Đơn hàng</th>
+                                    <th>Người mua</th>
+                                    <th>Ngày thanh toán dự kiến</th>
+                                    <th>trạng thái</th>
+                                    <th>Số tiền</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <ng-template ngFor let-data [ngForOf]="basicTable1.data" >
+                                <tr>
+                                    <td>
+                                        <div class="flex items-start">
+                                            <tds-avatar class="mr-2" [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+
+                                            <h1 class="text-body-2 font-medium">{{data.orderName}}</h1>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="flex justify-start items-center">
+                                            {{ data.customer }}
+                                            <i class="tdsi-send-fill text-primary-1 ml-1"></i>
+                                        </div>
+                                        <div class="flex justify-start items-center">
+                                            <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                            <span class="text-neutral-1-400">{{data.numberphone}}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{data.paydate}}</td>
+                                    <td>{{data.status}}</td>
+                                    <td class="text-body-2 font-medium">{{data.total}}</td>
+                                </tr>
+                            </ng-template>
+                        </tbody>
+                    </tds-table>
+                </tds-tab>
+            </tds-tabset>
+        </div>
+    </div>
+</div>

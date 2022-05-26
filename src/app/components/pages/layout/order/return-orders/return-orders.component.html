@@ -1,0 +1,173 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Trả hàng/hoàn tiền">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Đơn hàng</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Trả hàng/hoàn tiền</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button class="flex items-center" tds-button color="primary" size="sm" class="text-body-2 font-medium">
+                <i class="tdsi-export-file-fill text-header-2 text-white mr-3"></i>
+                Xuất danh sách
+            </button>
+        </div>
+    </div>
+    <div class="px-4 py-4 w-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <tds-filter-status [ngModel]="1" (selectChange)="onSelectChange($event)"
+                class="flex justify-between items-center">
+                <div>
+                    <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Chờ xác nhận' [value]='2' [count]='20'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Chờ lấy hàng' [value]='3' [count]='20'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Đang giao' [value]='4' [count]='50'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Đã giao' [value]='5' [count]='15'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Đã hủy' [value]='6' [count]='2'>
+                    </tds-filter-status-item>
+                </div>
+                <tds-form-field class="pr-4">
+                    <input tdsInput class="text-neutral-1-600 w-96" placeholder="Từ khóa" autocomplete="off" />
+                    <span tdsPrefix><i class="text-neutral-1-600 tdsi-search-fill"></i></span>
+                </tds-form-field>
+            </tds-filter-status>
+            <div style="height: 556px;">
+                <tds-table #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
+                    <thead class="text-body-2 font-medium">
+                        <tr>
+                            <th width="60px"></th>
+                            <th>Mã đơn hàng</th>
+                            <th>Khách hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái đơn gốc</th>
+                            <th>Ngày yêu cầu</th>
+                            <th>Thời hạn xử lý</th>
+                            <th>Trạng thái trả hàng</th>
+                            <th width="220px">Theo dõi vận chuyển</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-body-2 font-regular">
+                        <ng-container *ngFor="let data of table.data">
+                            <tr class="text-neutral-1-900 text-body-2 font-regular">
+                                <td [expand]="expandSet.has(data.id)" (expandChange)="onExpandChange(data.id, $event)">
+                                </td>
+                                <td>
+                                    <button tds-flat-button size="sm"
+                                        class="text-primary-1 font-medium">{{data.orderCode}}</button>
+                                </td>
+                                <td>
+                                    {{ data.customer }}
+                                    <div class="flex justify-start items-center">
+                                        <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                        <span class="text-neutral-1-400">{{data.phonenumber}}</span>
+                                    </div>
+                                </td>
+                                <td>{{ data.total }}</td>
+                                <td>
+                                    <tds-tag *ngIf="data.originalorder=='Đã giao hàng'" status='success' type="outline">{{ data.originalorder }}</tds-tag>
+                                    <tds-tag *ngIf="data.originalorder=='Đã hủy'" status='error' type="outline">{{ data.originalorder }}</tds-tag>
+                                </td>
+                                <td>{{ data.requestdate }}</td>
+                                <td>{{ data.processingtime }}</td>
+                                <td>
+                                    <tds-badge *ngIf="data.returnstatus=='Đã hoàn tiền'" status="success" text="{{ data.returnstatus }}"></tds-badge>
+                                    <tds-badge *ngIf="data.returnstatus=='Từ chối'" status="error" text="{{ data.returnstatus }}"></tds-badge>
+                                    <tds-badge *ngIf="data.returnstatus=='Đang xử lý'" status="bg-yellow-500" text="{{ data.returnstatus }}"></tds-badge>
+                                    <tds-badge *ngIf="data.returnstatus=='Chưa xử lý'" status="secondary" text="{{ data.returnstatus }}"></tds-badge>
+                                    
+                                </td>
+                                <td>{{ data.followtrans }}</td>
+                                <td>
+                                    <button tds-button-flat color="secondary">
+                                        <i *ngIf="data.operration=='Phản hồi'"
+                                            class="tdsi-reply-fill text-info-400 mr-2"></i>
+                                        <span class="text-info-500 text-body-2 font-medium">{{data.operration}}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr [expand]="expandSet.has(data.id)"
+                                class="border-b border-neutral-2-100 text-neutral-1-900 bg-light-50">
+                                <div class="bg-white rounded-md border">
+                                    <div class="flex justify-between items-center px-2 py-2 border-b">
+                                        <h1 class="text-header-1 font-semibold text-neutral-1-900">Thông tin đơn hàng
+                                        </h1>
+                                        <div>
+                                            <button tds-button color="primary" size="sm" class="mr-2">In hóa
+                                                đơn</button>
+                                            <button tds-button color="secondary" size="sm">In Phiếu ship</button>
+                                        </div>
+                                    </div>
+                                    <tds-table templateMode>
+                                        <thead>
+                                            <tr>
+                                                <th>Ảnh</th>
+                                                <th>Mã đơn hàng</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Mã sản phẩm</th>
+                                                <th>Đơn giá</th>
+                                                <th>Số lượng</th>
+                                                <th class="text-right">Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                    <tbody>
+                        <tr *ngFor="let data of inforOrders">
+                            <td>
+                                <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error" [isAvatar]="false">
+                                </tds-avatar>
+                            </td>
+                            <td>{{data.ordercode}}</td>
+                            <td>{{data.productname}}</td>
+                            <td>{{data.productcode}}</td>
+                            <td>{{data.unitprice}}</td>
+                            <td>{{data.quality}}</td>
+                            <td class="text-right">
+                                {{data.total}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
+                                    <span>2 sản phẩm</span>
+                                    <span>Phí giao hàng</span>
+                                    <span class="text-title-1 font-medium">Tổng tiền</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex justify-end">
+                                    <div class="flex text-body-2 flex-col items-end font-medium text-neutral-1-900">
+                                        <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u>
+                                            2.400.000</span>
+                                        <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u>
+                                            2.400.000</span>
+                                        <span class="text-header-2 font-semibold text-primary-1"><u
+                                                class="text-body-2 font-regular text-neutral-1-400">đ</u>
+                                            2.700.000</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </tds-table>
+            </div>
+            </tr>
+            </ng-container>
+            </tbody>
+            </tds-table>
+        </div>
+    </div>
+</div>
+</div>

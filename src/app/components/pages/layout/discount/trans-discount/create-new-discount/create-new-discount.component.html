@@ -1,0 +1,151 @@
+<div>
+    <div class="bg-white flex items-center justify-between">
+        <div>
+            <tds-page-header title="Tạo Giảm giá vận chuyển">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Mã giảm giá</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Giảm giá vận chuyển</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4 flex items-center">
+            <button tds-button color="primary" size="sm">
+                Tạo mới
+            </button>
+            <button class="ml-3" tds-button color="secondary">Đóng</button>
+        </div>
+    </div>
+    <div class="flex first-letter:bg-light-50 p-4 text-neutral-1-900">
+        <div class="w-3/4 border rounded-md bg-white">
+            <div class="p-4 text-header-1 font-semibold border-b">
+                <h1>Điều kiện áp dụng</h1>
+            </div>
+            <div class="px-4 py-2 border-b text-body-2 font-medium">
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <div class="w-1/3">
+                            <h1>Sản phẩm áp dụng <span class="text-error-500">*</span></h1>
+                        </div>
+                        <div class="w-1/3"><label tds-radio ngModel>Tất cả sản phẩm</label></div>
+                        <div class="w-1/3"><label tds-radio ngModel>Sản phẩm cụ thể</label></div>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <button class="w-full text-primary-1" tds-button color="secondary">Chọn sản phẩm</button>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <div class="w-1/3">
+                            <h1>Loại giảm giá <span class="text-error-500">*</span></h1>
+                        </div>
+                        <div class="w-1/3"><label tds-radio ngModel>100%</label></div>
+                        <div class="w-1/3"><label tds-radio ngModel>Số tiền cố định</label></div>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <tds-form-field class="w-full">
+                            <input type="number" tdsInput autocomplete="off" placeholder="Nhập số tiền" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <div class="w-1/3">
+                            <h1>Gía trị đơn hàng tối thiểu <span class="text-error-500">*</span></h1>
+                        </div>
+                        <div class="w-1/3"><label tds-radio ngModel>Không giới hạn</label></div>
+                        <div class="w-1/3"><label tds-radio ngModel>Giới hạn tối thiểu</label></div>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <tds-form-field class="w-full">
+                            <input type="number" tdsInput autocomplete="off" placeholder="Nhập giá trị đơn hàng tối thiểu" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <div class="w-1/3">
+                            <h1>Số lượng áp dụng giảm giá <span class="text-error-500">*</span></h1>
+                        </div>
+                        <div class="w-1/3"><label tds-radio ngModel>Không giới hạn</label></div>
+                        <div class="w-1/3"><label tds-radio ngModel>Giới hạn số lượt</label></div>
+                    </div>
+                </div>
+                <div class="flex py-2">
+                    <div class="w-3/5 flex items-center">
+                        <tds-form-field class="w-full">
+                            <input type="number" tdsInput autocomplete="off" placeholder="Nhập số lượng giới hạn" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>  
+            <div class="p-4">
+                <div class="py-2">
+                    <h1 class="text-body-2 font-semibold">Phương thức vận chuyển áp dụng <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="flex justify-between">
+                    <div class="flex items-center">
+                        <tds-checkbox [checked]="true"></tds-checkbox>
+                        <div class="mx-2">
+                            <img src="/assets/img/Rectangle 2728.png" alt="">
+                        </div>
+                        <span class="text-body-2 font-regular">VietNam Post</span>
+                    </div>
+                    <div class="flex items-center">
+                        <tds-checkbox [checked]="true"></tds-checkbox>
+                        <div class="mx-2">
+                            <img src="/assets/img/Rectangle 2728.png" alt="">
+                        </div>
+                        <span class="text-body-2 font-regular">VietNam Post</span>
+                    </div>
+                    <div class="flex items-center">
+                        <tds-checkbox [checked]="true"></tds-checkbox>
+                        <div class="mx-2">
+                            <img src="/assets/img/Rectangle 2728.png" alt="">
+                        </div>
+                        <span class="text-body-2 font-regular">VietNam Post</span>
+                    </div>
+                    <div class="flex items-center">
+                        <tds-checkbox [checked]="true"></tds-checkbox>
+                        <div class="mx-2">
+                            <img src="/assets/img/Rectangle 2728.png" alt="">
+                        </div>
+                        <span class="text-body-2 font-regular">VietNam Post</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="w-1/4 ml-4">
+            <div class="border rounded-md bg-white">
+                <div class="p-4 border-b text-header-1 font-semibold">
+                    <h1>Hiển thị điều kiện áp dụng</h1>
+                </div>
+                <div class=" flex justify-between px-4">
+                    <div class="flex flex-col justify-between">
+                        <span class="py-2">Tên mã giảm giá</span>
+                        <span class="py-2">Áp dụng cho</span>
+                        <span class="py-2">Giá trị đơn tối thiểu</span>
+                        <span class="py-2">Giới hạn sử dụng tối đa</span>
+                        <span class="py-2">Thời gian hiệu lực</span>
+                    </div>
+                    <div class="flex flex-col justify-between text-right text-primary-1 font-medium">
+                        <span class="py-2"><tds-tag size="sm" status='info' type="outline">15.000đ</tds-tag></span>
+                        <span class="py-2">Tất cả sản phẩm</span>
+                        <span class="py-2">200.000đ</span>
+                        <span class="py-2">20</span>
+                        <span class="py-2">20/10/2021 - 20/11/2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

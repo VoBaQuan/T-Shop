@@ -1,0 +1,162 @@
+<div class="bg-light-50 w-full flex flex-col items-center">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="TH0231234">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý kho</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Đơn nhập hàng</a>
+                </tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>TH0231234</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button size="sm" tds-button color="primary">
+                <span class="flex items-center">
+                    <i class="tdsi-stock-fill text-lg leading-none mr-2"></i>Nhập kho
+                </span>
+            </button>
+            <button tds-button color="primary" size="sm" class="mx-2 text-primary-1">Tạo đơn nhập hàng</button>
+            <button tds-button color="secondary" size="sm">Hủy bỏ</button>
+
+        </div>
+    </div>
+    <div class="w-5/6 bg-white border rounded-md mt-4 text-body-2 font-medium text-neutral-1-900 px-4">
+        <div>
+            <h1 class="text-header-1 font-semibold my-4">1. Thông tin cơ bản</h1>
+        </div>
+        <div class="flex py-2">
+            <div class="w-1/2 flex items-center mr-4">
+                <div class="w-1/4">
+                    <h1>Hình thức <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-form-field>
+                            <input value="Kho 1" tdsInput autocomplete="off" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/2 flex items-center">
+                <div class="w-1/4">
+                    <h1>Ngày nhập hàng <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-date-picker [format]="'dd-MM-yyyy'"></tds-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex py-4">
+            <div class="w-1/2 flex items-center mr-4">
+                <div class="w-1/4">
+                    <h1>Hình thức <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-form-field>
+                            <input value="Kho 1" tdsInput autocomplete="off" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/2 flex items-center">
+                <div class="w-1/4">
+                    <h1>Ngày nhập hàng <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-date-picker [format]="'dd-MM-yyyy'"></tds-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-5/6 bg-white mt-4 text-body-2 font-medium text-neutral-1-900">
+        <div class="border rounded-md">
+            <div class="flex justify-between items-center px-2 py-2">
+                <h1 class="text-header-1 font-semibold text-neutral-1-900">Danh sách sản phẩm</h1>
+                <div>
+                    <button (click)="showModal()" class="mr-2" tds-button color="primary" size="sm">Chọn sản phẩm</button>
+                </div>
+            </div>
+            <tds-table templateMode>
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng nhập hàng</th>
+                        <th>Gía mua trên một sản phẩm</th>
+                        <th>Tổng cộng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="flex justify-start">
+                                <tds-empty></tds-empty>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<tds-modal size="xl" [(visible)]="isVisible" [title]="modalTitle" [content]="modalContent" [footer]="modalFooter"
+    (onCancel)="handleCancel()">
+    <ng-template #modalTitle>Chọn sản phẩm</ng-template>
+
+    <ng-template #modalContent>
+        <tds-table #rowSelectionTable showSizeChanger [listData]="listOfData"
+            (currentPageDataChange)="onCurrentPageDataChange($event)" [scroll]="{y:'500px'}">
+            <thead>
+                <tr>
+                    <th class="w-24" [selections]="listOfSelection" [(checked)]="checked"
+                        [indeterminate]="indeterminate" (checkedChange)="onAllChecked($event)">
+                    </th>
+                    <th>Ảnh</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Đơn vị</th>
+                    <th>Gía thành sản phẩm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template ngFor let-data [ngForOf]="rowSelectionTable.data" let-odd='odd'>
+                    <tr>
+                        <td [checked]="setOfCheckedId.has(data.id)" (checkedChange)="onItemChecked(data.id, $event)">
+                        </td>
+                        <td><img src="{{data.img}}" alt=""></td>
+                        <td>{{data.productcode}}</td>
+                        <td>{{data.productname}}</td>
+                        <td>{{data.unit}}</td>
+                        <td>{{data.price}}</td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </tds-table>
+    </ng-template>
+
+    <ng-template #modalFooter>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel()">
+                    Hủy
+                </button>
+                <button tds-button color="primary" (click)="handleOk()">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

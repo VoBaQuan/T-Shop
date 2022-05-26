@@ -1,0 +1,200 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full overflow-hidden">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Danh sách sản phẩm">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>sản phẩm</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Danh sách sản phẩm</a>
+                </tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>T121923894758</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button tds-button color="primary" size="sm" class="flex justify-center items-center">
+                <i class="tdsi-add-fill text-white text-header-2 mr-3"></i>
+                Thêm mới
+            </button>
+        </div>
+    </div>
+    <div class="px-4 py-4 w-full h-full overflow-hidden">
+        <div class="flex h-full overflow-hidden">
+            <div class="w-3/4 mr-4 overflow-auto  tds-custom-scroll">
+                <!--collapse-panel Thông tin cơ bản -->
+                <tds-collapse [expandIconPosition]="'right'" class="bg-white">
+                    <tds-collapse-panel header="1. Thông tin cơ bản" [active]="true" [disabled]=false
+                        [expandedIcon]="'tdsi-arrow-up-line'">
+                        <div>
+                            <div class="flex">
+                                <div class="w-1/5 text-body-2 font-regular">
+                                    <h1>Tên sản phẩm</h1>
+                                </div>
+                                <div class="w-4/5 text-body-2 font-medium">
+                                    <h1>Giày thể thao đen trắng</h1>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <h1>Hình ảnh sản phẩm</h1>
+                                <div class="flex mt-2">
+                                    <img *ngFor="let data of listOfImages" src="{{data.path}}" alt="" class="mr-4">
+                                </div>
+                            </div>
+                            <div class="flex py-2">
+                                <div class="w-1/5 text-body-2 font-regular">
+                                    <h1 class="py-1">Mã sản phẩm</h1>
+                                    <h1 class="py-1">Danh mục</h1>
+                                    <h1 class="py-1">Thương hiệu</h1>
+                                    <h1 class="py-1">Xuất xứ</h1>
+                                </div>
+                                <div class="w-4/5 text-body-2 font-medium">
+                                    <h1 class="py-1">JD116546</h1>
+                                    <h1 class="py-1">Giày</h1>
+                                    <h1 class="py-1">Jordan</h1>
+                                    <h1 class="py-1">Mỹ</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </tds-collapse-panel>
+                </tds-collapse>
+                <!--collapse-panel Mô tả -->
+                <tds-collapse [expandIconPosition]="'right'" class="bg-white mt-4">
+                    <tds-collapse-panel header="2. Mô tả" [active]="true" [disabled]=false
+                        [expandedIcon]="'tdsi-arrow-up-line'">
+                        <div>
+                            <h1 class="mb-4">TRÂN TRỌNG KÍNH CHÀO KHÁCH HÀNG.</h1>
+                            <p>* BẢO HÀNH: sản phảm được bảo hành keo 12 tháng. Hỗ trợ đổi size nếu không vừa chân, 1
+                                đổi 1 đối vs sản phẩm bị lỗi do nhà sản xuất. 💯</p>
+                            <p>🌹Nhà Mình Có Đầy Đủ Size Cho Khánh Yêu Nhé</p>
+                            <p>🌼Hàng Chuẩn , Đẹp , Và Bao Giá Toàn Quốc Cho Bạn</p>
+                            <p>🌼Shop Giầy Dép Của Tớ Đảm Bảo Chất Lượng , Mẫu Mã Đa Dạng , Nhận Sỉ Toàn Quốc</p>
+                            <p>Số Lượng Có Hạn , Nhanh Tay Đặt Hàng Nhé</p>
+                            <p>🍀Cảm Ơn Khách Hàng Luôn Tin Tưởng Và Ủng Hộ Shop ☘️</p>
+
+                        </div>
+                    </tds-collapse-panel>
+                </tds-collapse>
+                <!-- collapse-panel Thông tin bán hàng -->
+                <tds-collapse [expandIconPosition]="'right'" class="bg-white mt-4">
+                    <tds-collapse-panel header="3. Thông tin bán hàng" [active]="false" [disabled]=false
+                        [expandedIcon]="'tdsi-arrow-up-line'">
+                        <div class="flex text-neutral-1-900 text-body-2">
+                            <div class="flex w-1/2">
+                                <div class="w-1/3 font-regular">
+                                    <h1>giá bán</h1>
+                                    <h1>giá mua</h1>
+                                </div>
+                                <div class="w-1/3 font-medium">
+                                    <h1>5.000.000</h1>
+                                    <h1>3.000.000</h1>
+                                </div>
+                            </div>
+                            <div class="flex w-1/2">
+                                <div class="w-1/3 font-regular">
+                                    <h1>Hình thức bảo hành</h1>
+                                    <h1>Đơn vị</h1>
+                                </div>
+                                <div class="w-1/3 font-medium">
+                                    <h1>Hóa đơn sản phẩm</h1>
+                                    <h1>Đôi</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </tds-collapse-panel>
+                </tds-collapse>
+                <!-- collapse-panel Biến thể -->
+                <tds-collapse [expandIconPosition]="'right'" class="bg-white mt-4">
+                    <tds-collapse-panel header="4. Biến thể" [active]="false" [disabled]=false
+                        [expandedIcon]="'tdsi-arrow-up-line'">
+                        <tds-table templateMode>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Màu</th>
+                                    <th>Thời gian bảo hành</th>
+                                    <th>Số lượng</th>
+                                    <th>SKU</th>
+                                    <th>Hiển thị</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of listOfVariant">
+                                    <td>{{data.size}}</td>
+                                    <td>{{data.colors}}</td>
+                                    <td>{{data.warrantyperiod}}</td>
+                                    <td>{{data.quality}}</td>
+                                    <td>{{data.SKU}}</td>
+                                    <td>
+                                        <tds-switch size="md"></tds-switch>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </tds-table>
+                    </tds-collapse-panel>
+                </tds-collapse>
+                <!-- collapse-panel Thông tin giao hàng -->
+                <tds-collapse [expandIconPosition]="'right'" class="bg-white mt-4">
+                    <tds-collapse-panel header="5. Thông tin giao hàng" [active]="false" [disabled]=false
+                        [expandedIcon]="'tdsi-arrow-up-line'">
+                        <div class="flex w-1/4 text-body-2">
+                            <div class="w-1/2 font-regular">
+                                <h1 class="py-1">Trọng lượng(kg)</h1>
+                                <h1 class="py-1">Kích thước(cm)</h1>
+                                <h1 class="py-1">Sản phẩm Nguy hiểm</h1>
+                            </div>
+                            <div class="w-1/2 font-medium">
+                                <h2 class="py-1">1</h2>
+                                <h2 class="py-1">20x20x10</h2>
+                                <h2 class="py-1">Dễ vỡ</h2>
+                            </div>
+                        </div>
+                    </tds-collapse-panel>
+                </tds-collapse>
+            </div>
+            <div class="w-1/4 bg-light-50">
+                <div class=" border rounded-md py-4 px-6 bg-white">
+                    <!-- time line -->
+                    <div>
+                        <tds-timeline>
+                            <tds-timeline-item tdsColor="error" [tdsDot]="dotTemplate">
+                                <p class="text-body-1 text-neutral-1-900 font-medium">Thông tin cơ bản</p>
+                            </tds-timeline-item>
+                            <tds-timeline-item tdsColor="error" [tdsDot]="dotTemplate1">
+                                <p class="text-neutral-1-400 font-regular text-body-1">Mô tả</p>
+                            </tds-timeline-item>
+                            <tds-timeline-item tdsColor="error" [tdsDot]="dotTemplate2">
+                                <p class="text-neutral-1-400 font-regular text-body-1">Thông tin bán hàng</p>
+                            </tds-timeline-item>
+                            <tds-timeline-item tdsColor="error" [tdsDot]="dotTemplate3">
+                                <p class="text-neutral-1-400 font-regular text-body-1">Biến thể</p>
+                            </tds-timeline-item>
+                            <tds-timeline-item tdsColor="error" [tdsDot]="dotTemplate4">
+                                <p class="text-neutral-1-400 font-regular text-body-1">Thông tin giao hàng</p>
+                            </tds-timeline-item>
+                        </tds-timeline>
+                        <ng-template #dotTemplate>
+                            <span class="w-6 h-6 rounded-full bg-primary-1 flex justify-center items-center text-white">1</span>
+                        </ng-template>
+                        <ng-template #dotTemplate1>
+                            <span class="w-6 h-6 border border-neutral-1-400 rounded-full bg-white flex justify-center items-center text-neutral-1-400">2</span>
+                        </ng-template>
+                        <ng-template #dotTemplate2>
+                            <span class="w-6 h-6 border border-neutral-1-400 rounded-full bg-white flex justify-center items-center text-neutral-1-400">3</span>
+                        </ng-template>
+                        <ng-template #dotTemplate3>
+                            <span class="w-6 h-6 border border-neutral-1-400 rounded-full bg-white flex justify-center items-center text-neutral-1-400">4</span>
+                        </ng-template>
+                        <ng-template #dotTemplate4>
+                            <span class="w-6 h-6 border border-neutral-1-400 rounded-full bg-white flex justify-center items-center text-neutral-1-400">5</span>
+                        </ng-template>
+                    </div>
+                    <!-- button thu gọn -->
+                    <div class="py-2">
+                        <button class="w-full text-info-400" tds-button color="secondary">Thu gọn tất cả</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

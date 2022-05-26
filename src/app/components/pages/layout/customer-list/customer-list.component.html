@@ -1,0 +1,209 @@
+<div class="text-neutral-1-900">
+    <div class="p-4 bg-white">
+        <h1 class="text-header-1 font-semibold">Danh sách khách hàng</h1>
+    </div>
+    <div class="p-4 bg-light-50">
+        <div class="bg-white border rounded-md">
+            <div class="p-4">
+                <div class="flex justify-end">
+                    <div class="mr-2">
+                        <button tds-button size="md" color="primary" class="flex items-center">
+                            Sinh nhật
+                            <div
+                                class="ml-2 w-5 h-5 flex justify-center items-center bg-white rounded-full text-caption-2 font-medium text-primary-1">
+                                <span>2</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div>
+                        <tds-form-field>
+                            <input autocomplete="off" tdsInput placeholder="Tên khách hàng" [required]='true'
+                                class="w-96" />
+                            <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <tds-table #table [listData]="listOfData" tableLayout="fixed">
+                    <thead>
+                        <tr>
+                            <th width="60px"></th>
+                            <th>Số điện thoại</th>
+                            <th>Khách hàng</th>
+                            <th>Sinh nhật</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Tổng tiền đã chi</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let data of table.data">
+                            <tr>
+                                <td [expand]="expandSet.has(data.id)" (expandChange)="onExpandChange(data.id, $event)">
+                                </td>
+                                <td>
+                                    <div class="text-primary-1 font-medium">{{ data.numberPhone }}</div>
+                                </td>
+                                <td>{{ data.customerName }}</td>
+                                <td>{{ data.birthday }}</td>
+                                <td>{{ data.email }}</td>
+                                <td>{{ data.address }}</td>
+                                <td>{{ data.totalSpending }}</td>
+                                <td>
+                                    <button tds-flat-button size="sm"
+                                        class="text-info-500">{{data.operationReport}}</button>
+                                    <span class="text-info-500">|</span> <button tds-flat-button size="sm"
+                                        class="text-info-500">{{data.operationMessage}}</button>
+                                </td>
+                            </tr>
+                            <tr [expand]="expandSet.has(data.id)"
+                                class="border-b border-neutral-2-100 text-neutral-1-900 bg-light-50">
+                                <div class="border rounded-md bg-white">
+                                    <tds-tabset
+                                        class="dark:border-d-neutral-1-200 rounded-md">
+                                        <tds-tab [title]="titleTemplate"
+                                            clsContent="border-t border-neutral-2-200 dark:border-d-neutral-1-200 w-full h-full p-4 -mt-px">
+                                            <ng-template #titleTemplate let-active="active">
+                                                <div class="flex items-center font-semibold cursor-pointer text-body-2 px-3 py-4 relative mr-2 group"
+                                                    [ngClass]='{"text-neutral-1-900 dark:text-d-neutral-1-900":active,"text-neutral-1-400 dark:text-d-neutral-1-400 hover:text-neutral-1-900 hover:dark:text-d-neutral-1-900":!active}'>
+                                                    <span>Thông tin</span>
+                                                    <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
+                                                        class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <div class="flex">
+                                                <div class="w-1/3 flex items-center">
+                                                    <div class="mr-14">
+                                                        <img src="/assets/img/111Avatar.png" alt="">
+                                                    </div>
+                                                    <div class="text-body-2 font-regular mr-16">
+                                                        <h1 class="mb-4">Điện thoại</h1>
+                                                        <h1 class="mb-4">Tên khách hàng</h1>
+                                                        <h1>Sinh nhật</h1>
+                                                    </div>
+                                                    <div class="text-body-2 font-medium mr-16">
+                                                        <h1 class="mb-4">+84 912346215</h1>
+                                                        <h1 class="mb-4">Nguyễn Minh Tiến</h1>
+                                                        <h1>06/02/1997</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="w-1/3 flex items-center">
+                                                    <div class="text-body-2 font-regular mr-24">
+                                                        <h1 class="mb-4">Email</h1>
+                                                        <h1 class="mb-4">Facebook</h1>
+                                                        <h1>Địa chỉ</h1>
+                                                    </div>
+                                                    <div class="text-body-2 font-medium mr-16">
+                                                        <h1 class="mb-4">loser123154@gmail.com</h1>
+                                                        <h1 class="mb-4 text-info-500"><a
+                                                                href="#">fb.com/10007816161671</a></h1>
+                                                        <h1>12cn, Tân Phú Tp Hồ Chí Minh</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="w-1/3 flex items-center">
+                                                    <div class="text-body-2 font-regular mr-24">
+                                                        <h1 class="mb-4">Doanh số đầu kỳ</h1>
+                                                        <h1 class="mb-4">Doanh số</h1>
+                                                        <h1>Tổng doanh số</h1>
+                                                    </div>
+                                                    <div class="text-body-2 font-medium mr-16">
+                                                        <h1 class="mb-4">2.000.000</h1>
+                                                        <h1 class="mb-4">3.000.000</h1>
+                                                        <h1>5.000.000</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tds-tab>
+                                        <tds-tab [title]="titleBienTheTemplate"
+                                            clsContent="border-t border-neutral-2-200 dark:border-d-neutral-1-200 w-full h-full p-4 -mt-px">
+                                            <ng-template #titleBienTheTemplate let-active="active">
+                                                <div class="flex items-center font-semibold cursor-pointer text-body-2 px-3 py-4 relative group"
+                                                    [ngClass]='{"text-neutral-1-900 dark:text-d-neutral-1-900":active,"text-neutral-1-400 dark:text-d-neutral-1-400 hover:text-neutral-1-900 hover:dark:text-d-neutral-1-900":!active}'>
+                                                    <span class="mr-2">Lịch sử mua hàng</span>
+                                                    <div class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
+                                                        [ngClass]="{'text-white bg-primary-1':active,'text-neutral-1-500 dark:text-d-neutral-1-500 bg-neutral-3-100 dark:bg-d-neutral-3-300  group-hover:text-white group-hover:bg-primary-1':!active}">
+                                                        4
+                                                    </div>
+                                                    <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
+                                                        class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <div class="w-full h-full">
+                                                <tds-table templateMode>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Mã đơn hàng</th>
+                                                            <th>Ngày mua</th>
+                                                            <th>Trạng thái</th>
+                                                            <th>Nhà vận chuyển</th>
+                                                            <th>Địa chỉ nhận hàng</th>
+                                                            <th>Tổng tiền</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let data of listOfHistory">
+                                                            <td>
+                                                                <div [routerLink]="['/pages/chitiet-lichsumuahang']" routerLinkActive="router-link-active"  class="w-24 py-1 border-b border-dotted cursor-pointer">
+                                                                    {{data.orderCode}}
+                                                                </div>
+                                                            </td>
+                                                            <td>{{data.dateBuy}}</td>
+                                                            <td>{{data.status}}</td>
+                                                            <td>{{data.trans}}</td>
+                                                            <td>{{data.address}}</td>
+                                                            <td>{{data.total}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </tds-table>
+                                            </div>
+                                        </tds-tab>
+                                        <tds-tab [title]="titleBienTheTemplate1"
+                                            clsContent="border-t border-neutral-2-200 dark:border-d-neutral-1-200 w-full h-full p-4 -mt-px">
+                                            <ng-template #titleBienTheTemplate1 let-active="active">
+                                                <div class="flex items-center font-semibold cursor-pointer text-body-2 px-3 py-4 relative group"
+                                                    [ngClass]='{"text-neutral-1-900 dark:text-d-neutral-1-900":active,"text-neutral-1-400 dark:text-d-neutral-1-400 hover:text-neutral-1-900 hover:dark:text-d-neutral-1-900":!active}'>
+                                                    <span class="mr-2">Ghi chú</span>
+                                                    <div class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
+                                                        [ngClass]="{'text-white bg-primary-1':active,'text-neutral-1-500 dark:text-d-neutral-1-500 bg-neutral-3-100 dark:bg-d-neutral-3-300  group-hover:text-white group-hover:bg-primary-1':!active}">
+                                                        4
+                                                    </div>
+                                                    <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
+                                                        class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <div class="w-full h-full">
+                                                <tds-table templateMode>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Người thêm</th>
+                                                            <th>Ngày thêm</th>
+                                                            <th>Số điện thoại</th>
+                                                            <th>Ghi chú</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let data of listOfNote">
+                                                            <td>{{data.adder}}</td>
+                                                            <td>{{data.addDate}}</td>
+                                                            <td>{{data.numberPhone}}</td>
+                                                            <td>{{data.note}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </tds-table>
+                                            </div>
+                                        </tds-tab>
+                                    </tds-tabset>
+                                </div>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,205 @@
+<div class="bg-light-50 w-full flex flex-col items-center">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="TH0231234">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý kho</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Đơn nhập hàng</a>
+                </tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>TH0231234</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button size="sm" tds-button color="primary">
+                <span class="flex items-center">
+                    <i class="tdsi-stock-fill text-lg leading-none mr-2"></i>Nhập kho
+                </span>
+            </button>
+            <button tds-button color="primary" size="sm" class="mx-2 text-primary-1">Tạo đơn nhập hàng</button>
+            <button tds-button color="secondary" size="sm">Hủy bỏ</button>
+
+        </div>
+    </div>
+    <div class="w-5/6 bg-white border rounded-md mt-4 text-body-2 font-medium text-neutral-1-900 px-4">
+        <div>
+            <h1 class="text-header-1 font-semibold my-4">1. Thông tin cơ bản</h1>
+        </div>
+        <div class="flex py-2">
+            <div class="w-1/2 flex items-center mr-4">
+                <div class="w-1/4">
+                    <h1>Hình thức <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-form-field>
+                            <input value="Kho 1" tdsInput autocomplete="off" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/2 flex items-center">
+                <div class="w-1/4">
+                    <h1>Ngày nhập hàng <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-date-picker [format]="'dd-MM-yyyy'" ></tds-date-picker> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex py-4">
+            <div class="w-1/2 flex items-center mr-4">
+                <div class="w-1/4">
+                    <h1>Hình thức <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-form-field>
+                            <input value="Kho 1" tdsInput autocomplete="off" [required]='true' />
+                        </tds-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/2 flex items-center">
+                <div class="w-1/4">
+                    <h1>Ngày nhập hàng <span class="text-error-500">*</span></h1>
+                </div>
+                <div class="w-3/4">
+                    <div class="w-full">
+                        <tds-date-picker [format]="'dd-MM-yyyy'" ></tds-date-picker> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-5/6 bg-white mt-4 text-body-2 font-medium text-neutral-1-900">
+        <div class="border rounded-md">
+            <div class="flex justify-between items-center px-2 py-2">
+                <h1 class="text-header-1 font-semibold text-neutral-1-900">Danh sách sản phẩm</h1>
+                <div>
+                    <button class="mr-2" tds-button color="primary" size="sm">Chọn sản phẩm</button>
+                </div>
+            </div>
+            <tds-table templateMode>
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng nhập hàng</th>
+                        <th>Gía mua trên một sản phẩm</th>
+                        <th>Tổng cộng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="flex items-start">
+                                <div class="mr-2">
+                                    <img class="w-14 h-14" src="/assets/img/Rectangle 2544.png" alt="">
+                                </div>
+                                <div>
+                                    <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                    <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <tds-form-field class="w-20">
+                                <tds-label>default</tds-label>
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </td>
+                        <td>50.000</td>
+                        <td>600.000</td>
+                        <td>
+                            <button tds-button-icon color="secondary" size="sm">
+                                <span class="flex items-center">
+                                    <i class="tdsi-trash-fill"></i>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-start">
+                                <div class="mr-2">
+                                    <img class="w-14 h-14" src="/assets/img/Rectangle 2544.png" alt="">
+                                </div>
+                                <div>
+                                    <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                    <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <tds-form-field class="w-20">
+                                <tds-label>default</tds-label>
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </td>
+                        <td>50.000</td>
+                        <td>600.000</td>
+                        <td>
+                            <button tds-button-icon color="secondary" size="sm">
+                                <span class="flex items-center">
+                                    <i class="tdsi-trash-fill"></i>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-start">
+                                <div class="mr-2">
+                                    <img class="w-14 h-14" src="/assets/img/Rectangle 2544.png" alt="">
+                                </div>
+                                <div>
+                                    <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                    <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <tds-form-field class="w-20">
+                                <tds-label>default</tds-label>
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </td>
+                        <td>50.000</td>
+                        <td>600.000</td>
+                        <td>
+                            <button tds-button-icon color="secondary" size="sm">
+                                <span class="flex items-center">
+                                    <i class="tdsi-trash-fill"></i>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
+                                <span>2 sản phẩm</span>
+                                <span>Phí giao hàng</span>
+                                <span class="text-title-1 font-medium">Tổng tiền</span>
+                        </td>
+                        <td>
+                            <div class="flex justify-end">
+                                <div class="flex text-body-2 flex-col items-end font-medium text-neutral-1-900">
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span class="text-header-2 font-semibold text-primary-1"><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.700.000</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+    </div>
+</div>

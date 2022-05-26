@@ -1,0 +1,64 @@
+<div class="text-neutral-1-900">
+    <div class="flex bg-white justify-between items-center">
+        <div>
+            <tds-page-header title="Hồ sơ shop">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Quản lý shop</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Hồ sơ shop</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4">
+            <button (click)="openEditProfileShop()" tds-button color="secondary">
+                <span class="flex items-center">
+                  <i class="tdsi-edit-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Chỉnh sửa
+                </span>
+              </button>
+        </div>
+    </div>
+    <div class="py-4 flex justify-center">
+        <div class="w-4/5 bg-white border rounded-md">
+            <div class="p-4 text-header-1 font-medium border-b">
+                <h1>Thông tin cơ bản</h1>
+            </div>
+            <div class="flex py-4">
+                <div class="w-2/5 px-4">
+                    <div>
+                        <img src="/assets/img/Rectangle 2711.png" alt="">
+                    </div>
+                    <div class="flex items-center py-3">
+                        <img src="/assets/img/Rectangle 2710.png" alt="">
+                        <div class="text-header-1 font-medium ml-2">
+                            <h1>Shop giày thật giá thật</h1>
+                            <tds-rate [ngModel]="4" allowHalf></tds-rate>
+                        </div>
+                    </div>
+                    <div class="flex py-2">
+                        <span class="text-body-2 font-regular mr-12"><i class="tdsi-call-line text-neutral-1-300 mr-2"></i>0941641408</span>
+                        <span class="text-body-2 text-info-400 font-regular"><i class="tdsi-shopee-line text-neutral-1-300 mr-2"></i>Shopee.vn/shopgiaythatgia...</span>
+                    </div>
+                    <div class="py-2">
+                        <span class="text-body-2 font-regular"><i class="tdsi-location-line text-neutral-1-300 mr-2"></i>12 Đường CN1, Tân Phú, Thành phố Hồ Chí Minh</span>
+                    </div>
+                </div>
+                <div class="w-3/5 px-4">
+                    <h1 class="text-header-2 font-medium mb-4">Mô tả</h1>
+                    <div class="flex flex-col">
+                        <span class="mb-4">TRÂN TRỌNG KÍNH CHÀO KHÁCH HÀNG.</span>
+
+                            <span>* BẢO HÀNH: sản phảm được bảo hành keo 12 tháng. Hỗ trợ đổi size  nếu không vừa chân, 1 đổi 1 đối vs sản phẩm bị lỗi do nhà sản xuất. 💯</span>
+                            <span>🌹Nhà Mình Có Đầy Đủ Size Cho Khánh Yêu Nhé </span>
+                            <span>🌼Hàng Chuẩn , Đẹp , Và Bao Giá Toàn Quốc Cho Bạn</span>
+                            <span>🌼Shop Giầy Dép Của Tớ Đảm Bảo Chất Lượng , Mẫu Mã Đa Dạng , Nhận Sỉ Toàn Quốc </span>
+                            <span>Số Lượng Có Hạn , Nhanh Tay Đặt Hàng Nhé </span>
+                            <span>🍀Cảm Ơn Khách Hàng Luôn Tin Tưởng Và Ủng Hộ Shop ☘️</span>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

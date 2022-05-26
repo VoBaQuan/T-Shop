@@ -1,0 +1,245 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Tồn kho thực tế">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý kho</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Vị trí kho hàng</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex items-center">
+            <button class="flex items-center" (click)="showModal('editAll')" tds-button color="primary" size="sm">
+                <i class="tdsi-copy-fill text-white text-header-2 mr-2"></i>
+                Chỉnh sửa hàng loạt
+            </button>
+        </div>
+    </div>
+    <div class="p-4 w-full h-full bg-light-50">
+        <div class="bg-white border rounded-md">
+            <div class="flex justify-between">
+                <div>
+                    <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                        (selectChange)="onSelectChange($event)">
+                        <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                            <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                                [value]="item.value">
+                            </tds-filter-status-item>
+                        </ng-template>
+                    </tds-filter-status>
+                </div>
+                <div class="flex items-center pr-4">
+                    <button tds-button color="secondary">
+                        <span class="flex items-center text-primary-1 font-medium">
+                            <i class="tdsi-bell-line text-lg leading-none mr-2 font-medium"></i>Tắt thông báo hết hàng
+                        </span>
+                    </button>
+                    <tds-form-field class="w-80 ml-2">
+                        <input tdsInput autocomplete="off" placeholder="Nhập tên sản phẩm" [required]='true' />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                </div>
+            </div>
+            <div class="w-full" style="height: 700px;">
+                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số bán 7 ngày qua</th>
+                            <th>Số bán 30 ngày qua</th>
+                            <th>Vị trí kho</th>
+                            <th>Tồn kho có sẵn</th>
+                            <th>Tồn kho khuyến mãi</th>
+                            <th>Tồn kho tối thiểu</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>
+                                    <div class="flex items-start">
+                                        <div class="mr-2">
+                                            <tds-avatar [shape]="'square'" [size]="'xl'" tdsSrc="error"></tds-avatar>
+                                        </div>
+                                        <div>
+                                            <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                            <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{data.duringSevenDay}}</td>
+                                <td>{{data.duringThirtyDay}}</td>
+                                <td>{{data.position}}</td>
+                                <td>{{data.inventory}}</td>
+                                <td>{{data.evaluateInventory}}</td>
+                                <td>{{data.minimumInventory}}</td>
+                                <td><button (click)="showModal('edit')" tds-flat-button size="sm"
+                                        class="text-info-400">{{data.operation}}</button></td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal chỉnh sửa-->
+<tds-modal size="xl" [(visible)]="isVisible" [title]="modalTitle" [content]="modalContent" [footer]="modalFooter"
+    (onCancel)="handleCancel('edit')">
+    <ng-template #modalTitle>Nón hiphop secondhand</ng-template>
+
+    <ng-template #modalContent>
+        <div class="text-body-2 font-medium text-neutral-1-900">
+            <div class="py-2">
+                <h1 class="text-header-2 font-semibold text-neutral-1-600">Thông tin</h1>
+            </div>
+            <div class="py-4 flex">
+                <div class="w-1/2 flex items-center mr-8">
+                    <div class="w-1/5">
+                        <h1>Vị trí kho</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input tdsInput autocomplete="off" placeholder="Vị trí kho" value="Kho 1" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 flex items-center">
+                    <div class="w-1/5">
+                        <h1>Tồn kho có sẵn</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input type="number" tdsInput autocomplete="off" placeholder="Vị trí kho" value="9" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-4 flex">
+                <div class="w-1/2 flex items-center mr-8">
+                    <div class="w-1/5">
+                        <h1>Tồn kho tối thiểu</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 flex items-center">
+                    <div class="w-1/5">
+                        <h1>Ghi chú</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input tdsInput autocomplete="off" placeholder="Giới hạn 30 ký tự" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooter>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('edit')">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk('edit')">
+                    Lưu
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>
+
+<!-- modal chỉnh sửa tất cả -->
+<tds-modal size="xl" [(visible)]="isVisibleAll" [title]="modalTitleAll" [content]="modalContentAll" [footer]="modalFooterAll"
+    (onCancel)="handleCancel('editAll')">
+    <ng-template #modalTitleAll>Chỉnh sửa tất cả sản phẩm</ng-template>
+
+    <ng-template #modalContentAll>
+        <div class="text-body-2 font-medium text-neutral-1-900">
+            <div class="py-2">
+                <h1 class="text-header-2 font-semibold text-neutral-1-600">Thông tin</h1>
+            </div>
+            <div class="py-4 flex">
+                <div class="w-1/2 flex items-center mr-8">
+                    <div class="w-1/5">
+                        <h1>Vị trí kho</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input tdsInput autocomplete="off" placeholder="Vị trí kho" value="Kho 1" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 flex items-center">
+                    <div class="w-1/5">
+                        <h1>Tồn kho có sẵn</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input type="number" tdsInput autocomplete="off" placeholder="Vị trí kho" value="9" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-4 flex">
+                <div class="w-1/2 flex items-center mr-8">
+                    <div class="w-1/5">
+                        <h1>Tồn kho tối thiểu</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input type="number" tdsInput autocomplete="off" value="10" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 flex items-center">
+                    <div class="w-1/5">
+                        <h1>Ghi chú</h1>
+                    </div>
+                    <div class="w-4/5">
+                        <div class="w-full">
+                            <tds-form-field>
+                                <input tdsInput autocomplete="off" placeholder="Giới hạn 30 ký tự" [required]='true' />
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterAll>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('editAll')">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk('editAll')">
+                    Lưu
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

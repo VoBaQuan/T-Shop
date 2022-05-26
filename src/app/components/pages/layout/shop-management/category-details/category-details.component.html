@@ -1,0 +1,121 @@
+<div class="text-neutral-1-900 h-full ">
+    <div class="flex bg-white justify-between items-center">
+        <div>
+            <tds-page-header title="Áo nam">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Quản lý shop</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Danh mục shop</a>
+                    </tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Áo nam</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+    </div>
+    <div class="py-4 flex flex-col justify-center items-center">
+        <div class="w-3/5 bg-white border rounded-md text-neutral-1-900">
+            <div class="flex justify-between text-header-1 font-medium p-4 border-b">
+                <h1>Thông tin danh mục</h1>
+                <div>
+                    <button tds-flat-button size="sm"><i class="tdsi-edit-fill text-neutral-1-300"></i></button>
+                </div>
+            </div>
+            <div class="flex text-body-2 p-4">
+                <div class="w-1/2 flex flex-col">
+                    <div class="flex py-2">
+                        <div class="w-2/5 font-regular">
+                            <span>Tên danh mục</span>
+                        </div>
+                        <div class="w-3/5 font-medium">
+                            <span>Áo nam</span>
+                        </div>
+                    </div>
+                    <div class="flex py-2">
+                        <div class="w-2/5 font-regular">
+                            <span>Tên danh mục</span>
+                        </div>
+                        <div class="w-3/5 font-medium">
+                            <span>Áo nam</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2">
+                    <div class="flex py-2">
+                        <div class="w-2/5 font-regular">
+                            <span>Số sản phẩm</span>
+                        </div>
+                        <div class="w-3/5 font-medium">
+                            <span>5</span>
+                        </div>
+                    </div>
+                    <div class="flex py-2">
+                        <div class="w-2/5 font-regular">
+                            <span>Hiển thị trên gian hàng</span>
+                        </div>
+                        <div class="w-3/5 font-medium">
+                            <tds-switch size="md"></tds-switch>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 w-3/5 bg-white border rounded-md">
+            <div class="flex justify-between text-header-1 font-medium p-4 border-b">
+                <h1>Danh sách sản phẩm</h1>
+                <div>
+                    <tds-form-field class="w-64">
+                        <input autocomplete="off" tdsInput placeholder="Tìm kiếm" [required]='true' />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                </div>
+            </div>
+            <div>
+                <tds-table #rowSelectionTable showSizeChanger [listData]="listOfData"
+                    (currentPageDataChange)="onCurrentPageDataChange($event)" [scroll]="{y:'300px'}">
+                    <thead>
+                        <tr>
+                            <th class="w-24" [selections]="listOfSelection" [(checked)]="checked"
+                                [indeterminate]="indeterminate" (checkedChange)="onAllChecked($event)">
+                            </th>
+                            <th>Ảnh</th>
+                            <th width="176px">Mã sản phẩm</th>
+                            <th width="300px">Tên sản phẩm</th>
+                            <th>Gía bán</th>
+                            <th>Kho hàng</th>
+                            <th>Đã bán</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="rowSelectionTable.data" let-odd='odd'>
+                            <tr>
+                                <td [checked]="setOfCheckedId.has(data.id)"
+                                    (checkedChange)="onItemChecked(data.id, $event)"></td>
+                                <td>
+                                    <div>
+                                        <tds-avatar  [shape]="'square'" [size]="'xl'" tdsSrc="error" [isAvatar]="false"></tds-avatar>
+                                    </div>
+                                </td>
+                                <td>{{data.productCode}}</td>
+                                <td>{{data.productName}}</td>
+                                <td>{{data.price}}</td>
+                                <td>{{data.wareHouse}}</td>
+                                <td>{{data.sold}}</td>
+                                <td>
+                                    <button tds-button color="secondary" size="sm">
+                                        <span class="flex items-center">
+                                          <i class="tdsi-trash-fill text-xl text-neutral-1-300 leading-none"></i>
+                                        </span>
+                                      </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

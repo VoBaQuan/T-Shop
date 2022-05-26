@@ -1,0 +1,195 @@
+<div class="bg-light-50 w-full flex flex-col items-center">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Thiết lập chat">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Tin nhắn</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Thiết lập chat</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button tds-button color="primary" size="sm" class="mr-2">Lưu thay đổi</button>
+            <button tds-button color="secondary" size="sm">Hủy bỏ</button>
+
+        </div>
+    </div>
+    <div class="w-5/6 bg-white border rounded-md mt-4">
+        <div>
+            <tds-tabset>
+                <!-- tin nhắn tự động -->
+                <tds-tab title="Tin nhắn tự động">
+                    <div class="px-2 pt-2 pb-4 border-b">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex justify-center items-center">
+                                    <div class="mr-4">
+                                        <img src="/assets/img/reply 1.png" alt="">
+                                    </div>
+                                    <div>
+                                        <h1 class="text-header-1 font-semibold text-neutral-1-900">Tin nhắn tự động tiêu
+                                            chuẩn</h1>
+                                        <span class="font-regular text-neutral-1-400">Sau khi kích hoạt, tin nhắn sẽ
+                                            được tự
+                                            động gửi đến Người mua khi họ bắt đầu chat với bạn</span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center">
+                                    <tds-switch size="md"></tds-switch>
+                                    <span class="text-neutral-1-900 text-body-2 font-regular ml-2">Kích hoạt</span>
+                                </div>
+                            </div>
+                            <div class="pl-14 mt-4">
+                                <h3 class="text-neutral-1-900 font-medium text-body-2">Nội dung trả lời</h3>
+                                <textarea name="" id=""
+                                    class="w-full h-16 text-neutral-1-900 font-regular text-body-2 border border-neutral-2-200 mt-2"
+                                    rows="1">Cảm ơn bạn đã quan tâm đến sản phẩm của shop. Shop sẽ phản hồi thông tin này trong giờ làm việc sớm nhất có thể.</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-2 pt-6 pb-4">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex justify-center items-center">
+                                    <div class="mr-4">
+                                        <img src="/assets/img/Path 424.png" alt="">
+                                    </div>
+                                    <div>
+                                        <h1 class="text-header-1 font-semibold text-neutral-1-900">Tin nhắn tự động
+                                            ngoài giờ làm việc</h1>
+                                        <span class="font-regular text-neutral-1-400">Sau khi kích hoạt, tin nhắn sẽ
+                                            được tự
+                                            động gửi đến Người mua khi họ bắt đầu chat với bạn</span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center">
+                                    <tds-switch size="md"></tds-switch>
+                                    <span class="text-neutral-1-900 text-body-2 font-regular ml-2">Kích hoạt</span>
+                                </div>
+                            </div>
+                            <div class="pl-14 mt-4">
+                                <h3 class="text-neutral-1-900 font-medium text-body-2">Nội dung trả lời</h3>
+                                <textarea name="" id=""
+                                    class="w-full h-16 text-neutral-1-900 font-regular text-body-2 border border-neutral-2-200 mt-2"
+                                    rows="1">Cảm ơn bạn đã quan tâm đến sản phẩm của shop. Shop sẽ phản hồi thông tin này trong giờ làm việc sớm nhất có thể.</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pl-16">
+                        <h1 class="text-neutral-1-900 font-medium text-body-2">Thiết lập giờ làm việc</h1>
+                        <div class="flex mt-2">
+                            <span *ngFor="let num of dayOfWeek; let i = index"
+                                [ngClass]="num.isSelected?'bg-primary-1 text-white':''"
+                                (click)="toggle(i)"
+                                class="w-7 h-7 flex justify-center items-center border border-primary-1 rounded-full cursor-pointer text-body-2 font-regular text-primary-1 mr-4">
+                                {{num.value}}
+                            </span>
+                        </div>
+                        <div class="mt-4 text-body-2 font-regular text-neutral-1-900">
+                            <h1>Giờ trong ngày</h1>
+                        </div>
+                        <div class="mt-2 flex items-center">
+                            <tds-form-field>
+                                <tds-time-picker placeholder="seclect time">
+                                </tds-time-picker>
+                            </tds-form-field>
+                            <span class="text-body-2 font-regular text-neutral-1-900 mx-4">Đến</span>
+                            <tds-form-field>
+                                <tds-time-picker placeholder="seclect time">
+                                </tds-time-picker>
+                            </tds-form-field>
+                        </div>
+                    </div>
+                </tds-tab>
+                <!-- Phím tắt -->
+                <tds-tab title="Phím tắt">
+                    <div class="flex justify-between items-center">
+                        <div class="flex justify-center items-center">
+                            <div class="mr-4">
+                                <img src="/assets/img/Path 424.png" alt="">
+                            </div>
+                            <div>
+                                <h1 class="text-header-1 font-semibold text-neutral-1-900">Tin nhắn tự động ngoài giờ
+                                    làm việc</h1>
+                                <span class="font-regular text-neutral-1-400">Sau khi kích hoạt, tin nhắn sẽ được tự
+                                    động gửi đến Người mua khi họ bắt đầu chat với bạn</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <tds-switch size="md"></tds-switch>
+                            <span class="text-neutral-1-900 text-body-2 font-regular ml-2 mr-4">Kích hoạt</span>
+                            <button tds-button color="primary" size="sm"
+                                class="mr-2 flex justify-center items-center"><i
+                                    class="tdsi-add-fill text-white mr-2"></i>Thêm phím tắt</button>
+                        </div>
+                    </div>
+                    <div class="mt-10 text-neutral-1-900">
+                        <div>
+                            <tds-collapse [expandIconPosition]="'right'" accordion="true">
+                                <tds-collapse-panel header="Sản phẩm" [active]="false" [disabled]=false
+                                    [extra]="extraTpl">
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                </tds-collapse-panel>
+                            </tds-collapse>
+    
+                            <ng-template #extraTpl [disabled]=true>
+                                <div class="flex justify-center items-center">
+                                    <tds-switch size="md"></tds-switch>
+                                    <div class="flex w-8 h-8 justify-center items-center rounded-md border mx-2">
+                                        <i class="tdsi-edit-fill text-neutral-1-500"></i>
+                                    </div>
+                                    <div class="flex w-8 h-8 justify-center items-center rounded-md border">
+                                        <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                        <div class="mt-4">
+                            <tds-collapse [expandIconPosition]="'right'" accordion="true">
+                                <tds-collapse-panel header="Gía sản phẩm" [active]="false" [disabled]=false
+                                    [extra]="extraTpl">
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                    <p style="margin:0;" class="">
+                                        Nội dung tin nhắn 1:
+                                    </p>
+                                </tds-collapse-panel>
+                            </tds-collapse>
+    
+                            <ng-template #extraTpl [disabled]=true class="mt-4">
+                                <div class="flex justify-center items-center">
+                                    <tds-switch size="md"></tds-switch>
+                                    <div class="flex w-8 h-8 justify-center items-center rounded-md border mx-2">
+                                        <i class="tdsi-edit-fill text-neutral-1-500"></i>
+                                    </div>
+                                    <div class="flex w-8 h-8 justify-center items-center rounded-md border">
+                                        <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </tds-tab>
+            </tds-tabset>
+        </div>
+    </div>
+</div>

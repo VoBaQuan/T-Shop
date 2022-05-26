@@ -1,0 +1,52 @@
+<div class="bg-light-50 w-full flex flex-col h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Báo cáo thu nhập">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý tài chính</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Doanh thu</a>
+                </tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Báo cáo thu nhập</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+    </div>
+    <div class="p-4 flex justify-center items-center">
+        <div class="bg-white w-4/5 rounded-md border">
+            <div class="p-4">
+                <tds-form-field class="w-80">
+                    <tds-select valueField="id" textField="name" placeholder='select item'
+                        [(ngModel)]="selected" (ngModelChange)="onModelChange($event)" [allowClear]="true"
+                        [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+            <div>
+                <tds-table #basicTable [listData]="listOfData">
+                    <thead>
+                        <tr>
+                            <th>Báo cáo</th>
+                            <th>Ngày tạo báo cáo</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>{{data.report}}</td>
+                                <td>{{data.createDateReport}}</td>
+                                <td>
+                                    <button tds-button-outline-icon color="secondary">
+                                        <i class="tdsi-download-fill"></i>
+                                      </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

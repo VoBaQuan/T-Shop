@@ -1,0 +1,317 @@
+<div>
+    <div class="border-b border-b-neutral-2-100 bg-white">
+        <div class="flex items-center text-neutral-1-400 text-caption-1 font-regular">
+            <tds-page-header title="Đánh giá shop">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Đánh giá</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Đánh giá shop</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+    </div>
+    <div class="flex justify-between items-center bg-white px-4">
+        <tds-filter-status [ngModel]='3'>
+            <tds-filter-status-item name='Tất cả' [value]='0'>
+                <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
+                    let-name='name' let-value>
+                    <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                        <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                            {{name}}
+                        </div>
+                    </div>
+                </ng-template>
+            </tds-filter-status-item>
+
+            <tds-filter-status-item name='1' [value]='1' [count]='20'>
+                <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
+                    let-name='name' let-value>
+                    <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                        <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                            {{name}}
+                        </div>
+                        <div>
+                            <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </tds-filter-status-item>
+
+            <tds-filter-status-item name='2' [value]='2' [count]='20'>
+                <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
+                    let-name='name' let-value>
+                    <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                        <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                            group-hover:text-neutral-1-900':!active}">
+                            {{name}}
+                        </div>
+                        <div>
+                            <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </tds-filter-status-item>
+
+            <tds-filter-status-item name='3' [value]='3' [count]='20'>
+                <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
+                    let-name='name' let-value>
+                    <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                        <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                            group-hover:text-neutral-1-900':!active}">
+                            {{name}}
+                        </div>
+                        <div>
+                            <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </tds-filter-status-item>
+
+            <tds-filter-status-item name='4' [value]='4' [count]='20'>
+                <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
+                    let-name='name' let-value>
+                    <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                        <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                            {{name}}
+                        </div>
+                        <div>
+                            <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </tds-filter-status-item>
+
+            <tds-filter-status-item name='5' [value]='5' [count]='20'>
+                <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
+                    let-name='name' let-value>
+                    <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                        <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                            {{name}}
+                        </div>
+                        <div>
+                            <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </tds-filter-status-item>
+        </tds-filter-status>
+        <div class="flex items-center">
+            <div class="flex items-end">
+                <h1 class="text-header-1 font-semibold text-neutral-1-400 mr-8">Tổng:</h1>
+                <span class="text-heading-3 font-semibold text-primary-1">4.6</span>
+                <span class="text-header-1 font-semibold text-neutral-1-400 mr-1">/5</span>
+                <i class="tdsi-star-1-fill text-warning-400 text-title-1"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-4">
+        <div class="border rounded-md bg-white px-4">
+            <div class="flex justify-between items-center">
+                <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                    (selectChange)="onSelectChange($event)">
+                    <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                        <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                            [value]="item.value">
+                        </tds-filter-status-item>
+                    </ng-template>
+                </tds-filter-status>
+                <tds-form-field class="w-96">
+                    <input autocomplete="off" tdsInput placeholder="Tìm kiếm" [required]='true' />
+                    <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                </tds-form-field>
+            </div>
+            <div>
+                <tds-table #virtualTable #basicTable [listData]="listOfData" [scroll]="{ x: '1300px', y: '550px'}">
+                    <thead>
+                        <tr>
+                            <th width="196px">Khách hàng</th>
+                            <th width="156px">Đánh giá</th>
+                            <th width="576px">Nội dung</th>
+                            <th width="156px">Ngày đánh giá</th>
+                            <th width="156px">Trạng thái</th>
+                            <th width="234px">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template tds-virtual-scroll ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>
+                                    {{ data.name }}
+                                    <div class="flex justify-start items-center">
+                                        <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                        <span class="text-neutral-1-400">{{data.numberphone}}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <tds-rate [ngModel]="4" disabled></tds-rate>
+                                </td>
+                                <td>{{data.content}}</td>
+                                <td>{{data.evaluatedate}}</td>
+                                <td>
+                                    <tds-tag *ngIf="data.status=='Chưa trả lời'" status='info' type="outline">{{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Đã ẩn'" status='secondary' type="outline">{{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Đã trả lời'" status='success' type="outline">{{data.status}}</tds-tag>
+                                </td>
+                                <td>
+                                    <button (click)="showModal('comment')" tds-flat-button size="sm"
+                                        class="text-info-500">{{data.operationReply}}</button> <span
+                                        class="text-info-500">|</span> <button (click)="showModal('report')"
+                                        tds-flat-button size="sm"
+                                        class="text-info-500">{{data.operationReport}}</button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal trả lời-->
+<tds-modal size="lg" [(visible)]="isVisibleReply" [title]="modalTitle" [content]="modalContent" [footer]="modalFooter"
+    (onCancel)="handleCancel('comment')">
+    <ng-template #modalTitle>Phản hồi bình luận</ng-template>
+
+    <ng-template #modalContent>
+        <div class="text-neutral-1-900">
+            <div class="flex items-center">
+                <div>
+                    <tds-avatar class="bg-base-orange-500 dark:bg-d-base-orange-500   text-white" size="lg"
+                        tdsSrc="https://randomuser.me/api/portraits/women/68.jpg">
+                    </tds-avatar>
+                </div>
+                <div class="ml-2">
+                    <h1 class="text-body-2 font-medium">Nguyễn Minh Tiến</h1>
+                    <div class="flex items-center text-caption-2 font-regular text-neutral-1-300">
+                        <tds-rate size="sm" [ngModel]="4" allowHalf></tds-rate>
+                        <span class="mr-2 ml-3">20/02/2021</span><span>21:10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-4 text-body-2 font-regular">
+                <p>Giày đẹp và tốt quá shop ơi , shop rất uy tín.</p>
+                <div class="flex mt-4">
+                    <img src="/assets/img/Rectangle 1671.png" alt="">
+                    <img class="mx-4" src="/assets/img/Rectangle 1671.png" alt="">
+                    <img src="/assets/img/Rectangle 1671.png" alt="">
+                </div>
+            </div>
+            <div class="mt-4 flex">
+                <tds-avatar class="bg-base-orange-500 dark:bg-d-base-orange-500   text-white" size="sm"
+                    tdsSrc="https://randomuser.me/api/portraits/women/68.jpg">
+                </tds-avatar>
+                <div class="ml-2 bg-neutral-3-50 rounded-md p-2">
+                    <div class="text-caption-2 font-regular text-neutral-1-300">
+                        <span class="text-body-2 font-medium text-neutral-1-900">Good Shop</span><span
+                            class="ml-3 mr-2">20/02/2021</span><span>21:10</span>
+                    </div>
+                    <div class="text-body-2 font-regular">
+                        <p>Chào bạn Nguyễn Minh Tiến, Good Shop xin cảm ơn bạn đã chia sẻ trải nghiệm tích cực cho sản
+                            phẩm của gian hàng. Nếu trong quá trình sử dụng sản phẩm mình có bất kỳ thắc mắc gì thì đừng
+                            ngại vào chat với Good Shop nha. Chúc bạn và những người thân yêu có thật nhiều sức khỏe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <textarea
+                    class="w-full h-16 text-neutral-1-400 font-regular text-body-2 border border-neutral-2-200 rounded-md mt-2"
+                    rows="1">Thêm câu trả lời mới
+                </textarea>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooter>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('comment')">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk('comment')">
+                    Gửi trả lời
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>
+
+<!-- Modal báo cáo -->
+<tds-modal size="lg" [(visible)]="isVisibleReport" [title]="modalTitle1" [content]="modalContent1"
+    [footer]="modalFooter1" (onCancel)="handleCancel('report')">
+    <ng-template #modalTitle1>Phản hồi bình luận</ng-template>
+
+    <ng-template #modalContent1>
+        <div class="text-neutral-1-900">
+            <div class="flex items-center">
+                <div>
+                    <tds-avatar class="bg-base-orange-500 dark:bg-d-base-orange-500   text-white" size="lg"
+                        tdsSrc="https://randomuser.me/api/portraits/women/68.jpg">
+                    </tds-avatar>
+                </div>
+                <div class="ml-2">
+                    <h1 class="text-body-2 font-medium">Nguyễn Minh Tiến</h1>
+                    <div class="flex items-center text-caption-2 font-regular text-neutral-1-300">
+                        <tds-rate size="sm" [ngModel]="4" allowHalf></tds-rate>
+                        <span class="mr-2 ml-3">20/02/2021</span><span>21:10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-4 text-body-2 font-regular">
+                <p>Giày đẹp và tốt quá shop ơi , shop rất uy tín.</p>
+                <div class="flex mt-4">
+                    <img src="/assets/img/Rectangle 1671.png" alt="">
+                    <img class="mx-4" src="/assets/img/Rectangle 1671.png" alt="">
+                    <img src="/assets/img/Rectangle 1671.png" alt="">
+                </div>
+            </div>
+            <div class="mt-4 flex">
+                <h1>Nội dung báo cáo</h1>
+            </div>
+            <div class="mt-4">
+                <tds-form-field>
+                    <tds-select valueField="id" textField="name" placeholder='select item' [(ngModel)]="selected1"
+                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+            <div class="mt-4">
+                <textarea
+                    class="w-full h-16 text-neutral-1-400 font-regular text-body-2 border border-neutral-2-200 rounded-md mt-2"
+                    rows="1">Nhập nội dung báo cáo khác
+                </textarea>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooter1>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('report')">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk('report')">
+                    Gửi trả lời
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

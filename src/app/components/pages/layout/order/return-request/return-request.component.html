@@ -1,0 +1,79 @@
+<div class="bg-light-50 w-full flex flex-col">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="INV01238551">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Đơn hàng</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Trả hàng/hoàn tiền</a>
+                </tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>INV01238551</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex">
+            <button tds-button color="primary" size="sm" class="mr-2"><i class="tdsi-checkbox-check-fill mr-2"></i>Đồng
+                ý</button>
+            <button tds-button color="secondary" size="sm" class="mr-2" (click)="showModalComplain()">Khiếu nại tới shop</button>
+            <button tds-button color="secondary" size="sm" class="mr-2" (click)="showModalSuggestion()">Đề xuất khác</button>
+            <button tds-button color="secondary" size="sm">Hủy</button>
+        </div>
+    </div>
+    <div class="flex p-4">
+        <div class="w-4/5 mr-4">
+            <div class="border rounded-md bg-white">
+                <div class="p-4 flex items-center border-b">
+                    <i class="tdsi-edit-paper-fill text-primary-1 mr-3"></i>
+                    <h1 class="text-header-1 font-semibold text-neutral-1-900">Yêu cầu trả hàng / hoàn tiền đang chờ xử
+                        lý</h1>
+                </div>
+                <div class="p-4 ">
+                    <div class="p-4 bg-neutral-3-50">
+                        <div class="flex items-center">
+                            <img src="/assets/img/Ellipse 757.png" alt="" class="mr-2">
+                            <div>
+                                <h1 class="text-caption-1 font-medium text-neutral-1-800">Nguyễn minh Tiến</h1>
+                                <span class="text-caption-2 font-regular text-neutral-1-400">20/02/2021</span>
+                            </div>
+                        </div>
+                        <p class="text-body-2 font-medium text-neutral-1-900 mt-3">Người mua yêu cầu hoàn tiền <span
+                                class="text-primary-1">900đ</span></p>
+                        <p class="font-regular text-caption-2 text-neutral-1-400 mt-3"><span
+                                class="text-primary-1 font-medium">Lưu ý: </span>Bạn cần trả lời trong 2 ngày, nếu
+                            không, yều càu của người mua sẽ tự động được chấp nhận. bạn có thể trao đổi với người mua để
+                            có giải pháp khác</p>
+                    </div>
+                    <div class="my-4">
+                        <textarea rows="1" placeholder="Để lại lời nhắn cho khách hàng"
+                            class="w-full h-16 text-neutral-1-300 font-regular text-body-2 border border-neutral-2-200">Để lại lời nhắn cho khách hàng
+                        </textarea>
+                    </div>
+                    <div class="flex justify-end items-center">
+                        <button tds-button color="primary" size="sm" class="mr-2">Hủy</button>
+                        <button tds-button color="secondary" size="sm">Hoàn thành</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/5 bg-white">
+            <div class="border rounded-md h-full">
+                <div class="p-4 flex items-center border-b">
+                    <i class="tdsi-edit-paper-fill text-primary-1 mr-3"></i>
+                    <h1 class="text-header-1 font-semibold text-neutral-1-900">Lịch sử yêu cầu</h1>
+                </div>
+                <div class="p-4 flex items-center">
+                    <i class="tdsi-template-fill text-primary-1 mr-3"></i>
+                    <div>
+                        <h1 class="text-body-2 font-medium text-primary-1">Yêu cầu trả hàng / hoàn tiền mới</h1>
+                        <div class="text-caption-2 text-primary-1 font-regular">
+                            <i class="tdsi-time-line mr-1"></i>
+                            <span class="mr-3">19/12/2021</span>
+                            <span>20:21</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<!-- modal content -->
+<div class="flex flex-col text-body-2 font-medium text-neutral-1-900">
+    <div class="flex items-center">
+        <div class="w-1/5">
+            <h1>Tên kho</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập tên kho" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Mã kho</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập mã kho" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Tỉnh, thành</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <tds-select valueField="id" textField="name" placeholder='Chọn tỉnh thành'
+                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Quận, huyện</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <tds-select valueField="id" textField="name" placeholder='Chọn quận, huyện'
+                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Xã, Phường</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <tds-select valueField="id" textField="name" placeholder='Chọn xã, phường'
+                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Địa chỉ</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập địa chỉ bao gồm số nhà, tên đường" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Trạng thái</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="flex">
+                <div class="w-1/2">
+                    <label tds-radio ngModel>Bình thường</label>
+                </div>
+                <div class="w-1/2">
+                    <label tds-radio ngModel>Hỏng</label>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Thủ kho</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Chọn thủ kho" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Ghi chú</h1>
+        </div>
+        <div class="w-4/5">
+            <div class="w-full">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập ghi chú" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </div>             
+</div>
+<!-- modal footer -->
+<div class="w-full flex justify-end p-4" *tdsModalFooter>
+    <button tds-button class="mr-2" color="secondary" (click)="cancel()">
+        Đóng
+    </button>
+    <button tds-button type="submit" color="primary" (click)="cancel()">Lưu
+    </button>
+</div>

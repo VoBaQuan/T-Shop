@@ -1,0 +1,361 @@
+<div>
+    <div class="bg-white flex items-center justify-between">
+        <div>
+            <tds-page-header title="Chỉ số khuyến mãi">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Khuyến mãi</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Chỉ số khuyến mãi</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4 flex items-center">
+            <button tds-button color="primary" size="sm" class="flex justify-center items-center">
+                <i class="tdsi-add-fill text-white text-header-2 mr-3"></i>
+                Tạo mã mới
+            </button>
+            <button class="ml-3" tds-button color="secondary">Đóng</button>
+        </div>
+    </div>
+    <div class="bg-light-50 p-4 text-neutral-1-900">
+        <div class="bg-white border rounded-md">
+            <div>
+                <tds-tabset>
+                    <tds-tab title="Mã giảm giá">
+                        <div class="flex items-center border-t border-b py-3">
+                            <button class="mr-4" tds-button color="primary" class="!rounded-full">
+                                <span class="flex items-center">
+                                    Hôm nay
+                                </span>
+                            </button>
+                            <button class="mr-4" tds-flat-button size="md">7 ngày qua</button>
+                            <button class="mr-4" tds-flat-button size="md">30 ngày qua</button>
+                            <tds-date-picker class="w-80" [format]="'dd-MM-yyyy'" placeholder="Tùy chọn thời gian">
+                            </tds-date-picker>
+                        </div>
+                        <div class="py-3 flex">
+                            <div class="w-3/4 px-4">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-success-400 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">Mã giảm giá sử
+                                                dụng</span>
+                                            <span class="text-heading-4 font-medium text-success-400">20</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-success-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-warning-400 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">khách hàng sử
+                                                dụng</span>
+                                            <span class="text-heading-4 font-medium text-warning-400">100</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-error-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-info-500 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">sản phẩm đã
+                                                bán</span>
+                                            <span class="text-heading-4 font-medium text-info-400">100</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-success-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-center py-4">
+                                        <h1 class="text-title-1 font-medium text-neutral-1-900">Biểu đồ</h1>
+                                        <div class="flex items-center text-body-2 font-regular text-neutral-1-900">
+                                            <tds-badge class="px-2" status="error" text="Doanh thu"></tds-badge>
+                                            <tds-badge class="px-2" status="warning" text="Đon hàng"></tds-badge>
+                                            <tds-badge class="px-2" status="info" text="Lượt truy cập"></tds-badge>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center">
+                                    <img src="/assets/img/bieudokhuyenmai.png" alt="">
+                                </div>
+                                <div class="text-body-2 font-regular flex justify-between items-center mt-6">
+                                    <div class="w-1/12">Tháng 1</div>
+                                    <div class="w-1/12">Tháng 2</div>
+                                    <div class="w-1/12">Tháng 3</div>
+                                    <div class="w-1/12">Tháng 4</div>
+                                    <div class="w-1/12">Tháng 5</div>
+                                    <div class="w-1/12">Tháng 6</div>
+                                    <div class="w-1/12">Tháng 7</div>
+                                    <div class="w-1/12">Tháng 8</div>
+                                    <div class="w-1/12">Tháng 9</div>
+                                    <div class="w-1/12">Tháng 10</div>
+                                    <div class="w-1/12">Tháng 11</div>
+                                    <div class="w-1/12">Tháng 12</div>
+                                </div>
+                            </div>
+                            <div class="w-1/4 px-4 py-4">
+                                <div class="border-l h-full flex flex-col justify-center items-center">
+                                    <img src="/assets/img/bieudotron.png" alt="">
+                                    <div class="flex justify-between py-2">
+                                        <div class="w-1/2 flex items-center">
+                                            <div class="w-4 h-4 rounded-full bg-primary-1 mr-2"></div>
+                                            <span class="text-body-1 font-medium text-neutral-1-400">Lợi nhuận</span>
+                                        </div>
+                                        <div class="w-1/2 text-heading-4 font-semibold text-neutral-1-900">
+                                            <span>30.000.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between py-2">
+                                        <div class="w-1/2 flex items-center">
+                                            <div class="w-4 h-4 rounded-full bg-primary-5 mr-2"></div>
+                                            <span class="text-body-1 font-medium text-neutral-1-400">Chi phí</span>
+                                        </div>
+                                        <div class="w-1/2 text-heading-4 font-semibold text-neutral-1-900">
+                                            <span>30.000.000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tds-tab>
+                    <tds-tab title="Giảm giá sản phẩm">
+                        <div class="flex items-center border-t border-b py-3">
+                            <button class="mr-4" tds-button color="primary" class="!rounded-full">
+                                <span class="flex items-center">
+                                    Hôm nay
+                                </span>
+                            </button>
+                            <button class="mr-4" tds-flat-button size="md">7 ngày qua</button>
+                            <button class="mr-4" tds-flat-button size="md">30 ngày qua</button>
+                            <tds-date-picker class="w-80" [format]="'dd-MM-yyyy'" placeholder="Tùy chọn thời gian">
+                            </tds-date-picker>
+                        </div>
+                        <div class="py-3 flex">
+                            <div class="w-3/4 px-4">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-success-400 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">Sản phẩm giảm giá</span>
+                                            <span class="text-heading-4 font-medium text-success-400">20</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-success-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-warning-400 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">khách hàng sử
+                                                dụng</span>
+                                            <span class="text-heading-4 font-medium text-warning-400">100</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-error-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-info-500 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">sản phẩm đã
+                                                bán</span>
+                                            <span class="text-heading-4 font-medium text-info-400">100</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-success-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-center py-4">
+                                        <h1 class="text-title-1 font-medium text-neutral-1-900">Biểu đồ</h1>
+                                        <div class="flex items-center text-body-2 font-regular text-neutral-1-900">
+                                            <tds-badge class="px-2" status="error" text="Doanh thu"></tds-badge>
+                                            <tds-badge class="px-2" status="warning" text="Đon hàng"></tds-badge>
+                                            <tds-badge class="px-2" status="info" text="Lượt truy cập"></tds-badge>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center">
+                                    <img src="/assets/img/bieudokhuyenmai.png" alt="">
+                                </div>
+                                <div class="text-body-2 font-regular flex justify-between items-center mt-6">
+                                    <div class="w-1/12">Tháng 1</div>
+                                    <div class="w-1/12">Tháng 2</div>
+                                    <div class="w-1/12">Tháng 3</div>
+                                    <div class="w-1/12">Tháng 4</div>
+                                    <div class="w-1/12">Tháng 5</div>
+                                    <div class="w-1/12">Tháng 6</div>
+                                    <div class="w-1/12">Tháng 7</div>
+                                    <div class="w-1/12">Tháng 8</div>
+                                    <div class="w-1/12">Tháng 9</div>
+                                    <div class="w-1/12">Tháng 10</div>
+                                    <div class="w-1/12">Tháng 11</div>
+                                    <div class="w-1/12">Tháng 12</div>
+                                </div>
+                            </div>
+                            <div class="w-1/4 px-4 py-4">
+                                <div class="border-l h-full flex flex-col justify-center items-center">
+                                    <img src="/assets/img/bieudotron.png" alt="">
+                                    <div class="flex justify-between py-2">
+                                        <div class="w-1/2 flex items-center">
+                                            <div class="w-4 h-4 rounded-full bg-primary-1 mr-2"></div>
+                                            <span class="text-body-1 font-medium text-neutral-1-400">Lợi nhuận</span>
+                                        </div>
+                                        <div class="w-1/2 text-heading-4 font-semibold text-neutral-1-900">
+                                            <span>30.000.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between py-2">
+                                        <div class="w-1/2 flex items-center">
+                                            <div class="w-4 h-4 rounded-full bg-primary-5 mr-2"></div>
+                                            <span class="text-body-1 font-medium text-neutral-1-400">Chi phí</span>
+                                        </div>
+                                        <div class="w-1/2 text-heading-4 font-semibold text-neutral-1-900">
+                                            <span>30.000.000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tds-tab>
+                    <tds-tab title="Giảm giá vận chuyển">
+                        <div class="flex items-center border-t border-b py-3">
+                            <button class="mr-4" tds-button color="primary" class="!rounded-full">
+                                <span class="flex items-center">
+                                    Hôm nay
+                                </span>
+                            </button>
+                            <button class="mr-4" tds-flat-button size="md">7 ngày qua</button>
+                            <button class="mr-4" tds-flat-button size="md">30 ngày qua</button>
+                            <tds-date-picker class="w-80" [format]="'dd-MM-yyyy'" placeholder="Tùy chọn thời gian">
+                            </tds-date-picker>
+                        </div>
+                        <div class="py-3 flex">
+                            <div class="w-3/4 px-4">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-success-400 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">Số lượt áp dụng giảm giá</span>
+                                            <span class="text-heading-4 font-medium text-success-400">20</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-success-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-warning-400 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">khách hàng sử
+                                                dụng</span>
+                                            <span class="text-heading-4 font-medium text-warning-400">100</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-error-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-between border border-t-3 border-t-info-500 rounded-xl p-4 w-80 shadow-md">
+                                        <div class="flex flex-col justify-between">
+                                            <span class="text-body-2 font-regular text-neutral-1-900">sản phẩm đã
+                                                bán</span>
+                                            <span class="text-heading-4 font-medium text-info-400">100</span>
+                                            <span class="text-caption-2 font-regular text-neutral-1-400">so với kỳ
+                                                trước</span>
+                                        </div>
+                                        <div class="flex flex-col justify-between">
+                                            <i class="tdsi-info-line text-neutral-1-300"></i>
+                                            <span class="text-caption-2 font-regular text-success-400">2.3%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-center py-4">
+                                        <h1 class="text-title-1 font-medium text-neutral-1-900">Biểu đồ</h1>
+                                        <div class="flex items-center text-body-2 font-regular text-neutral-1-900">
+                                            <tds-badge class="px-2" status="error" text="Doanh thu"></tds-badge>
+                                            <tds-badge class="px-2" status="warning" text="Đon hàng"></tds-badge>
+                                            <tds-badge class="px-2" status="info" text="Lượt truy cập"></tds-badge>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center">
+                                    <img src="/assets/img/bieudokhuyenmai.png" alt="">
+                                </div>
+                                <div class="text-body-2 font-regular flex justify-between items-center mt-6">
+                                    <div class="w-1/12">Tháng 1</div>
+                                    <div class="w-1/12">Tháng 2</div>
+                                    <div class="w-1/12">Tháng 3</div>
+                                    <div class="w-1/12">Tháng 4</div>
+                                    <div class="w-1/12">Tháng 5</div>
+                                    <div class="w-1/12">Tháng 6</div>
+                                    <div class="w-1/12">Tháng 7</div>
+                                    <div class="w-1/12">Tháng 8</div>
+                                    <div class="w-1/12">Tháng 9</div>
+                                    <div class="w-1/12">Tháng 10</div>
+                                    <div class="w-1/12">Tháng 11</div>
+                                    <div class="w-1/12">Tháng 12</div>
+                                </div>
+                            </div>
+                            <div class="w-1/4 px-4 py-4">
+                                <div class="border-l h-full flex flex-col justify-center items-center">
+                                    <img src="/assets/img/bieudotron.png" alt="">
+                                    <div class="flex justify-between py-2">
+                                        <div class="w-1/2 flex items-center">
+                                            <div class="w-4 h-4 rounded-full bg-primary-1 mr-2"></div>
+                                            <span class="text-body-1 font-medium text-neutral-1-400">Lợi nhuận</span>
+                                        </div>
+                                        <div class="w-1/2 text-heading-4 font-semibold text-neutral-1-900">
+                                            <span>30.000.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between py-2">
+                                        <div class="w-1/2 flex items-center">
+                                            <div class="w-4 h-4 rounded-full bg-primary-5 mr-2"></div>
+                                            <span class="text-body-1 font-medium text-neutral-1-400">Chi phí</span>
+                                        </div>
+                                        <div class="w-1/2 text-heading-4 font-semibold text-neutral-1-900">
+                                            <span>30.000.000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tds-tab>
+                </tds-tabset>
+            </div>
+        </div>
+    </div>
+</div>

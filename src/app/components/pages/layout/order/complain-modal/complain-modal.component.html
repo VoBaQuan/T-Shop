@@ -1,0 +1,17 @@
+<div class="text-neutral-1-900 text-body-2 font-regular">
+    <h1>Chọn lý do khiếu nại</h1>
+    <tds-form-field class="mt-2 mb-4">
+        <tds-select valueField="id" textField="name" placeholder='select item' (ngModelChange)="onModelChange($event)"
+            [allowClear]="true" [data]="listData">
+        </tds-select>
+    </tds-form-field>
+    <span class="text-neutral-1-400">Tshop sẽ liên hệ với người mua để yêu cầu cung cấp bằng chứng và hồi đáp cho người bán trong vòng 2 ngày</span>
+    <div class="w-full flex justify-end p-4" *tdsModalFooter>
+        <button tds-button class="mr-2" color="secondary" (click)="cancel()">
+            Hủy
+        </button>
+        <button tds-button type="submit" 
+            color="primary" (click)="cancel()">Xác nhận
+        </button>
+    </div>
+</div>

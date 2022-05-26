@@ -1,0 +1,41 @@
+<div class="w-full h-full flex justify-center items-center">
+    <div class="w-3/5 flex justify-center bg-white shadow-lg rounded-md text-neutral-1-900  py-16 px-16">
+        <div class="w-1/2">
+            <div>
+                <img src="/assets/img/Login.png" alt="">
+            </div>
+            <div class="text-center mt-10 flex flex-col justify-center items-center">
+                <h1 class="text-heading-1 font-semibold">Bán hàng chuyên nghiệp</h1>
+                <div>
+                    <p class="text-title-1 font-medium">Quản lý shop của bạn một cách hiệu quả hơn trên <span
+                            class="text-primary-1">Tshop seller center</span> - Kênh người bán</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2 flex justify-center items-center">
+            <div class="w-11/12 shadow-md border border-neutral-2-200 px-8 py-8">
+                <h1 class="text-heading-2 font-semibold">Đăng Nhập</h1>
+
+                <tds-form-field class="mt-9">
+                    <tds-label>Tài khoản</tds-label>
+                    <input tdsInput placeholder="Tên tài khoản" size="md" />
+                </tds-form-field>
+
+                <tds-form-field class="mt-9">
+                    <tds-label>Mật Khẩu</tds-label>
+                    <input tdsInput placeholder="********" size="md" />
+                </tds-form-field>
+
+
+                <div class="mt-5">
+                    <tds-checkbox class="text-neutral-1-700 text-title-1 font-medium">Ghi nhớ tài khoản</tds-checkbox>
+                    <button routerLink="/account/dat-lai-mat-khau" class="text-primary-1 text-body-1 font-regular"
+                        tds-flat-button size="sm">Quên mật khẩu</button>
+                </div>
+                <button routerLink="/account/chon-cua-hang" class="w-full mt-9" tds-button color="primary">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

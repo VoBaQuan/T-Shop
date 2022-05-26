@@ -1,0 +1,96 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Mã giảm giá">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Khuyến mãi</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Mã giảm giá</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex items-center">
+            <button class="flex justify-center items-center" (click)="openCreateDiscountCode()"
+                routerLink="/pages/giamgia/taomagiamgia" tds-button color="primary" size="sm">
+                <i class="tdsi-add-fill text-white text-header-2 mr-3"></i>
+                Tạo mã giảm giá
+            </button>
+        </div>
+    </div>
+    <div class="p-4 w-full h-full bg-light-50">
+        <div class="bg-white border rounded-md">
+            <div class="flex justify-between">
+                <div>
+                    <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                        (selectChange)="onSelectChange($event)">
+                        <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                            <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                                [value]="item.value">
+                            </tds-filter-status-item>
+                        </ng-template>
+                    </tds-filter-status>
+                </div>
+                <div class="flex items-center pr-4">
+                    <tds-form-field class="mr-3 w-80">
+                        <input tdsInput autocomplete="off" placeholder="Tìm kiếm mã giảm giá" [required]='true' />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                    <tds-form-field class="w-36">
+                        <tds-select valueField="id" textField="name" placeholder='select item' [(ngModel)]="selected1"
+                            (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                        </tds-select>
+                    </tds-form-field>
+                </div>
+            </div>
+            <div class="w-full" style="height: 700px;">
+                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
+                    <thead>
+                        <tr>
+                            <th>Mã giảm giá</th>
+                            <th>Đã sử dụng</th>
+                            <th>Loại giảm giá</th>
+                            <th width="336px">Điều kiện giảm</th>
+                            <th width="184px">Thời gian áp dụng</th>
+                            <th width="250px">Người tạo</th>
+                            <th class="text-center">Ngày tạo</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>{{data.discountCode}}</td>
+                                <td>{{data.used}}</td>
+                                <td>{{data.discountType}}</td>
+                                <td>
+                                    <p class="text-primary-1 font-medium">Áp dụng 4 sản phẩm </p>
+                                    <p>Cho tất cả khách hàng</p>    
+                                    <p> Đơn hàng từ 100.000</p>    
+                                    <p>Giới hạn sử dụng 20 lần</p>    
+                                    <p>Giới hạn 1 lần sử dụng mỗi khách hàng</p>    
+                                </td>
+                                <td>{{data.timeApply}}</td>
+                                <td>
+                                    {{data.creater}}
+                                </td>
+                                <td class="text-center">{{data.createDate}}</td>
+                                <td>
+                                    <tds-switch size="md" [checked]="true"></tds-switch>
+                                </td>
+                                <td>
+                                    <button class="mr-2" tds-button-outline-icon color="secondary">
+                                        <i class="tdsi-edit-fill"></i>
+                                    </button>
+                                    <button tds-button-outline-icon color="secondary">
+                                        <i class="tdsi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

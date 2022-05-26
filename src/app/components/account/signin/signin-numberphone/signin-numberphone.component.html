@@ -1,0 +1,36 @@
+<div class="w-full h-full flex justify-center items-center">
+    <div class="w-3/5 flex bg-white shadow-lg rounded-xl px-16">
+        <div class="flex flex-col justify-center items-center w-1/2 py-8">
+            <img src="/assets/img/untitled2 1.png" alt="">
+            <div class="text-center mt-10 flex flex-col justify-center items-center">
+                <h1 class="text-heading-2 font-semibold">Đăng ký bán hàng cùng Tshop</h1>
+                <div>
+                    <p class="text-title-1 font-medium">Tiếp cận hơn <span class="text-primary-1">22 triệu lượt truy
+                            cập</span> mỗi tháng</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2">
+            <div class="shadow-md border border-neutral-2-200 rounded-md px-8 py-8 mt-16">
+                <h1 class="text-heading-2 font-semibold text-neutral-1-800 text-center mb-8">Đăng ký</h1>
+                <label class="text-body-2 font-medium text-neutral-1-900">Số điện thoại</label>
+                <tds-form-field class="w-full mt-2">
+                    <input tdsInput class="text-neutral-1-600" autocomplete="off" />
+                    <span class="flex items-center" tdsPrefix>
+                        <div>
+                            <img src="/assets/img/Frame 11143.png" alt="">
+                        </div>
+                        <tds-select valueField="id" textField="name" [ngModel]="pageSize" placeholder='select item'
+                            [data]="listPageSize" (ngModelChange)="onChangePageSize($event)"
+                            classIcon="tdsi-arrow-down-fill">
+                        </tds-select>
+                    </span>
+                </tds-form-field>
+                <button routerLink="/account/nhap-ma-xac-minh" class="w-full mt-8 text-title-1 font-medium" tds-button
+                    color="primary">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

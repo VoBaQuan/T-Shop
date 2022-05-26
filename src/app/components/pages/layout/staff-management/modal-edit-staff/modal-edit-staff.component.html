@@ -1,0 +1,52 @@
+<div class="flex flex-col text-caption-1 font-medium text-neutral-1-900">
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Số điện thoại</h1>
+        </div>
+        <div class="w-4/5">
+            <tds-form-field>
+                <input tdsInput autocomplete="off" placeholder="Nhập số điện thoại" [required]='true' />
+            </tds-form-field>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Mã nhân viên</h1>
+        </div>
+        <div class="w-4/5">
+            <tds-form-field>
+                <input tdsInput autocomplete="off" placeholder="Nhập mã code" [required]='true' />
+            </tds-form-field>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Vai trò</h1>
+        </div>
+        <div class="w-4/5">
+            <tds-form-field>
+                <tds-select valueField="id" textField="name" placeholder='Chọn vai trò'
+                    (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                </tds-select>
+            </tds-form-field>
+        </div>
+    </div>
+    <div class="flex items-center py-2">
+        <div class="w-1/5">
+            <h1>Email</h1>
+        </div>
+        <div class="w-4/5">
+            <tds-form-field>
+                <input tdsInput autocomplete="off" placeholder="Nhập email" [required]='true' />
+                <tds-error *ngIf="email.invalid">{{getErrorMessage(email)}}</tds-error>
+            </tds-form-field>
+        </div>
+    </div>
+</div>
+<div class="w-full flex justify-end p-4" *tdsModalFooter>
+    <button tds-button class="mr-2" color="secondary" (click)="cancel()">
+        Đóng
+    </button>
+    <button tds-button type="submit" color="primary" (click)="cancel()">Lưu
+    </button>
+</div>

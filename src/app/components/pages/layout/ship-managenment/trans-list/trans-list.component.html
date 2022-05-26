@@ -1,0 +1,276 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Danh sách vận chuyển">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý vận chuyển</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Danh sách vận chuyển</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+    </div>
+    <div class="px-4 py-4 w-full h-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-between items-center">
+                <tds-filter-status [ngModel]="1" (selectChange)="onSelectChange($event)" class="flex justify-between items-center">
+                    <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Chưa xử lý' [value]='2' [count]='20'>
+                    </tds-filter-status-item>
+                    <tds-filter-status-item name='Đã xử lý' [value]='3' [count]='20'>
+                    </tds-filter-status-item>
+                </tds-filter-status>
+                <div class="flex items-center">
+                    <tds-select valueField="id" textField="name" [ngModel]="pageSize" [data]="listPageSize"
+                        (ngModelChange)="onChangePageSize($event)" size="md">
+                    </tds-select>
+                    <tds-form-field class="pr-4 ml-3">
+                        <input tdsInput class="text-neutral-1-600 w-96" placeholder="Từ khóa" autocomplete="off" />
+                        <span tdsPrefix><i class="text-neutral-1-600 tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                </div>
+            </div>
+            <tds-table #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
+                <thead class="text-body-2 font-medium">
+                    <tr>
+                        <th width="60px"></th>
+                        <th>Mã đơn hàng</th>
+                        <th>Khách hàng</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái đơn hàng</th>
+                        <th>Trạng thái thanh toán</th>
+                        <th>Nhà vận chuyển</th>
+                        <th>Ngày lấy hàng</th>
+                        <th>Ngày tạo</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody class="text-body-2 font-regular">
+                    <ng-container *ngFor="let data of table.data">
+                        <tr class="text-neutral-1-900 text-body-2 font-regular">
+                            <td [expand]="expandSet.has(data.id)" (expandChange)="onExpandChange(data.id, $event)"></td>
+                            <td>
+                                <button tds-flat-button size="sm"
+                                    class="text-primary-1 font-medium">{{data.orderCode}}</button>
+                            </td>
+                            <td>
+                                <span>{{ data.customer }}</span><span><i class="tdsi-send-fill text-primary-1 ml-1"></i></span>
+                                <div class="flex justify-start items-center">
+                                    <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                    <span class="text-neutral-1-400">{{data.phonenumber}}</span>
+                                </div>
+                            </td>
+                            <td><u class="text-body-2 font-regular text-neutral-1-400">đ</u> {{ data.total }}</td>
+                            <td>
+                                <span
+                                    class="flex h-5 border rounded-md justify-center items-center text-caption-2 font-medium"
+                                    [ngClass]="{
+                                            'w-16 border-success-300 bg-success-200 text-success-500':data.orderstatus == 'Đã xử lý',
+                                            'w-20 border-neutral-1-300 bg-neutral-3-200 text-neutral-1-900':data.orderstatus == 'Chưa xử lý'
+                                    }">
+                                    {{data.orderstatus}}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 rounded-full mr-2"
+                                        [ngClass]="{'bg-success-400':data.paymentstatus == 'Đã thanh toán','bg-neutral-1-300':data.paymentstatus == 'Chưa thanh toán'}">
+                                    </div>
+                                    {{ data.paymentstatus }}
+                                </div>
+                            </td>
+                            <td>{{ data.trans }}</td>
+                            <td>{{ data.datetake }}</td>
+                            <td>{{ data.orderdate }}</td>
+                            <td>
+                                <button ngClass="flex justify-center items-center" *ngIf="data.operration=='Chuẩn bị hàng'" (click)="showModal('prepare')" tds-flat-button size="sm" class="text-info-500"><i class="text-title-1 tdsi-product-line text-info-500 mr-2"></i>{{data.operration}}</button>
+                                <button ngClass="flex justify-center items-center" *ngIf="data.operration=='In phiếu ship'" (click)="showModal('prepare')" tds-flat-button size="sm" class="text-info-500"><i class="text-title-1 tdsi-print-fill text-info-500 mr-2"></i>{{data.operration}}</button>
+                            </td>
+                        </tr>
+                        <tr [expand]="expandSet.has(data.id)"
+                            class="border-b border-neutral-2-100 text-neutral-1-900 bg-light-50">
+                            <div class="bg-white rounded-md border">
+                                <div class="flex justify-between items-center px-2 py-2 border-b">
+                                    <h1 class="text-header-1 font-semibold text-neutral-1-900">Thông tin đơn hàng</h1>
+                                    <button tds-button color="primary" size="sm">In hóa đơn</button>
+                                </div>
+                                <tds-table templateMode>
+                                    <thead>
+                                        <tr>
+                                            <th>Ảnh</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng</th>
+                                            <th class="text-right">Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                <tbody>
+                    <tr *ngFor="let data of inforOrders">
+                        <td><img src="/assets/img/Rectangle 2544.png" alt=""></td>
+                        <td>{{data.ordercode}}</td>
+                        <td>{{data.productname}}</td>
+                        <td>{{data.productcode}}</td>
+                        <td>{{data.unitprice}}</td>
+                        <td>{{data.quality}}</td>
+                        <td class="text-right"><u class="text-body-2 font-regular text-neutral-1-400">đ</u>
+                            {{data.total}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
+                            <span>2 sản phẩm</span>
+                            <span>Phí giao hàng</span>
+                            <span class="text-title-1 font-medium">Tổng tiền</span>
+                        </td>
+                        <td>
+                            <div class="flex justify-end">
+                                <div class="flex text-body-2 flex-col items-end font-medium text-neutral-1-900">
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span><u class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.400.000</span>
+                                    <span class="text-header-2 font-semibold text-primary-1"><u
+                                            class="text-body-2 font-regular text-neutral-1-400">đ</u> 2.700.000</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+        </tr>
+        </ng-container>
+        </tbody>
+        </tds-table>
+    </div>
+</div>
+</div>
+<!-- modal chuan bi hang-->
+<tds-modal size="lg" [(visible)]="isVisiblePrepare" [title]="modalTitlePrepare" [content]="modalContentPrepare"
+    [footer]="modalFooterPrepare" (onCancel)="handleCancel('prepare')">
+    <ng-template #modalTitlePrepare>
+        <h1 class="text-title-1 font-medium text-neutral-1-900">Chuẩn bị hàng</h1>
+    </ng-template>
+
+    <ng-template #modalContentPrepare>
+        <div class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-900">
+            <div class="flex flex-col justify-between items-center">
+                <div>
+                    <img src="/assets/img/Rectangle 272ss8.png" alt="">
+                </div>
+                <span class="mt-2">Giao hàng nhanh</span>
+            </div>
+            <div class="flex py-3">
+                <div class="w-1/5">
+                    <span>Ngày lấy hàng</span>
+                </div>
+                <div class="w-4/5">
+                    <tds-date-picker [format]="'dd-MM-yyyy'" placeholder="Chọn ngày hẹn đơn vị vận chuyển lấy hàng">
+                    </tds-date-picker>
+                </div>
+            </div>
+            <div class="flex py-3">
+                <div class="w-1/5">
+                    <span>Ghi chú</span>
+                </div>
+                <div class="w-4/5">
+                    <textarea cols="1" class="w-full border border-neutral-2-200 rounded-md"></textarea>
+                </div>
+            </div>
+            <div class="flex py-3">
+                <div class="w-1/5 mt-4">
+                    <span>Địa chỉ lấy hàng</span>
+                </div>
+                <div class="w-4/5">
+                    <div class="flex justify-between items-center p-4 bg-neutral-3-50">
+                        <div>
+                            <h1>Kho hàng số 1</h1>
+                            <span class="text-caption-1 font-regular text-neutral-1-400">12CN1, Phường Tây Thạnh, Quận
+                                Tân Phú, Thành phố Hồ Chí Minh</span>
+                        </div>
+                        <div>
+                            <span class="text-info-500">Đổi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterPrepare>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('prepare')">
+                    Hủy
+                </button>
+                <button tds-button color="primary" (click)="showModal('prepareDetails')">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>
+
+<!-- modal chuan bị hàng chi tiết -->
+<tds-modal size="md" [(visible)]="isVisiblePrepareDetails" [title]="modalTitlePreparePrepareDetails"
+    [content]="modalContentPreparePrepareDetails" [footer]="modalFooterPreparePrepareDetails"
+    (onCancel)="handleCancel('prepareDetails')">
+    <ng-template #modalTitlePreparePrepareDetails>
+        <h1 class="text-title-1 font-medium text-neutral-1-900">Chi tiết chuẩn bị hàng</h1>
+    </ng-template>
+
+    <ng-template #modalContentPreparePrepareDetails>
+        <div class="text-neutral-1-900 text-body-2 font-regular">
+            <div class="flex items-start py-3">
+                <div class="w-2/5">
+                    <h1>Đơn hàng</h1>
+                </div>
+                <div class="w-3/5">
+                    <span class="text-primary-1 font-medium">ĐH 020346</span>
+                </div>
+            </div>
+            <div class="flex items-center py-3">
+                <div class="w-2/5">
+                    <h1>Đơn vị vận chuyển</h1>
+                </div>
+                <div class="w-3/5">
+                    <span class="font-medium">Giao hàng nhanh</span>
+                </div>
+            </div>
+            <div class="flex items-center py-3">
+                <div class="w-2/5">
+                    <h1>Ngày lấy hàng</h1>
+                </div>
+                <div class="w-3/5">
+                    <span class="font-medium">20/09/2021</span>
+                </div>
+            </div>
+            <div class="flex items-center py-3">
+                <div class="w-2/5">
+                    <h1>Địa chỉ lấy hàng</h1>
+                </div>
+                <div class="w-3/5">
+                    <span class="font-medium">12CN1, Phường Tây Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh</span>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterPreparePrepareDetails>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('prepareDetails')">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk('prepareDetails')">
+                    In phiếu giao
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

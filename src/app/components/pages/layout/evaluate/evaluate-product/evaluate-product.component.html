@@ -1,0 +1,199 @@
+<div>
+    <div class="border-b border-b-neutral-2-100 bg-white">
+        <div class="flex items-center text-neutral-1-400 text-caption-1 font-regular">
+            <tds-page-header title="Đánh giá sản phẩm">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Đánh giá</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Đánh giá sản phẩm</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+    </div>
+    <div class="flex justify-between bg-white px-4">
+        <div class="w-full">
+            <tds-filter-status [ngModel]='3'>
+                <tds-filter-status-item name='Tất cả' [value]='0'>
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                                {{name}}
+                            </div>
+                        </div>
+                    </ng-template>
+                </tds-filter-status-item>
+
+                <tds-filter-status-item name='1' [value]='1' [count]='20'>
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                                {{name}}
+                            </div>
+                            <div>
+                                <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                                </span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </tds-filter-status-item>
+
+                <tds-filter-status-item name='2' [value]='2' [count]='20'>
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                            group-hover:text-neutral-1-900':!active}">
+                                {{name}}
+                            </div>
+                            <div>
+                                <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                                </span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </tds-filter-status-item>
+
+                <tds-filter-status-item name='3' [value]='3' [count]='20'>
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                            group-hover:text-neutral-1-900':!active}">
+                                {{name}}
+                            </div>
+                            <div>
+                                <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                                </span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </tds-filter-status-item>
+
+                <tds-filter-status-item name='4' [value]='4' [count]='20'>
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                                {{name}}
+                            </div>
+                            <div>
+                                <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                                </span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </tds-filter-status-item>
+
+                <tds-filter-status-item name='5' [value]='5' [count]='20'>
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                        hover:border-primary-1 group':!disabled}">
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                                group-hover:text-neutral-1-900':!active}">
+                                {{name}}
+                            </div>
+                            <div>
+                                <span class="tdsi-star-1-fill text-base leading-4 text-warning-400">
+                                </span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </tds-filter-status-item>
+            </tds-filter-status>
+        </div>
+    </div>
+    <div class="p-4">
+        <div class="border rounded-md bg-white px-4">
+            <div class="flex justify-between items-center">
+                <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                    (selectChange)="onSelectChange($event)">
+                    <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                        <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                            [value]="item.value">
+                        </tds-filter-status-item>
+                    </ng-template>
+                </tds-filter-status>
+                <tds-form-field class="w-96">
+                    <input autocomplete="off" tdsInput placeholder="Tìm kiếm" [required]='true' />
+                    <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                </tds-form-field>
+            </div>
+            <div>
+                <tds-table #virtualTable #basicTable [listData]="listOfData" [scroll]="{ x: '1300px', y: '550px'}">
+                    <thead>
+                        <tr>
+                            <th>Mã đơn hàng</th>
+                            <th>Sản phẩm</th>
+                            <th>Khách hàng</th>
+                            <th>Đánh giá</th>
+                            <th width="380px">Nội dung</th>
+                            <th>Ngày đánh giá</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template tds-virtual-scroll ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>
+                                    <button tds-button-flat color="secondary">
+                                        <span class="flex items-center"> {{data.orderCode}} </span>
+                                    </button>
+                                </td>
+                                <td class="w-80">
+                                    <div class="flex items-start">
+                                        <div class="mr-2">
+                                            <tds-avatar [shape]="'square'" [size]="'xl'" tdsSrc="error"
+                                                [isAvatar]="false"></tds-avatar>
+                                        </div>
+                                        <div>
+                                            <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                            <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ data.name }}
+                                    <div class="flex justify-start items-center">
+                                        <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                        <span class="text-neutral-1-400">{{data.numberPhone}}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <tds-rate [ngModel]="4" allowHalf></tds-rate>
+                                </td>
+                                <td>{{data.content}}</td>
+                                <td>{{data.evaluateDate}}</td>
+                                <td>
+                                    <tds-tag *ngIf="data.status=='Chưa trả lời'" status='info' type="outline">
+                                        {{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Đã trả lời'" status='success' type="outline">
+                                        {{data.status}}</tds-tag>
+                                </td>
+                                <td>
+                                    <button tds-flat-button size="sm"
+                                        class="text-info-500">{{data.operationReply}}</button> <span
+                                        class="text-info-500">|</span> <button tds-flat-button size="sm"
+                                        class="text-info-500">{{data.operationReport}}</button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

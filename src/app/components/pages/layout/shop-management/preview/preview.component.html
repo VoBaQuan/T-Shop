@@ -1,0 +1,63 @@
+<div class="text-neutral-1-900 h-full ">
+    <div class="flex bg-white justify-between items-center">
+        <div>
+            <tds-page-header title="Danh mục shop">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Quản lý shop</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Danh mục shop</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4 flex items-center">
+            <button (click)="save()" tds-button color="primary" size="sm">
+                <span class="flex items-center">
+                    Lưu
+                </span>
+            </button>
+            <button tds-button color="secondary" size="sm" class="mx-2">
+                <span (click)="cancel()" class="flex items-center">
+                    Hủy
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="py-4 flex justify-center">
+        <div class="w-3/5 bg-white">
+            <tds-table bordered="true" templateMode>
+                <thead>
+                    <tr>
+                        <th>Tên danh mục</th>
+                        <th>Người tạo</th>
+                        <th>Ngày tạo</th>
+                        <th>Số sản phẩm</th>
+                        <th>Hiển thị</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of listOfData">
+                        <td>{{data.categoryName}}</td>
+                        <td>{{data.creater}}</td>
+                        <td>{{data.createDate}}</td>
+                        <td>{{data.products}}</td>
+                        <td>
+                            <tds-switch size="md"></tds-switch>
+                        </td>
+                        <td>
+                            <div class="flex justify-start text-neutral-1-500">
+                                <button tds-button-icon color="secondary" size="sm" class="mr-2">
+                                    <span class="flex items-center">
+                                        <i class="tdsi-move-fill"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div>
+    </div>
+</div>

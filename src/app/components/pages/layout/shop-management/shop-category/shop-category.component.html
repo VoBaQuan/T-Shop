@@ -1,0 +1,71 @@
+<div class="text-neutral-1-900 h-full ">
+    <div class="flex bg-white justify-between items-center">
+        <div>
+            <tds-page-header title="Danh mục shop">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Quản lý shop</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Danh mục shop</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+        <div class="px-4 flex items-center">
+            <button tds-button color="primary" size="sm">
+                <span class="flex items-center">
+                    <i class="tdsi-add-fill text-lg leading-none mr-2"></i>Thêm danh mục
+                </span>
+            </button>
+            <button tds-button color="secondary" size="sm" class="mx-3">
+                <span class="flex items-center">
+                    <i class="tdsi-in-out-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Điều chỉnh thứ tự
+                </span>
+            </button>
+            <button (click)="openPreviewShop()" tds-button color="secondary" size="sm">
+                <span class="flex items-center">
+                    <i class="tdsi-eye-open-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Xem trước
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="py-4 flex justify-center">
+        <div class="w-3/5 bg-white">
+            <tds-table bordered="true" templateMode>
+                <thead>
+                    <tr>
+                        <th>Tên danh mục</th>
+                        <th>Người tạo</th>
+                        <th>Ngày tạo</th>
+                        <th>Số sản phẩm</th>
+                        <th>Hiển thị</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of listOfData">
+                        <td><button (click)="openCategoryDetails()" tds-flat-button size="sm">{{data.categoryName}}</button></td>
+                        <td>{{data.creater}}</td>
+                        <td>{{data.createDate}}</td>
+                        <td>{{data.products}}</td>
+                        <td><tds-switch size="md"></tds-switch></td>
+                        <td>
+                            <div>
+                                <button tds-button-icon color="secondary" size="sm" class="mr-2">
+                                    <span class="flex items-center">
+                                        <i class="tdsi-edit-fill text-neutral-1-500"></i>
+                                    </span>
+                                </button>
+                                <button tds-button-icon color="secondary" size="sm">
+                                    <span class="flex items-center">
+                                        <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </tds-table>
+        </div> 
+    </div>
+</div>

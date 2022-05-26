@@ -1,0 +1,146 @@
+<div class="bg-white flex justify-between items-center">
+    <div>
+        <tds-page-header title="Tạo giảm giá">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Khuyến mãi</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Giảm giá sản phẩm</a>
+                </tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Tạo giảm giá</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+    </div>
+    <div class="flex items-center px-4">
+        <button (click)="confirmCreateDiscount()" class="mr-2 flex justify-center items-center" tds-button color="primary" size="md">
+            <i class="tdsi-add-fill text-white text-header-2 mr-2"></i>
+            Xác nhận
+        </button>
+        <button (click)="confirmCreateDiscount()" class="mr-2" tds-button color="secondary" size="md">
+            Hủy
+        </button>
+        <button (click)="showModal()" class="mr-2" tds-button color="secondary">
+            <span class="flex items-center">
+                <i class="tdsi-upload-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Tạo giảm giá hàng loạt
+            </span>
+        </button>
+        <button tds-button color="secondary">
+            <span class="flex items-center">
+                <i class="tdsi-download-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Tải mẫu giảm giá
+            </span>
+        </button>
+    </div>
+</div>
+<div class="bg-light-50 p-4">
+    <div class="w-full border rounded-md bg-white">
+        <div class="flex justify-between items-center py-4">
+            <div class="flex px-4">
+                <i class="tdsi-group-product-fill text-title-1 font-medium text-neutral-1-300 mr-2"></i>
+                <h1 class="text-title-1 font-medium text-neutral-1-900">Danh sách sản phẩm</h1>
+            </div>
+            <div class="flex px-4">
+                <div class="flex mr-4">
+                    <tds-select class="w-28 h-8 mr-4" valueField="id" textField="name" [ngModel]="pageSizeDisplay"
+                        [data]="listPageSizeDisplay" (ngModelChange)="onChangePageSize($event)"
+                        classIcon="tdsi-arrow-down-fill">
+                    </tds-select>
+                    <tds-form-field>
+                        <tds-select class="w-80" valueField="id" textField="name" placeholder='select item'
+                            [(ngModel)]="selected" (ngModelChange)="onModelChange($event)" [allowClear]="true"
+                            [data]="listData">
+                        </tds-select>
+                    </tds-form-field>
+                </div>
+                <div class="flex">
+                    <tds-select class="w-36" valueField="id" textField="name" [ngModel]="pageSizeProductName"
+                        [data]="listPageSizeProductName" (ngModelChange)="onChangePageSize($event)"
+                        classIcon="tdsi-arrow-down-fill">
+                    </tds-select>
+                    <tds-form-field>
+                        <input tdsInput placeholder="Nhập tên sản phẩm" size="md" />
+                    </tds-form-field>
+                </div>
+            </div>
+        </div>
+        <div>
+            <tds-table #basicTable [listData]="listOfData">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Gía vốn</th>
+                        <th>giá niêm yết</th>
+                        <th>Tồn kho</th>
+                        <th>Hiển thị</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                        <tr>
+                            <td>
+                                <div class="flex items-start">
+                                    <div class="mr-2">
+                                        <tds-avatar  [shape]="'square'" [size]="'lg'" tdsSrc="error" [isAvatar]="false"></tds-avatar>
+                                    </div>
+                                    <div>
+                                        <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
+                                        <span class="text-caption-1 font-medium text-neutral-1-300">SP0464546</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{data.costOfCapital}}</td>
+                            <td>{{data.ListedPrice}}</td>
+                            <td>{{data.inventory}}</td>
+                            <td>
+                                <tds-switch size="md" [checked]="true"></tds-switch>
+                            </td>
+                            <td>
+                                <button tds-button color="secondary">
+                                    <span class="flex items-center">
+                                        <i class="tdsi-add-fill text-lg leading-none mr-2 text-neutral-1-300"></i>Tạo
+                                        giảm giá
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </tds-table>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<tds-modal [(visible)]="isVisible" [title]="modalTitle" [content]="modalContent" [footer]="modalFooter"
+    (onCancel)="handleCancel()">
+    <ng-template #modalTitle>Tải file tạo sản phẩm hàng loạt</ng-template>
+
+    <ng-template #modalContent>
+        <div>
+            <div class="w-full">
+                <tds-steps [current]="1" labelPlacement="horizontal" [showStep]="true">
+                    <tds-step tdsTitle="Chọn file"></tds-step>
+                    <tds-step tdsTitle="Kiểm tra dữ liệu"></tds-step>
+                </tds-steps>
+            </div>
+            <div class="border border-dotted rounded-md h-24 flex flex-col justify-center items-center">
+                <i class="tdsi-download-fill text-neutral-1-500 text-heading-2 py-2"></i>
+                <span class="text-body-2 font-regular text-neutral-1-900 py-2">Chọn file hoặc kéo thả tập tin vào để tải lên</span>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooter>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel()">
+                    Đóng
+                </button>
+                <button tds-button color="primary" (click)="handleOk()">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

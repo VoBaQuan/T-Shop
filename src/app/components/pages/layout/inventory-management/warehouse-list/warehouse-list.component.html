@@ -1,0 +1,86 @@
+<div class="bg-light-50 w-full flex flex-col items-center h-full">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Danh sách kho hàng">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý kho</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Danh sách kho hàng</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+        <div class="flex items-center">
+            <button class="flex items-center" (click)="showModal()" tds-button color="primary" size="sm">
+                <i class="tdsi-add-fill text-white text-header-2 mr-2"></i>
+                Thêm vị trí kho mới
+            </button>
+        </div>
+    </div>
+    <div class="p-4 w-full h-full bg-light-50">
+        <div class="bg-white border rounded-md">
+            <div class="flex justify-between">
+                <div>
+                    <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                        (selectChange)="onSelectChange($event)">
+                        <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                            <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                                [value]="item.value">
+                            </tds-filter-status-item>
+                        </ng-template>
+                    </tds-filter-status>
+                </div>
+                <div class="flex items-center pr-4">
+                    <tds-form-field class="mr-3 w-80">
+                        <input tdsInput autocomplete="off" placeholder="Nhập tên kho" [required]='true' />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                </div>
+            </div>
+            <div class="w-full" style="height: 500px;">
+                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
+                    <thead>
+                        <tr>
+                            <th width="50px"></th>
+                            <th width="220px">Tên kho</th>
+                            <th width="100px">Mã kho</th>
+                            <th width="370px">Địa chỉ</th>
+                            <th width="136px">Trạng thái</th>
+                            <th width="156px">Thủ kho</th>
+                            <th width="250px">Ghi chú</th>
+                            <th width="80px">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td><tds-checkbox size="md"></tds-checkbox></td>
+                                <td>{{data.name}}</td>
+                                <td>{{data.code}}</td>
+                                <td>{{data.address}}</td>
+                                <td>
+                                    <span [ngClass]="data.status=='Bình thường'?'text-success-400':'text-error-400'">
+                                        {{data.status}}
+                                    </span>
+                                </td>
+                                <td>{{data.manager}}</td>
+                                <td>{{data.note}}</td>
+                                <td>
+                                    <button tds-button-icon color="secondary" size="sm" class="mr-2">
+                                        <span class="flex items-center">
+                                            <i class="tdsi-edit-fill text-neutral-1-500"></i>
+                                        </span>
+                                    </button>
+                                    <button tds-button-icon color="secondary" size="sm">
+                                        <span class="flex items-center">
+                                            <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>

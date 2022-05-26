@@ -1,0 +1,189 @@
+<div class="bg-light-50 w-full flex flex-col h-full text-neutral-1-900">
+    <div class="flex justify-between items-center w-full pr-4 bg-white">
+        <tds-page-header title="Thiết lập thanh toán">
+            <tds-breadcrumb tds-page-header-breadcrumb>
+                <tds-breadcrumb-item>Quản lý tài chính</tds-breadcrumb-item>
+                <tds-breadcrumb-item>
+                    <a>Thiết lập thanh toán</a>
+                </tds-breadcrumb-item>
+                <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+            </tds-breadcrumb>
+        </tds-page-header>
+    </div>
+    <div class="p-4 flex flex-col justify-center items-center">
+        <div class="bg-white w-4/5 rounded-md border">
+            <div class="p-4 text-header-1 font-semibold">
+                <h1>Tài khoản ngân hàng</h1>
+            </div>
+            <div class="px-16 py-8 flex justify-between items-center">
+                <button (click)="showModal('addbank')">
+                    <img src="/assets/img/Frame 11331.png" alt="">
+                </button>
+                <div>
+                    <img src="/assets/img/Group 11751.png" alt="">
+                </div>
+                <div>
+                    <img src="/assets/img/Group 11753.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bg-white w-4/5 rounded-md border mt-4">
+            <div class="p-4 text-header-1 font-semibold border-b">
+                <h1>Thông tin danh mục</h1>
+            </div>
+            <div class="p-4 flex">
+                <div class="flex justify-between items-center w-1/2 pr-12 border-r">
+                    <div class="flex items-center">
+                        <i class="tdsi-card-fill text-neutral-1-300 text-heading-4 mr-4"></i>
+                        <div class="flex flex-col justify-between text-body-2">
+                            <h1 class="font-medium">Thanh toán bằng thẻ tín dụng, ghi nợ</h1>
+                            <h1 class="font-regular">Cho phép Người mua thanh toán bằng thẻ Tín dụng/Ghi nợ.
+                            </h1>
+                        </div>
+                    </div>
+                    <div>
+                        <tds-switch size="md" [checked]="true"></tds-switch>
+                    </div>
+                </div>
+                <div class="w-1/2 flex justify-between items-center pl-4">
+                    <div class="flex items-center">
+                        <i class="tdsi-lock-fill text-neutral-1-300 text-heading-4 mr-4"></i>
+                        <div class="flex flex-col justify-between text-body-2">
+                            <h1 class="font-medium">Mã PIN</h1>
+                            <h1 class="font-regular">Cập nhật mã PIN</h1>
+                        </div>
+                    </div>
+                    <div>
+                        <button (click)="showModal('updatepin')" tds-button color="secondary">cập nhật</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal thêm ngân hàng-->
+<tds-modal size="lg" [(visible)]="isVisibleAddBank" [title]="modalTitleAddBank" [content]="modalContentAddBank" [footer]="modalFooterAddBank"
+    (onCancel)="handleCancel('addbank')">
+    <ng-template #modalTitleAddBank>Thêm tài khoản ngân hàng mới</ng-template>
+
+    <ng-template #modalContentAddBank>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Họ và tên <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập họ và tên" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Số CCCD <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập số CCCD" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Ngân hàng <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <tds-select valueField="id" textField="name" placeholder='Chọn ngân hàng'
+                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+        </div>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Tên chi nhánh <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <tds-select valueField="id" textField="name" placeholder='Chọn chi nhánh ngân hàng'
+                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                    </tds-select>
+                </tds-form-field>
+            </div>
+        </div>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Số tài khoản <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập số tài khoản" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Tên chủ tài khoản <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập tên chủ tài khoản không dấu, in hoa" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterAddBank>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('addbank')">
+                    Hủy
+                </button>
+                <button tds-button color="primary" (click)="handleOk('addbank')">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>
+<!-- modal cập nhật mã pin -->
+<tds-modal size="lg" [(visible)]="isVisibleUpdatePin" [title]="modalTitleUpdatePinCode" [content]="modalContentUpdatePinCode" [footer]="modalFooterUpdatePinCode"
+    (onCancel)="handleCancel('updatepin')">
+    <ng-template #modalTitleUpdatePinCode>Thêm tài khoản ngân hàng mới</ng-template>
+
+    <ng-template #modalContentUpdatePinCode>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Mã PIN mới <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Nhập mã PIN mới" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+        <div class="flex py-4 items-center text-body-2 font-medium">
+            <div class="w-1/5">
+                <h1>Xác nhận mã PIN <span class="text-error-500">*</span></h1>
+            </div>
+            <div class="w-4/5">
+                <tds-form-field>
+                    <input tdsInput autocomplete="off" placeholder="Xác nhận lại mã PIN" [required]='true' />
+                </tds-form-field>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #modalFooterUpdatePinCode>
+        <div class="p-4 w-full flex justify-end items-center">
+            <div class="flex justify-end">
+                <button class="mr-2" tds-button color="secondary" (click)="handleCancel('updatepin')">
+                    Hủy
+                </button>
+                <button tds-button color="primary" (click)="handleOk('updatepin')">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</tds-modal>

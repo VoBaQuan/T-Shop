@@ -1,0 +1,56 @@
+<div class="flex items-center">
+    <img src="/assets/img/Ellipse 757.png" alt="" class="mr-2">
+    <div>
+        <h1 class="text-caption-1 font-medium text-neutral-1-800">Nguyễn minh Tiến</h1>
+        <span class="text-caption-2 font-regular text-neutral-1-400">20/02/2021</span>
+    </div>
+</div>
+<div class="flex pb-4 border-b">
+    <div class="text-body-2 font-regular text-neutral-1-900 mr-8">
+        <h1 class="py-4">Yêu cầu:</h1>
+        <h1>Số tiền hoàn lại:</h1>
+    </div>
+    <div class="text-body-2 font-medium">
+        <p class="text-neutral-1-900 py-4">Hoàn tiền</p>
+        <p class="text-primary-1">9.000.000 đ</p>
+    </div>
+</div>
+<div class="pt-4 text-neutral-1-900">
+    <h1 class="text-title-1 font-medium pb-4">Phản hồi đề xuất khác</h1>
+    <div class="flex">
+        <div class="w-1/4 text-body-2 font-regular flex flex-col justify-between">
+            <h1>Yêu cầu</h1>
+            <h1>Số tiền hoàn lại</h1>
+            <h1>Địa chỉ trả hàng</h1>
+        </div>
+        <div class="w-3/4 flex flex-col justify-between">
+            <tds-form-field class="mb-4">
+                <tds-select 
+                    valueField="id" textField="name" 
+                    placeholder='select item'
+                    (ngModelChange)="onModelChange($event)"  
+                    [allowClear]="true" [data]="listData" >      
+                </tds-select>
+            </tds-form-field>
+            <tds-form-field class="mb-4">
+                <input tdsInput placeholder="pat@example.com" size="sm" />
+            </tds-form-field>
+            <tds-form-field>
+                <tds-select 
+                    valueField="id" textField="name" 
+                    placeholder='select item'
+                    (ngModelChange)="onModelChange($event)"  
+                    [allowClear]="true" [data]="listData" >      
+                </tds-select>
+            </tds-form-field>
+        </div>
+    </div>
+</div>
+<div class="w-full flex justify-end p-4" *tdsModalFooter>
+    <button tds-button class="mr-2" color="secondary" (click)="cancel()">
+        Hủy
+    </button>
+    <button tds-button type="submit" 
+        color="primary" (click)="cancel()">Xác nhận
+    </button>
+</div>

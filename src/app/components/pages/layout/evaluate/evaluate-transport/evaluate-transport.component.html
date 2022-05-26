@@ -1,0 +1,79 @@
+<div>
+    <div class="border-b border-b-neutral-2-100 bg-white">
+        <div class="flex items-center text-neutral-1-400 text-caption-1 font-regular">
+            <tds-page-header title="Đánh giá nhà vận chuyển">
+                <tds-breadcrumb tds-page-header-breadcrumb>
+                    <tds-breadcrumb-item>Đánh giá</tds-breadcrumb-item>
+                    <tds-breadcrumb-item>
+                        <a>Đánh giá nhà vận chuyển</a>
+                    </tds-breadcrumb-item>
+                    <!-- <tds-breadcrumb-item>Third-level Menu</tds-breadcrumb-item> -->
+                </tds-breadcrumb>
+            </tds-page-header>
+        </div>
+    </div>
+    <div class="flex justify-between bg-white px-4">
+        <div class="w-full">
+            <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
+                (selectChange)="onSelectChange($event)">
+                <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                    <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                        [value]="item.value">
+                    </tds-filter-status-item>
+                </ng-template>
+            </tds-filter-status>
+        </div>
+    </div>
+    <div class="bg-light-50 p-4">
+        <div class="bg-white">
+            <tds-table #basicTable [listData]="listOfData">
+                <thead>
+                    <tr>
+                        <th>Nhà vận chuyển</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Khách hàng</th>
+                        <th>Đánh giá</th>
+                        <th>Nội dung</th>
+                        <th>Ngày đánh giá</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                        <tr>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="mr-2"><img src="/assets/img/logo 1.png" alt=""></div>
+                                    <div>Giao hàng tiết kiệm</div>
+                                </div>
+                            </td>
+                            <td>{{data.orderCode}}</td>
+                            <td>
+                                {{ data.name }}
+                                <div class="flex justify-start items-center">
+                                    <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
+                                    <span class="text-neutral-1-400">{{data.numberphone}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <tds-rate [ngModel]="5" allowHalf></tds-rate>
+                            </td>
+                            <td>{{data.content}}</td>
+                            <td>{{data.evaluatedate}}</td>
+                            <td>
+                                <tds-tag *ngIf="data.status=='Chưa trả lời'" status='info' type="outline">
+                                    {{data.status}}</tds-tag>
+                            </td>
+                            <td>
+                                <button tds-flat-button size="sm" class="text-info-500">{{data.operationReply}}</button>
+                                <span class="text-info-500">|</span> <button tds-flat-button size="sm"
+                                    class="text-info-500">{{data.operationReport}}</button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </tds-table>
+        </div>
+    </div>
+</div>

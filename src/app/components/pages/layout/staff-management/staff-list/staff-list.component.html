@@ -1,0 +1,80 @@
+<div class="flex flex-col w-full">
+    <div class="flex justify-between items-center p-4 bg-white border-b">
+        <div class="text-header-1 font-semibold text-neutral-1-900">
+            <h1>Quản lý nhân viên</h1>
+        </div>
+        <div class="flex items-center">
+            <button (click)="showModal('add')" tds-button color="primary" class="mr-2">
+                <span class="flex items-center">
+                    <i class="tdsi-user-fill text-lg leading-none mr-2"></i>Thêm nhân viên
+                </span>
+            </button>
+            <button tds-button color="primary">
+                <span class="flex items-center">
+                    <i class="tdsi-add-fill text-lg leading-none mr-2"></i>Thêm vai trò
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="p-4">
+        <div class="bg-white border rounded-md w-full px-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <tds-filter-status [ngModel]='1' (selectChange)="onSelectChange($event)">
+                        <tds-filter-status-item name='Quản lý nhân viên' [value]='1' [count]='10'>
+                        </tds-filter-status-item>
+                        <tds-filter-status-item name='Quản lý vai trò' [value]='2' [count]='20'>
+                        </tds-filter-status-item>
+                    </tds-filter-status>
+                </div>
+                <div class="flex items-center">
+                    <tds-form-field>
+                        <input class="w-80" autocomplete="off" tdsInput placeholder="Vai trò" [required]='true' />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
+                </div>
+            </div>
+            <div>
+                <tds-table #basicTable [listData]="listOfData">
+                    <thead>
+                        <tr>
+                            <th>Account name</th>
+                            <th>Mã nhân viên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Vai trò</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                            <tr>
+                                <td>{{data.accountName}}</td>
+                                <td>{{data.staffCode}}</td>
+                                <td>{{data.phone}}</td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.permision}}</td>
+                                <td>
+                                    <tds-switch [checked]="true" size="md"></tds-switch>
+                                </td>
+                                <td>
+                                    <button (click)="showModal('edit')" tds-button-icon color="secondary" size="md" class="mr-2">
+                                        <span class="flex items-center">
+                                            <i class="tdsi-edit-fill text-neutral-1-500"></i>
+                                        </span>
+                                    </button>
+                                    <button (click)="error()" tds-button-icon color="secondary" size="md">
+                                        <span class="flex items-center">
+                                            <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </tds-table>
+            </div>
+        </div>
+    </div>
+</div>
