@@ -13,7 +13,7 @@
         </div>
         <div class="px-4 flex items-center">
             <button class="flex justify-center items-center" (click)="openCreateDiscount()" tds-button color="primary"
-                size="sm">
+                size="md">
                 <i class="tdsi-add-fill text-white text-header-2 mr-3"></i>
                 Tạo giảm giá
             </button>
@@ -34,41 +34,77 @@
             <div class="flex justify-between items-center">
                 <div>
                     <tds-filter-status [ngModel]='1' (selectChange)="onSelectChange($event)">
-
                         <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
                         </tds-filter-status-item>
-
                         <tds-filter-status-item name='Đang hoạt động' [value]='2' [count]='10'>
                         </tds-filter-status-item>
-
                         <tds-filter-status-item name='Hết hạn' [value]='3' [count]='10'>
                         </tds-filter-status-item>
-
                         <tds-filter-status-item name='Hết lượt' [value]='4' [count]='10'>
                         </tds-filter-status-item>
-
                         <tds-filter-status-item name='Đã tắt' [value]='5' [count]='10' [disabled]="true">
                         </tds-filter-status-item>
-
                     </tds-filter-status>
                 </div>
                 <div class="flex px-4">
-                    <div class="flex mr-4">
-                        <tds-select class="w-36" valueField="id" textField="name" [ngModel]="pageSizeDate"
-                            [data]="listPageSizeDate" (ngModelChange)="onChangePageSize($event)"
-                            classIcon="tdsi-arrow-down-fill">
-                        </tds-select>
-                        <tds-date-picker class="w-60" showTime></tds-date-picker>
-                    </div>
-                    <div class="flex">
-                        <tds-select class="w-36" valueField="id" textField="name" [ngModel]="pageSizeProduct"
-                            [data]="listPageSizeProduct" (ngModelChange)="onChangePageSize($event)"
-                            classIcon="tdsi-arrow-down-fill">
-                        </tds-select>
-                        <tds-form-field>
-                            <input tdsInput placeholder="Nhập tên sản phẩm" size="md" />
-                        </tds-form-field>
-                    </div>
+                    <tds-form-field class="w-96 mr-8">
+                        <tds-date-picker class="border-l" [format]="'dd-MM-yyyy'" placeholder="Chọn ngày bắt đầu">
+                        </tds-date-picker>
+                        <span tdsPrefix>
+                            <button class="flex items-center" color="secondary" tds-dropdown trigger="click"
+                                [tdsDropdownMenu]="menu">
+                                <span class="flex items-center text-body-2 font-medium text-neutral-1-900">
+                                    Ngày bắt đầu
+                                    <i class="tdsi-arrow-down-fill text-lg leading-none ml-2"></i>
+                                </span>
+                            </button>
+                            <tds-dropdown-menu #menu="tdsDropdownMenu">
+                                <div class="w-full">
+                                    <div (click)="log('1st menu item')" tds-dropdown-item>
+                                        <a> Item 1 </a>
+                                    </div>
+                                    <div (click)="log('2 menu item')" tds-dropdown-item>
+                                        <a> Item 2 </a>
+                                    </div>
+                                    <div (click)="log('3 menu item')" tds-dropdown-item>
+                                        <a> Item 3 </a>
+                                    </div>
+                                    <div (click)="log('4 menu item')" tds-dropdown-item>
+                                        <a> Item 4 </a>
+                                    </div>
+                                </div>
+                            </tds-dropdown-menu>
+                        </span>
+                    </tds-form-field>
+                    <tds-form-field class="w-96">
+                        
+                        <span tdsAddOnLeft>
+                            <button class="flex items-center" color="secondary" tds-dropdown trigger="click"
+                                [tdsDropdownMenu]="menu">
+                                <span class="flex items-center text-body-2 font-medium text-neutral-1-900">
+                                    Tên sản phẩm
+                                    <i class="tdsi-arrow-down-fill text-lg leading-none ml-2"></i>
+                                </span>
+                            </button>
+                            <tds-dropdown-menu #menu="tdsDropdownMenu">
+                                <div class="w-full">
+                                    <div (click)="log('1st menu item')" tds-dropdown-item>
+                                        <a> Item 1 </a>
+                                    </div>
+                                    <div (click)="log('2 menu item')" tds-dropdown-item>
+                                        <a> Item 2 </a>
+                                    </div>
+                                    <div (click)="log('3 menu item')" tds-dropdown-item>
+                                        <a> Item 3 </a>
+                                    </div>
+                                    <div (click)="log('4 menu item')" tds-dropdown-item>
+                                        <a> Item 4 </a>
+                                    </div>
+                                </div>
+                            </tds-dropdown-menu>
+                        </span>
+                        <input tdsInput autocomplete="off" placeholder="pat@example.com" [required]='true' />
+                    </tds-form-field>
                 </div>
             </div>
             <div>
@@ -78,8 +114,8 @@
                             <th>Sản phẩm</th>
                             <th>Tổng số giảm giá</th>
                             <th>Số lượng đã bán</th>
-                            <th>Gía bán trước giảm(đ)</th>
-                            <th>Gía bán sau giảm(đ)</th>
+                            <th>Giá bán trước giảm(đ)</th>
+                            <th>Giá bán sau giảm(đ)</th>
                             <th width="300px">Thời gian</th>
                             <th>Trạng thái</th>
                             <th>Kích hoạt</th>
@@ -92,7 +128,8 @@
                                 <td class="w-80">
                                     <div class="flex items-start">
                                         <div class="mr-2">
-                                            <tds-avatar  [shape]="'square'" [size]="'xl'" tdsSrc="error" [isAvatar]="false"></tds-avatar>
+                                            <tds-avatar [shape]="'square'" [size]="'xl'" tdsSrc="error"
+                                                [isAvatar]="false"></tds-avatar>
                                         </div>
                                         <div>
                                             <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
@@ -109,20 +146,27 @@
                                     <h1>Kết thúc: 30/10/2021 <span>10:10</span></h1>
                                 </td>
                                 <td>
-                                    <tds-tag *ngIf="data.status=='Đang hoạt động'" status='success' type="outline">{{data.status}}</tds-tag>
-                                    <tds-tag *ngIf="data.status=='Chưa hoạt động'" status='info' type="outline">{{data.status}}</tds-tag>
-                                    <tds-tag *ngIf="data.status=='Hết hiệu lực'" status='secondary' type="outline">{{data.status}}</tds-tag>
-                                    <tds-tag *ngIf="data.status=='Tạm ngưng'" status='error' type="outline">{{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Đang hoạt động'" status='success' type="outline">
+                                        {{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Chưa hoạt động'" status='info' type="outline">
+                                        {{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Hết hiệu lực'" status='secondary' type="outline">
+                                        {{data.status}}</tds-tag>
+                                    <tds-tag *ngIf="data.status=='Tạm ngưng'" status='error' type="outline">
+                                        {{data.status}}</tds-tag>
                                 </td>
                                 <td>
-                                    <tds-switch *ngIf="data.status=='Đang hoạt động'" size="md" [checked]="true"></tds-switch>
+                                    <tds-switch *ngIf="data.status=='Đang hoạt động'" size="md" [checked]="true">
+                                    </tds-switch>
                                     <tds-switch *ngIf="data.status=='Chưa hoạt động'" size="md"></tds-switch>
-                                    <tds-switch *ngIf="data.status=='Hết hiệu lực'" size="md" [checked]='true' [disabled]='true'></tds-switch>
+                                    <tds-switch *ngIf="data.status=='Hết hiệu lực'" size="md" [checked]='true'
+                                        [disabled]='true'></tds-switch>
                                     <tds-switch *ngIf="data.status=='Tạm ngưng'" size="md"></tds-switch>
                                 </td>
                                 <td>
                                     <div class="flex text-neutral-1-500">
-                                        <button (click)="showModal('edit')" tds-button-outline-icon color="secondary" class="mr-2">
+                                        <button (click)="showModal('edit')" tds-button-outline-icon color="secondary"
+                                            class="mr-2">
                                             <i class="tdsi-edit-fill"></i>
                                         </button>
                                         <button tds-button-outline-icon color="secondary">
@@ -196,7 +240,7 @@
                 </div>
                 <div class="flex items-center pb-4 w-full">
                     <div class="w-2/5">
-                        <h1>Gía khuyến mãi <span class="text-error-500">*</span></h1>
+                        <h1>Giá khuyến mãi <span class="text-error-500">*</span></h1>
                     </div>
                     <div class="w-3/5">
                         <tds-form-field>

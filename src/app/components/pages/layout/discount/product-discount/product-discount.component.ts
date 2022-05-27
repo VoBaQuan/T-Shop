@@ -132,7 +132,7 @@ export class ProductDiscountComponent implements OnInit {
     if (isShow == 'edit') {
       this.isVisibleEdit = true
     }
-    if(isShow == 'create'){
+    if (isShow == 'create') {
       this.isVisibleCreateDiscount = true
     }
   }
@@ -142,7 +142,7 @@ export class ProductDiscountComponent implements OnInit {
       if (isShow == 'edit') {
         this.isVisibleEdit = false
       }
-      if(isShow == 'create'){
+      if (isShow == 'create') {
         this.isVisibleCreateDiscount = false
       }
     }, 1000);
@@ -152,11 +152,14 @@ export class ProductDiscountComponent implements OnInit {
     if (isShow == 'edit') {
       this.isVisibleEdit = false
     }
-    if(isShow === 'create'){
+    if (isShow === 'create') {
       this.isVisibleCreateDiscount = false
     }
   }
   openCreateDiscount() {
     this.Router.navigate(['/pages/giamgia/taogiamgia']);
+  }
+  log(str: any) {
+    console.log(str)
   }
 }
