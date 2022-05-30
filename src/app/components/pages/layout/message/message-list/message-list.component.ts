@@ -14,20 +14,14 @@ export class MessageListComponent implements OnInit {
 
   messOfShop = [
     {
-      content: 'Chào em sản phẩm này hết rùi nhe',
-      time: '16:20'
+      content: 'Chào em sản phẩm này hết rùi nhe, Chào em sản phẩm này hết rùi nhe, Chào em sản phẩm này hết rùi nhe, Chào em sản phẩm này hết rùi nhe,',
+      time: '16:20',
+      status: 'success'
     },
     {
-      content: 'Chào em sản phẩm này hết rùi nhe',
-      time: '16:20'
-    },
-    {
-      content: 'Chào em sản phẩm này hết rùi nhe',
-      time: '16:20'
-    },
-    {
-      content: 'Chào em sản phẩm này hết rùi nhe',
-      time: '16:20'
+      content: 'Tin nhắn này bị lỗi, Tin nhắn này bị lỗi, Tin nhắn này bị lỗi, Tin nhắn này bị lỗi,',
+      time: 'Chưa gửi được, nhấn để gửi lại',
+      status: 'error'
     },
   ]
   messOfCustomer = [
