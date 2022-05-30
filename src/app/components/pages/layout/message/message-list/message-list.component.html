@@ -283,20 +283,21 @@
         </div>
         <!-- thông tin khách hàng -->
         <div class="w-1/2 overflow-hidden">
-            <tds-tabset class="bg-white  h-full rounded overflow-hidden" [clsTab]="'flex-1'"
-                [tabBarStyle]="{'padding-right':'0px','padding-left':'0px'}">
+            <tds-tabset
+                class="bg-white dark:bg-d-neutral-3-200 dark:border-d-neutral-1-200 h-full overflow-hidden"
+                [clsTab]="'flex-1'" [tabBarStyle]="{'padding-right':'0px','padding-left':'0px'}">
                 <tds-tab [title]="titleCustomer"
-                    clsContent="border-t border-neutral-2-200 -mt-px h-full flex flex-col overflow-hidden">
+                    clsContent="border-t border-neutral-2-200 dark:border-d-neutral-1-200 -mt-px h-full flex flex-col">
                     <ng-template #titleCustomer let-active="active">
-                        <div class="flex items-center justify-center font-semibold cursor-pointer text-body-2 py-4 pr-4 relative  group"
-                            [ngClass]='{"text-neutral-1-900":active,"text-neutral-1-400 hover:text-neutral-1-900":!active}'>
-                            <span class="mr-2">Khách hàng</span>
+                        <div class="flex items-center justify-center font-semibold cursor-pointer text-body-2 py-4 pr-4 mr-1 relative group"
+                            [ngClass]='{"text-neutral-1-900 dark:text-d-neutral-1-900":active,"text-neutral-1-400 dark:text-d-neutral-1-400 hover:text-neutral-1-900 hover:dark:text-d-neutral-1-900":!active}'>
+                            <span>Khách hàng</span>
                             <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
                                 class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
                             </div>
                         </div>
                     </ng-template>
-                    <div class="w-full h-full bg-white p-4 overflow-auto tds-custom-scroll">
+                    <div class="w-full h-full bg-white dark:bg-d-neutral-3-200 p-4 overflow-auto tds-custom-scroll">
                         <div class="flex flex-col">
                             <div class="flex justify-between items-center px-4 py-4">
                                 <div class="flex ">
@@ -323,7 +324,7 @@
                             </div>
                             <div class="px-4">
                                 <div class="text-neutral-1-900  flex text-body-2 font-regular border-b">
-                                    <div class="w-1/2 py-5">
+                                    <div class="w-1/2 py-5 mr-3">
                                         <div class="flex justify-start items-center mb-4">
                                             <i class="tdsi-call-fill mr-2 text-neutral-1-300 text-header-2"></i>
                                             <span>0941641408</span>
@@ -355,17 +356,18 @@
                                             </div>
                                             <h1 class="text-body-2 text-neutral-1-900 font-medium">GHI CHÚ</h1>
                                         </div>
-                                        <div><i class="tdsi-arrow-down-line text-neutral-1-300 cursor-pointer"></i></div>
+                                        <div><i class="tdsi-arrow-down-line text-neutral-1-300 cursor-pointer"></i>
+                                        </div>
                                     </div>
                                     <div class="flex mb-3">
                                         <div class="w-3/4">
                                             <tds-form-field>
-                                                <input tdsInput placeholder="nhập ghi chú" size="sm" />
+                                                <input tdsInput placeholder="nhập ghi chú" size="md" />
                                             </tds-form-field>
                                         </div>
                                         <div class="w-1/4">
-                                            <button tds-button color="primary" size="sm" class="ml-2">
-                                                <i class="tdsi-note-fill text-white mr-3"></i>
+                                            <button tds-button color="primary" size="md" class="ml-2 flex items-center">
+                                                <i class="tdsi-note-fill text-white mr-3 text-header-2"></i>
                                                 Thêm ghi chú
                                             </button>
                                         </div>
@@ -438,174 +440,177 @@
                         </div>
                     </div>
                 </tds-tab>
-                <tds-tab [title]="titleOrder" clsContent="border-t border-neutral-2-200 h-full -mt-px flex flex-col">
+                <tds-tab [title]="titleOrder"
+                    clsContent="border-t border-neutral-2-200 dark:border-d-neutral-1-200 h-full -mt-px flex flex-col overflow-hidden">
                     <ng-template #titleOrder let-active="active">
-                        <div class="flex items-center font-semibold justify-center text-body-2 p-4 relative group cursor-pointer"
-                            [ngClass]='{"text-neutral-1-900":active,"text-neutral-1-400 hover:text-neutral-1-900":!active}'>
-                            <span class="mr-2 flex items-center">Đơn hàng</span>
+                        <div class="flex items-center font-semibold justify-center text-body-2 p-4 ml-1 relative group cursor-pointer"
+                            [ngClass]='{"text-neutral-1-900 dark:text-d-neutral-1-900":active,"text-neutral-1-400 dark:text-d-neutral-1-400 hover:text-neutral-1-900 hover:dark:text-d-neutral-1-900":!active}'>
+                            <span class="flex items-center">Đơn hàng</span>
                             <div [ngClass]="{'block':active,'hidden group-hover:block':!active}"
                                 class="hidden border-b-3 border-primary-1 absolute left-0 right-0 bottom-0 bg-primary-1">
                             </div>
                         </div>
                     </ng-template>
-                    <div class="w-full h-full p-4 text-body-2 text-neutral-1-900 font-medium">
-                        <div class="flex pb-4">
-                            <div class="w-1/2 flex justify-between items-center pr-2">
-                                <div class="flex justify-between items-center">
+                    <div class="w-full h-full p-4 overflow-auto tds-custom-scroll">
+                        <div class="h-full">
+                            <div class="flex pb-4">
+                                <div class="w-1/2 flex justify-between items-center pr-2">
+                                    <div class="flex justify-between items-center">
+                                        <div
+                                            class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
+                                            <i class="tdsi-note-fill text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-title-1">INV01238551</p>
+                                        </div>
+                                    </div>
                                     <div
-                                        class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
-                                        <i class="tdsi-note-fill text-white"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-title-1">INV01238551</p>
+                                        class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
+                                        <p>Chờ xác nhận</p>
                                     </div>
                                 </div>
-                                <div
-                                    class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
-                                    <p>Chờ xác nhận</p>
+                                <div class="w-1/2 flex items-center justify-end pr-4">
+                                    <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
+                                    <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
+                                    <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
                                 </div>
                             </div>
-                            <div class="w-1/2 flex items-center justify-end pr-4">
-                                <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
-                                <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
-                                <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
-                            </div>
-                        </div>
-                        <div class="flex justify-between border-b border-neutral-2-200 py-3">
-                            <div class="flex items-center">
-                                <div class="mr-2">
-                                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
-                                </div>
-                                <div class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-800">
-                                    <p>INV51 - Giày hiphop</p>
-                                    <div>
-                                        <span>3.000.000</span>
+                            <div class="flex justify-between border-b border-neutral-2-200 py-3">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                        <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                    </div>
+                                    <div class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-800">
+                                        <p>INV51 - Giày hiphop</p>
+                                        <div>
+                                            <span>3.000.000</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="flex items-end">
-                                <p class="text-neutral-1-300 text-caption-2 font-regular">x 2</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between border-b border-neutral-2-200 py-3">
-                            <div class="flex items-center">
-                                <div class="mr-2">
-                                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                <div class="flex items-end">
+                                    <p class="text-neutral-1-300 text-caption-2 font-regular">x 2</p>
                                 </div>
-                                <div
-                                    class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-800 truncate">
-                                    <p>INV51 - Giày hiphop INV51 - Giày hiphopINV51 - Giày hiphopINV51 - Giày hiphop</p>
-                                    <div>
-                                        <span>3.000.000</span>
+                            </div>
+                            <div class="flex justify-between border-b border-neutral-2-200 py-3">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                        <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="flex items-end">
-                                <p class="text-neutral-1-300 text-caption-2 font-regular">x 2</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between border-b border-neutral-2-200 py-3">
-                            <div class="flex items-center">
-                                <div class="mr-2">
-                                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
-                                </div>
-                                <div class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-800">
-                                    <p>INV51 - Giày hiphop</p>
-                                    <div>
-                                        <span>3.000.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-end">
-                                <p class="text-neutral-1-300 text-caption-2 font-regular">x 2</p>
-                            </div>
-                        </div>
-                        <div class="flex py-4 text-body-2 font-regular text-neutral-1-900">
-                            <div class="w-1/4">
-                                <p class="pb-4">4 sản phẩm</p>
-                                <p class="pb-4">chiếu khấu (%)</p>
-                                <p class="">Giảm giá</p>
-                            </div>
-                            <div class="w-1/4 font-medium">
-                                <p class="pb-4">9.000.000</p>
-                                <p class="pb-4">0</p>
-                                <p class="">0</p>
-                            </div>
-                            <div class="w-1/4">
-                                <p class="pb-4">Phí giao dịch</p>
-                                <p class="pb-4">Phí đặt cọc</p>
-                                <p class="text-title-1 font-medium">Tổng tiền</p>
-                            </div>
-                            <div class="w-1/4">
-                                <p class="pb-4">0</p>
-                                <p class="pb-4">0</p>
-                                <p class="text-title-1 font-medium text-primary-1">9.000.000</p>
-                            </div>
-                        </div>
-                        <div class="flex pb-4 mt-2">
-                            <div class="w-1/2 flex justify-between items-center pr-2">
-                                <div class="flex justify-between items-center">
                                     <div
-                                        class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
-                                        <i class="tdsi-note-fill text-white"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-title-1">INV01238551</p>
+                                        class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-800 truncate">
+                                        <p>INV51 - Giày hiphop INV51 - Giày hiphopINV51 - Giày hiphopINV51 - Giày hiphop</p>
+                                        <div>
+                                            <span>3.000.000</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
-                                    <p>Chờ xác nhận</p>
+                                <div class="flex items-end">
+                                    <p class="text-neutral-1-300 text-caption-2 font-regular">x 2</p>
                                 </div>
                             </div>
-                            <div class="w-1/2 flex items-center justify-end pr-4">
-                                <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
-                                <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
-                                <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
+                            <div class="flex justify-between border-b border-neutral-2-200 py-3">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                        <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
+                                    </div>
+                                    <div class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-800">
+                                        <p>INV51 - Giày hiphop</p>
+                                        <div>
+                                            <span>3.000.000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-end">
+                                    <p class="text-neutral-1-300 text-caption-2 font-regular">x 2</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex pb-4 mt-2">
-                            <div class="w-1/2 flex justify-between items-center pr-2">
-                                <div class="flex justify-between items-center">
+                            <div class="flex py-4 text-body-2 font-regular text-neutral-1-900">
+                                <div class="w-1/4">
+                                    <p class="pb-4">4 sản phẩm</p>
+                                    <p class="pb-4">chiếu khấu (%)</p>
+                                    <p class="">Giảm giá</p>
+                                </div>
+                                <div class="w-1/4 font-medium">
+                                    <p class="pb-4">9.000.000</p>
+                                    <p class="pb-4">0</p>
+                                    <p class="">0</p>
+                                </div>
+                                <div class="w-1/4">
+                                    <p class="pb-4">Phí giao dịch</p>
+                                    <p class="pb-4">Phí đặt cọc</p>
+                                    <p class="text-title-1 font-medium">Tổng tiền</p>
+                                </div>
+                                <div class="w-1/4">
+                                    <p class="pb-4">0</p>
+                                    <p class="pb-4">0</p>
+                                    <p class="text-title-1 font-medium text-primary-1">9.000.000</p>
+                                </div>
+                            </div>
+                            <div class="flex pb-4 mt-2">
+                                <div class="w-1/2 flex justify-between items-center pr-2">
+                                    <div class="flex justify-between items-center">
+                                        <div
+                                            class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
+                                            <i class="tdsi-note-fill text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-title-1">INV01238551</p>
+                                        </div>
+                                    </div>
                                     <div
-                                        class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
-                                        <i class="tdsi-note-fill text-white"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-title-1">INV01238551</p>
+                                        class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
+                                        <p>Chờ xác nhận</p>
                                     </div>
                                 </div>
-                                <div
-                                    class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
-                                    <p>Chờ xác nhận</p>
+                                <div class="w-1/2 flex items-center justify-end pr-4">
+                                    <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
+                                    <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
+                                    <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
                                 </div>
                             </div>
-                            <div class="w-1/2 flex items-center justify-end pr-4">
-                                <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
-                                <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
-                                <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
-                            </div>
-                        </div>
-                        <div class="flex pb-4 mt-2">
-                            <div class="w-1/2 flex justify-between items-center pr-2">
-                                <div class="flex justify-between items-center">
+                            <div class="flex pb-4 mt-2">
+                                <div class="w-1/2 flex justify-between items-center pr-2">
+                                    <div class="flex justify-between items-center">
+                                        <div
+                                            class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
+                                            <i class="tdsi-note-fill text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-title-1">INV01238551</p>
+                                        </div>
+                                    </div>
                                     <div
-                                        class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
-                                        <i class="tdsi-note-fill text-white"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-title-1">INV01238551</p>
+                                        class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
+                                        <p>Chờ xác nhận</p>
                                     </div>
                                 </div>
-                                <div
-                                    class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
-                                    <p>Chờ xác nhận</p>
+                                <div class="w-1/2 flex items-center justify-end pr-4">
+                                    <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
+                                    <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
+                                    <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
                                 </div>
                             </div>
-                            <div class="w-1/2 flex items-center justify-end pr-4">
-                                <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
-                                <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
-                                <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
+                            <div class="flex pb-4 mt-2">
+                                <div class="w-1/2 flex justify-between items-center pr-2">
+                                    <div class="flex justify-between items-center">
+                                        <div
+                                            class="flex justify-center items-center bg-primary-1 rounded-full w-6 h-6 mr-2">
+                                            <i class="tdsi-note-fill text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-title-1">INV01238551</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex justify-center items-center text-body-2 text-neutral-1-300 w-28 h-6 bg-neutral-3-100 rounded-3xl">
+                                        <p>Chờ xác nhận</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 flex items-center justify-end pr-4">
+                                    <i class="tdsi-reply-fill text-primary-1 mr-1"></i>
+                                    <span class="text-body-2 font-regular text-primary-1 mr-3">Gửi đơn</span>
+                                    <i class="tdsi-arrow-up-line text-neutral-1-300"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
