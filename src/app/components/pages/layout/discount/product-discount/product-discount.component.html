@@ -1,4 +1,4 @@
-<div>
+<div class="flex w-full h-full flex-col">
     <div class="bg-white flex items-center justify-between">
         <div>
             <tds-page-header title="Giảm giá sản phẩm">
@@ -29,10 +29,9 @@
             </button>
         </div>
     </div>
-    <div class="bg-light-50 p-4 text-neutral-1-900">
-        <div class="bg-white border rounded-md">
-            <div class="flex justify-between items-center">
-                <div>
+    <div class="p-4 w-full h-full text-neutral-1-900">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-between items-center px-4">
                     <tds-filter-status [ngModel]='1' (selectChange)="onSelectChange($event)">
                         <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
                         </tds-filter-status-item>
@@ -45,7 +44,6 @@
                         <tds-filter-status-item name='Đã tắt' [value]='5' [count]='10' [disabled]="true">
                         </tds-filter-status-item>
                     </tds-filter-status>
-                </div>
                 <div class="flex px-4">
                     <tds-form-field class="w-96 mr-8">
                         <tds-date-picker class="border-l" [format]="'dd-MM-yyyy'" placeholder="Chọn ngày bắt đầu">
@@ -103,11 +101,11 @@
                                 </div>
                             </tds-dropdown-menu>
                         </span>
-                        <input tdsInput autocomplete="off" placeholder="pat@example.com" [required]='true' />
+                        <input tdsInput autocomplete="off" placeholder="Tìm kiếm sản phẩm" [required]='true' />
                     </tds-form-field>
                 </div>
             </div>
-            <div>
+            <div class="w-full h-full">
                 <tds-table #virtualTable #basicTable [listData]="listOfData" [scroll]="{y: '600px'}">
                     <thead>
                         <tr>

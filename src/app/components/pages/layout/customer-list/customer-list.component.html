@@ -1,31 +1,29 @@
-<div class="text-neutral-1-900">
+<div class="text-neutral-1-900 w-full h-full flex flex-col">
     <div class="p-4 bg-white">
         <h1 class="text-header-1 font-semibold">Danh sách khách hàng</h1>
     </div>
-    <div class="p-4 bg-light-50">
-        <div class="bg-white border rounded-md">
-            <div class="p-4">
-                <div class="flex justify-end">
-                    <div class="mr-2">
-                        <button tds-button size="md" color="primary" class="flex items-center">
-                            Sinh nhật
-                            <div
-                                class="ml-2 w-5 h-5 flex justify-center items-center bg-white rounded-full text-caption-2 font-medium text-primary-1">
-                                <span>2</span>
-                            </div>
-                        </button>
-                    </div>
-                    <div>
-                        <tds-form-field>
-                            <input autocomplete="off" tdsInput placeholder="Tên khách hàng" [required]='true'
-                                class="w-96" />
-                            <span tdsPrefix><i class="tdsi-search-fill"></i></span>
-                        </tds-form-field>
-                    </div>
+    <div class="p-4 w-full h-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-end p-4">
+                <div class="mr-2">
+                    <button tds-button size="md" color="primary" class="flex items-center">
+                        Sinh nhật
+                        <div
+                            class="ml-2 w-5 h-5 flex justify-center items-center bg-white rounded-full text-caption-2 font-medium text-primary-1">
+                            <span>2</span>
+                        </div>
+                    </button>
+                </div>
+                <div>
+                    <tds-form-field>
+                        <input autocomplete="off" tdsInput placeholder="Tên khách hàng" [required]='true'
+                            class="w-96" />
+                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                    </tds-form-field>
                 </div>
             </div>
-            <div class="">
-                <tds-table #table [listData]="listOfData" tableLayout="fixed">
+            <div class="w-full h-full">
+                <tds-table [pageSize]="12" #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>
                             <th width="60px"></th>

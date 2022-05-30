@@ -1,4 +1,4 @@
-<div>
+<div class="h-full w-full flex flex-col">
     <div class="border-b border-b-neutral-2-100 bg-white">
         <div class="flex items-center text-neutral-1-400 text-caption-1 font-regular">
             <tds-page-header title="Đánh giá shop">
@@ -121,8 +121,8 @@
             </div>
         </div>
     </div>
-    <div class="p-4">
-        <div class="border rounded-md bg-white px-4">
+    <div class="p-4 w-full h-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
             <div class="flex justify-between items-center">
                 <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
                     (selectChange)="onSelectChange($event)">
@@ -137,8 +137,8 @@
                     <span tdsPrefix><i class="tdsi-search-fill"></i></span>
                 </tds-form-field>
             </div>
-            <div>
-                <tds-table #virtualTable #basicTable [listData]="listOfData" [scroll]="{ x: '1300px', y: '550px'}">
+            <div class="w-full h-full">
+                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>
                             <th width="196px">Khách hàng</th>
@@ -150,7 +150,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <ng-template tds-virtual-scroll ngFor let-data [ngForOf]="basicTable.data">
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data" >
                             <tr>
                                 <td>
                                     {{ data.name }}

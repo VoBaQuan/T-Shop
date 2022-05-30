@@ -30,8 +30,45 @@
         </div>
     </div>
     <div class="py-4 flex justify-center">
-        <div class="w-3/5 bg-white">
-            <tds-table bordered="true" templateMode>
+        <div class="w-3/5 bg-white border rounded-md">
+            <tds-table showPagination="false" #table [listData]="listOfData" tableLayout="fixed">
+                <thead class="text-body-2 font-medium">
+                    <tr class="rounded-t-md">
+                        <th>Tên danh mục</th>
+                        <th>Người tạo</th>
+                        <th>Ngày tạo</th>
+                        <th>Số sản phẩm</th>
+                        <th>Hiển thị</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody class="text-body-2 font-regular">
+                    <ng-container *ngFor="let data of table.data">
+                        <tr>
+                            <td><button (click)="openCategoryDetails()" tds-flat-button size="sm">{{data.categoryName}}</button></td>
+                            <td>{{data.creater}}</td>
+                            <td>{{data.createDate}}</td>
+                            <td>{{data.products}}</td>
+                            <td><tds-switch [checked]="true" size="md"></tds-switch></td>
+                            <td>
+                                <div>
+                                    <button tds-button-icon color="secondary" size="sm" class="mr-2">
+                                        <span class="flex items-center">
+                                            <i class="tdsi-edit-fill text-neutral-1-500"></i>
+                                        </span>
+                                    </button>
+                                    <button tds-button-icon color="secondary" size="sm">
+                                        <span class="flex items-center">
+                                            <i class="tdsi-trash-fill text-neutral-1-500"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </tds-table>
+            <!-- <tds-table bordered="true" templateMode>
                 <thead>
                     <tr>
                         <th>Tên danh mục</th>
@@ -65,7 +102,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </tds-table>
+            </tds-table> -->
         </div> 
     </div>
 </div>

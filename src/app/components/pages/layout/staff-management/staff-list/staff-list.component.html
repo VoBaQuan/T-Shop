@@ -16,9 +16,9 @@
             </button>
         </div>
     </div>
-    <div class="p-4">
-        <div class="bg-white border rounded-md w-full px-4">
-            <div class="flex items-center justify-between">
+    <div class="p-4 w-full h-full">
+        <div class="bg-white border rounded-md w-full h-full pb-2 flex flex-col">
+            <div class="flex items-center justify-between px-4">
                 <div>
                     <tds-filter-status [ngModel]='1' (selectChange)="onSelectChange($event)">
                         <tds-filter-status-item name='Quản lý nhân viên' [value]='1' [count]='10'>
@@ -34,8 +34,8 @@
                     </tds-form-field>
                 </div>
             </div>
-            <div>
-                <tds-table #basicTable [listData]="listOfData">
+            <div class="w-full h-full">
+                <tds-table [pageSize]="12" #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>
                             <th>Account name</th>

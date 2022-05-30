@@ -1,4 +1,4 @@
-<div class="bg-light-50 w-full flex flex-col items-center h-full">
+<div class="w-full flex flex-col h-full">
     <div class="flex justify-between items-center w-full pr-4 bg-white">
         <tds-page-header title="Danh sách kho hàng">
             <tds-breadcrumb tds-page-header-breadcrumb>
@@ -16,9 +16,9 @@
             </button>
         </div>
     </div>
-    <div class="p-4 w-full h-full bg-light-50">
-        <div class="bg-white border rounded-md">
-            <div class="flex justify-between">
+    <div class="p-4 w-full h-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-between items-center px-4">
                 <div>
                     <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
                         (selectChange)="onSelectChange($event)">
@@ -29,15 +29,13 @@
                         </ng-template>
                     </tds-filter-status>
                 </div>
-                <div class="flex items-center pr-4">
-                    <tds-form-field class="mr-3 w-80">
-                        <input tdsInput autocomplete="off" placeholder="Nhập tên kho" [required]='true' />
-                        <span tdsPrefix><i class="tdsi-search-fill"></i></span>
-                    </tds-form-field>
-                </div>
+                <tds-form-field class="mr-3 w-80">
+                    <input tdsInput autocomplete="off" placeholder="Nhập tên kho" [required]='true' />
+                    <span tdsPrefix><i class="tdsi-search-fill"></i></span>
+                </tds-form-field>
             </div>
-            <div class="w-full" style="height: 500px;">
-                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
+            <div class="w-full h-full">
+                <tds-table [pageSize]="11" #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>
                             <th width="50px"></th>
@@ -53,7 +51,9 @@
                     <tbody>
                         <ng-template ngFor let-data [ngForOf]="basicTable.data">
                             <tr>
-                                <td><tds-checkbox size="md"></tds-checkbox></td>
+                                <td>
+                                    <tds-checkbox size="md"></tds-checkbox>
+                                </td>
                                 <td>{{data.name}}</td>
                                 <td>{{data.code}}</td>
                                 <td>{{data.address}}</td>

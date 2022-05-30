@@ -10,7 +10,7 @@
             </tds-breadcrumb>
         </tds-page-header>
         <div class="flex">
-            <button class="flex items-center" tds-button color="primary" size="sm">
+            <button class="flex items-center" tds-button color="primary" size="md">
                 <i class="tdsi-export-file-fill text-header-2 text-white mr-3"></i>
                 Xuất file đơn hàng
             </button>
@@ -18,7 +18,7 @@
     </div>
     <div class="px-4 py-4 w-full h-full">
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center px-4">
                 <tds-filter-status [ngModel]='1' (selectChange)="onSelectChange($event)">
                     <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
                     </tds-filter-status-item>
@@ -33,7 +33,7 @@
                     <tds-filter-status-item name='Đã hủy' [value]='6' [count]='2'>
                     </tds-filter-status-item>
                 </tds-filter-status>
-                <tds-form-field class="pr-4">
+                <tds-form-field>
                     <input tdsInput class="text-neutral-1-600 w-96" placeholder="Từ khóa" autocomplete="off" />
                     <span tdsPrefix><i class="text-neutral-1-600 tdsi-search-fill"></i></span>
                 </tds-form-field>

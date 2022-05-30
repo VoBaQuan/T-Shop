@@ -9,7 +9,10 @@ interface FilterStatusItemDTO {
 @Component({
   selector: 'app-evaluate-product',
   templateUrl: './evaluate-product.component.html',
-  styleUrls: ['./evaluate-product.component.scss']
+  styleUrls: ['./evaluate-product.component.scss'],
+  host:{
+    class: 'h-full w-full flex'
+  }
 })
 export class EvaluateProductComponent implements OnInit {
   selected = 0;

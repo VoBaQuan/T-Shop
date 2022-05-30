@@ -15,8 +15,17 @@
             <div class="p-4 text-header-1 font-semibold">
                 <h1>Tài khoản ngân hàng</h1>
             </div>
-            <div class="px-16 py-8 flex justify-between items-center">
-                <button (click)="showModal('addbank')">
+            <div class="px-16 py-8 flex gap-x-16">
+                <div class="w-1/3">
+                    <img (click)="showModal('addbank')" class="w-full cursor-pointer" src="/assets/img/Frame 11331.png" alt="">
+                </div>
+                <div class="w-1/3">
+                    <img class="w-full" src="/assets/img/Group 11751.png" alt="">
+                </div>
+                <div class="w-1/3">
+                    <img class="w-full" src="/assets/img/Group 11753.png" alt="">
+                </div>
+                <!-- <button (click)="showModal('addbank')">
                     <img src="/assets/img/Frame 11331.png" alt="">
                 </button>
                 <div>
@@ -24,7 +33,7 @@
                 </div>
                 <div>
                     <img src="/assets/img/Group 11753.png" alt="">
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="bg-white w-4/5 rounded-md border mt-4">
@@ -62,9 +71,9 @@
     </div>
 </div>
 <!-- modal thêm ngân hàng-->
-<tds-modal size="lg" [(visible)]="isVisibleAddBank" [title]="modalTitleAddBank" [content]="modalContentAddBank" [footer]="modalFooterAddBank"
-    (onCancel)="handleCancel('addbank')">
-    <ng-template #modalTitleAddBank>Thêm tài khoản ngân hàng mới</ng-template>
+<tds-modal size="lg" [(visible)]="isVisibleAddBank" [title]="modalTitleAddBank" [content]="modalContentAddBank"
+    [footer]="modalFooterAddBank" (onCancel)="handleCancel('addbank')">
+    <ng-template #modalTitleAddBank><h1 class="text-title-1 font-medium">Thêm tài khoản ngân hàng mới</h1></ng-template>
 
     <ng-template #modalContentAddBank>
         <div class="flex py-4 items-center text-body-2 font-medium">
@@ -127,7 +136,8 @@
             </div>
             <div class="w-4/5">
                 <tds-form-field>
-                    <input tdsInput autocomplete="off" placeholder="Nhập tên chủ tài khoản không dấu, in hoa" [required]='true' />
+                    <input tdsInput autocomplete="off" placeholder="Nhập tên chủ tài khoản không dấu, in hoa"
+                        [required]='true' />
                 </tds-form-field>
             </div>
         </div>
@@ -147,9 +157,9 @@
     </ng-template>
 </tds-modal>
 <!-- modal cập nhật mã pin -->
-<tds-modal size="lg" [(visible)]="isVisibleUpdatePin" [title]="modalTitleUpdatePinCode" [content]="modalContentUpdatePinCode" [footer]="modalFooterUpdatePinCode"
-    (onCancel)="handleCancel('updatepin')">
-    <ng-template #modalTitleUpdatePinCode>Thêm tài khoản ngân hàng mới</ng-template>
+<tds-modal size="lg" [(visible)]="isVisibleUpdatePin" [title]="modalTitleUpdatePinCode"
+    [content]="modalContentUpdatePinCode" [footer]="modalFooterUpdatePinCode" (onCancel)="handleCancel('updatepin')">
+    <ng-template #modalTitleUpdatePinCode><h1 class="text-title-1 font-medium">Cập nhật mã PIN</h1></ng-template>
 
     <ng-template #modalContentUpdatePinCode>
         <div class="flex py-4 items-center text-body-2 font-medium">

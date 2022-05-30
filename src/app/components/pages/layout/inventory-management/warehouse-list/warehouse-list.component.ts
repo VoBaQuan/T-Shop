@@ -13,8 +13,8 @@ interface FilterStatusItemDTO {
   selector: 'app-warehouse-list',
   templateUrl: './warehouse-list.component.html',
   styleUrls: ['./warehouse-list.component.scss'],
-  host: {
-    class: "flex w-full"
+  host:{
+    class: 'h-full w-full flex'
   }
 })
 export class WarehouseListComponent implements OnInit {

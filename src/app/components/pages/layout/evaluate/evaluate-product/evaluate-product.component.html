@@ -1,4 +1,4 @@
-<div>
+<div class="w-full h-full flex flex-col">
     <div class="border-b border-b-neutral-2-100 bg-white">
         <div class="flex items-center text-neutral-1-400 text-caption-1 font-regular">
             <tds-page-header title="Đánh giá sản phẩm">
@@ -115,9 +115,9 @@
             </tds-filter-status>
         </div>
     </div>
-    <div class="p-4">
-        <div class="border rounded-md bg-white px-4">
-            <div class="flex justify-between items-center">
+    <div class="p-4 h-full w-full">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-between items-center px-4">
                 <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
                     (selectChange)="onSelectChange($event)">
                     <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
@@ -131,8 +131,8 @@
                     <span tdsPrefix><i class="tdsi-search-fill"></i></span>
                 </tds-form-field>
             </div>
-            <div>
-                <tds-table #virtualTable #basicTable [listData]="listOfData" [scroll]="{ x: '1300px', y: '550px'}">
+            <div class="w-full h-full">
+                <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>
                             <th>Mã đơn hàng</th>
@@ -146,7 +146,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <ng-template tds-virtual-scroll ngFor let-data [ngForOf]="basicTable.data">
+                        <ng-template ngFor let-data [ngForOf]="basicTable.data" >
                             <tr>
                                 <td>
                                     <button tds-button-flat color="secondary">
@@ -156,8 +156,8 @@
                                 <td class="w-80">
                                     <div class="flex items-start">
                                         <div class="mr-2">
-                                            <tds-avatar [shape]="'square'" [size]="'xl'" tdsSrc="error"
-                                                [isAvatar]="false"></tds-avatar>
+                                            <tds-avatar [shape]="'square'" [size]="'xl'" tdsSrc="error" [isAvatar]="false">
+                                            </tds-avatar>
                                         </div>
                                         <div>
                                             <h1 class="text-body-2 font-medium text-neutral-1-900">Nón hiphop</h1>
@@ -184,9 +184,8 @@
                                         {{data.status}}</tds-tag>
                                 </td>
                                 <td>
-                                    <button tds-flat-button size="sm"
-                                        class="text-info-500">{{data.operationReply}}</button> <span
-                                        class="text-info-500">|</span> <button tds-flat-button size="sm"
+                                    <button tds-flat-button size="sm" class="text-info-500">{{data.operationReply}}</button>
+                                    <span class="text-info-500">|</span> <button tds-flat-button size="sm"
                                         class="text-info-500">{{data.operationReport}}</button>
                                 </td>
                             </tr>

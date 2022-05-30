@@ -1,4 +1,4 @@
-<div>
+<div class="flex w-full h-full flex-col">
     <div class="bg-white flex items-center justify-between">
         <div>
             <tds-page-header title="Giảm giá vận chuyển">
@@ -19,9 +19,9 @@
             <button class="ml-3" tds-button color="secondary">Đóng</button>
         </div>
     </div>
-    <div class="bg-light-50 p-4 text-neutral-1-900">
-        <div class="bg-white border rounded-md">
-            <div class="flex justify-between items-center">
+    <div class="p-4 w-full h-full text-neutral-1-900">
+        <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
+            <div class="flex justify-between items-center px-4">
                 <div>
                     <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
                         (selectChange)="onSelectChange($event)">
@@ -44,7 +44,7 @@
                     </tds-select>
                 </div>
             </div>
-            <div class="w-full" style="height: 700px;">
+            <div class="w-full h-full">
                 <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>

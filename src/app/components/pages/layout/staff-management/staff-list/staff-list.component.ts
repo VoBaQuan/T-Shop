@@ -10,7 +10,7 @@ import { TDSModalService } from 'tmt-tang-ui';
   templateUrl: './staff-list.component.html',
   styleUrls: ['./staff-list.component.scss'],
   host: {
-    class: "flex w-full"
+    class: "flex w-full h-full"
   }
 })
 export class StaffListComponent implements OnInit {
@@ -32,6 +32,132 @@ export class StaffListComponent implements OnInit {
   ]
 
   listOfData: Array<TDSSafeAny> = [
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
+    {
+      accountName: 'Suhappy',
+      staffCode: 'NV123456',
+      phone: '0775546393',
+      email: 'Sunhappy@gmail.com',
+      permision: 'NBH- toàn quyên truy cập',
+    },
     {
       accountName: 'Suhappy',
       staffCode: 'NV123456',

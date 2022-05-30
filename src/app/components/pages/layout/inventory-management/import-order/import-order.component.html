@@ -47,7 +47,7 @@
                     </button>
                 </div>
             </div>
-            <tds-table #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
+            <tds-table [pageSize]="11" #table [listData]="listOfData" tableLayout="fixed" [scroll]="{y:'auto'}">
                 <thead class="text-body-2 font-medium">
                     <tr>
                         <th width="60px"></th>
@@ -135,7 +135,7 @@
                                     </thead>
                 <tbody>
                     <tr *ngFor="let data of inforOrders">
-                        <td><img src="/assets/img/Rectangle 2544.png" alt=""></td>
+                        <td><tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar></td>
                         <td>{{data.ordercode}}</td>
                         <td>{{data.productname}}</td>
                         <td>{{data.productcode}}</td>

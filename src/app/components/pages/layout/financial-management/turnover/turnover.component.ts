@@ -4,7 +4,10 @@ import { TDSSafeAny } from 'tmt-tang-ui';
 @Component({
   selector: 'app-turnover',
   templateUrl: './turnover.component.html',
-  styleUrls: ['./turnover.component.scss']
+  styleUrls: ['./turnover.component.scss'],
+  host: {
+    class: 'flex w-full h-full'
+  }
 })
 export class TurnoverComponent implements OnInit {
   listOfData1:Array<TDSSafeAny> = [

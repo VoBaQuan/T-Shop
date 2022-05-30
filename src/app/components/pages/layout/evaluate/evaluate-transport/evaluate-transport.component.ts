@@ -9,7 +9,10 @@ interface FilterStatusItemDTO {
 @Component({
   selector: 'app-evaluate-transport',
   templateUrl: './evaluate-transport.component.html',
-  styleUrls: ['./evaluate-transport.component.scss']
+  styleUrls: ['./evaluate-transport.component.scss'],
+  host:{
+    class: 'h-full w-full flex'
+  }
 })
 export class EvaluateTransportComponent implements OnInit {
   selected = 0;
@@ -86,7 +89,8 @@ export class EvaluateTransportComponent implements OnInit {
       status: 'Chưa trả lời',
       operationReply: 'Trả lời',
       operationReport: 'Báo cáo'
-    },{
+    },
+    {
       orderCode: 'IV055465687',
       name: 'Sun Happy',
       numberphone: '+84941641408',
@@ -96,6 +100,157 @@ export class EvaluateTransportComponent implements OnInit {
       operationReply: 'Trả lời',
       operationReport: 'Báo cáo'
     },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+    {
+      orderCode: 'IV055465687',
+      name: 'Sun Happy',
+      numberphone: '+84941641408',
+      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
+      evaluatedate: '20/10/2021',
+      status: 'Chưa trả lời',
+      operationReply: 'Trả lời',
+      operationReport: 'Báo cáo'
+    },
+
   ];
   constructor() { }
 
@@ -105,5 +260,8 @@ export class EvaluateTransportComponent implements OnInit {
   }
   onModelChange(value: TDSSafeAny) {
     console.log('ngModelChange', value)
+  }
+  log(str: any) {
+    console.log(str)
   }
 }

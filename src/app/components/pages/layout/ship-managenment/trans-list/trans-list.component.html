@@ -13,7 +13,8 @@
     <div class="px-4 py-4 w-full h-full">
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
             <div class="flex justify-between items-center">
-                <tds-filter-status [ngModel]="1" (selectChange)="onSelectChange($event)" class="flex justify-between items-center">
+                <tds-filter-status [ngModel]="1" (selectChange)="onSelectChange($event)"
+                    class="flex justify-between items-center">
                     <tds-filter-status-item name='Tất cả' [value]='1' [count]='10'>
                     </tds-filter-status-item>
                     <tds-filter-status-item name='Chưa xử lý' [value]='2' [count]='20'>
@@ -55,7 +56,8 @@
                                     class="text-primary-1 font-medium">{{data.orderCode}}</button>
                             </td>
                             <td>
-                                <span>{{ data.customer }}</span><span><i class="tdsi-send-fill text-primary-1 ml-1"></i></span>
+                                <span>{{ data.customer }}</span><span><i
+                                        class="tdsi-send-fill text-primary-1 ml-1"></i></span>
                                 <div class="flex justify-start items-center">
                                     <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
                                     <span class="text-neutral-1-400">{{data.phonenumber}}</span>
@@ -84,8 +86,14 @@
                             <td>{{ data.datetake }}</td>
                             <td>{{ data.orderdate }}</td>
                             <td>
-                                <button ngClass="flex justify-center items-center" *ngIf="data.operration=='Chuẩn bị hàng'" (click)="showModal('prepare')" tds-flat-button size="sm" class="text-info-500"><i class="text-title-1 tdsi-product-line text-info-500 mr-2"></i>{{data.operration}}</button>
-                                <button ngClass="flex justify-center items-center" *ngIf="data.operration=='In phiếu ship'" (click)="showModal('prepare')" tds-flat-button size="sm" class="text-info-500"><i class="text-title-1 tdsi-print-fill text-info-500 mr-2"></i>{{data.operration}}</button>
+                                <button ngClass="flex justify-center items-center"
+                                    *ngIf="data.operration=='Chuẩn bị hàng'" (click)="showModal('prepare')"
+                                    tds-flat-button size="sm" class="text-info-500"><i
+                                        class="text-title-1 tdsi-product-line text-info-500 mr-2"></i>{{data.operration}}</button>
+                                <button ngClass="flex justify-center items-center"
+                                    *ngIf="data.operration=='In phiếu ship'" (click)="showModal('prepare')"
+                                    tds-flat-button size="sm" class="text-info-500"><i
+                                        class="text-title-1 tdsi-print-fill text-info-500 mr-2"></i>{{data.operration}}</button>
                             </td>
                         </tr>
                         <tr [expand]="expandSet.has(data.id)"
@@ -109,7 +117,7 @@
                                     </thead>
                 <tbody>
                     <tr *ngFor="let data of inforOrders">
-                        <td><img src="/assets/img/Rectangle 2544.png" alt=""></td>
+                        <td><tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar></td>
                         <td>{{data.ordercode}}</td>
                         <td>{{data.productname}}</td>
                         <td>{{data.productcode}}</td>
@@ -124,10 +132,12 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
-                            <span>2 sản phẩm</span>
-                            <span>Phí giao hàng</span>
-                            <span class="text-title-1 font-medium">Tổng tiền</span>
+                        <td>
+                            <div class="flex flex-col items-end text-body-2 font-regular text-neutral-1-900">
+                                <span>2 sản phẩm</span>
+                                <span>Phí giao hàng</span>
+                                <span class="text-title-1 font-medium">Tổng tiền</span>
+                            </div>
                         </td>
                         <td>
                             <div class="flex justify-end">
@@ -161,7 +171,7 @@
         <div class="flex flex-col justify-between text-body-2 font-medium text-neutral-1-900">
             <div class="flex flex-col justify-between items-center">
                 <div>
-                    <img src="/assets/img/Rectangle 272ss8.png" alt="">
+                    <tds-avatar [shape]="'square'" [size]="'lg'" tdsSrc="error"></tds-avatar>
                 </div>
                 <span class="mt-2">Giao hàng nhanh</span>
             </div>
