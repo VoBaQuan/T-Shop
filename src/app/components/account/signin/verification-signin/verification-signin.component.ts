@@ -1,15 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { TDSHelperString } from 'tmt-tang-ui';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-verification-code',
-  templateUrl: './verification-code.component.html',
-  styleUrls: ['./verification-code.component.scss'],
+  selector: 'app-verification-signin',
+  templateUrl: './verification-signin.component.html',
+  styleUrls: ['./verification-signin.component.scss'],
   host: {
     class: "flex w-full item-center justify-center focus:outline-none"
   }
 })
-export class VerificationCodeComponent implements OnInit {
+export class VerificationSigninComponent implements OnInit {
   showBorder: boolean = false;
   text1 = '';
   text2 = '';
@@ -38,7 +37,7 @@ export class VerificationCodeComponent implements OnInit {
         this.gantext(e, stt);
       }
     }
-    
+
   }
 
   gantext(e: any, text: string) {
@@ -70,5 +69,4 @@ export class VerificationCodeComponent implements OnInit {
         this.text6 = e.target.value;
     }
   }
-
 }

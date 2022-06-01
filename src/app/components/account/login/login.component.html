@@ -15,27 +15,23 @@
         <div class="w-1/2 flex justify-center items-center">
             <div class="w-11/12 shadow-md border border-neutral-2-200 px-8 py-8">
                 <h1 class="text-heading-2 font-semibold">Đăng Nhập</h1>
-
                 <tds-form-field class="mt-9">
                     <tds-label>Tài khoản</tds-label>
-                    <input tdsInput placeholder="Tên tài khoản" size="md" />
+                    <input tdsInput placeholder="Nhập email/số điện thoại" size="md" />
                 </tds-form-field>
 
                 <tds-form-field class="mt-9">
                     <tds-label>Mật Khẩu</tds-label>
-                    <input tdsInput placeholder="********" size="md" />
+                    <input tdsInput placeholder="Nhập mật khẩu" size="md" />
                 </tds-form-field>
-
-
                 <div class="mt-5">
                     <tds-checkbox class="text-neutral-1-700 text-title-1 font-medium">Ghi nhớ tài khoản</tds-checkbox>
-                    <button routerLink="/account/dat-lai-mat-khau" class="text-primary-1 text-body-1 font-regular"
+                    <button type="button" routerLink="/account/quenmatkhau/dat-lai-mat-khau" class="text-primary-1 text-body-1 font-regular"
                         tds-flat-button size="md">Quên mật khẩu</button>
                 </div>
-                <button routerLink="/account/chon-cua-hang" class="w-full mt-9" tds-button color="primary">Đăng nhập</button>
+                <button type="submit" routerLink="/account/dang-nhap/chon-cua-hang" class="w-full mt-9" tds-button color="primary">Đăng nhập</button>
             </div>
         </div>
     </div>
 </div>
-
 

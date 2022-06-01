@@ -5,12 +5,14 @@ import { CommonModule } from '@angular/common';
 import { SigninRoutingModule } from './signin-routing.module';
 import { SigninFormComponent } from './signin-form/signin-form.component';
 import { TDSFormFieldModule, TDSInputModule, TDSPageHeaderModule, TDSHeaderModule, TDSButtonModule, TDSButtonMenuModule, TDSButtonSplit, TDSButtonSpitModule, TDSBreadCrumbModule, TDSCheckBoxModule, TDSTabsModule, TDSDropDownModule, TDSTagModule, TDSAvatarModule, TDSModalModule, TDSSwitchModule, TDSTimePickerModule, TDSCollapseModule, TDSTableModule, TDSFilterStatusModule, TDSBadgeModule, TDSTimelineModule, TDSSelectModule, TDSUploadModule, TDSRadioModule, TDSDatePickerModule, TDSStepsModule, TDSRateModule, TDSEmptyModule } from 'tmt-tang-ui';
+import { VerificationSigninComponent } from './verification-signin/verification-signin.component';
 
 
 @NgModule({
   declarations: [
     SigninNumberphoneComponent,
-    SigninFormComponent
+    SigninFormComponent,
+    VerificationSigninComponent
   ],
   imports: [
     CommonModule,

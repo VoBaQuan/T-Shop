@@ -1,3 +1,4 @@
+import { VerificationSigninComponent } from './signin/verification-signin/verification-signin.component';
 import { SigninFormComponent } from './signin/signin-form/signin-form.component';
 import { SigninNumberphoneComponent } from './signin/signin-numberphone/signin-numberphone.component';
 import { CreatNewPasswordComponent } from './forgot-password/creat-new-password/creat-new-password.component';
@@ -25,31 +26,35 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
-        path:'account/chon-cua-hang',
+        path:'account/dang-nhap/chon-cua-hang',
         component: ChooseStoreComponent
       },
       {
-        path: 'account/tao-shop-moi',
+        path: 'account/dang-nhap/tao-shop-moi',
         component: CreatNewShopComponent
       },
       {
-        path: 'account/dat-lai-mat-khau',
+        path: 'account/quenmatkhau/dat-lai-mat-khau',
         component: ResetPasswordComponent
       },
       {
-        path: 'account/nhap-ma-xac-minh',
+        path: 'account/quenmatkhau/nhap-ma-xac-minh',
         component: VerificationCodeComponent
       },
       {
-        path: 'account/tao-matkhau-moi',
+        path: 'account/quenmatkhau/tao-matkhau-moi',
         component: CreatNewPasswordComponent
       },
       {
-        path: 'account/dangky',
+        path: 'account/dang-ky',
         component: SigninNumberphoneComponent
       },
       {
-        path: 'account/thongtindangky',
+        path: 'account/dang-ky/nhap-ma-xac-minh',
+        component: VerificationSigninComponent
+      },
+      {
+        path: 'account/dang-ky/thongtin-dangky',
         component: SigninFormComponent
       },
     ],
