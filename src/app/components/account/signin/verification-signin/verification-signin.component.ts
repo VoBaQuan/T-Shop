@@ -1,3 +1,4 @@
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,68 +6,48 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './verification-signin.component.html',
   styleUrls: ['./verification-signin.component.scss'],
   host: {
-    class: "flex w-full item-center justify-center focus:outline-none"
+    class: "flex w-full item-center justify-center"
   }
 })
 export class VerificationSigninComponent implements OnInit {
-  showBorder: boolean = false;
-  text1 = '';
-  text2 = '';
-  text3 = '';
-  text4 = '';
-  text5 = '';
-  text6 = '';
-  constructor() { }
+  verificationForm!: FormGroup
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.verificationForm = this.fb.group({
+      code1: ['',Validators.required],
+      code2: ['',Validators.required],
+      code3: ['',Validators.required],
+      code4: ['',Validators.required],
+      code5: ['',Validators.required],
+      code6: ['',Validators.required],
+    })
   }
-  // Auto focus input
-  move(e: any, p: any, c: any, n: any, stt: string) {
+
+   // Auto focus input
+   move(event: any, p: any, c: any, n: any) {
+    // debugger
     var length = c.value.length;
     var maxlength = c.getAttribute('maxlength');
     if (length == maxlength) {
       if (n != "") {
         n.focus();
-        this.gantext(e, stt);
       }
     }
-    debugger
-    if (e.key == "Backspace") {
+    if (event.key == "Backspace") {
       if (p != "") {
         p.focus();
-        this.gantext(e, stt);
       }
     }
-
   }
-
-  gantext(e: any, text: string) {
-    switch (text) {
-      case '1': {
-        this.text1 = e.target.value;
-        break;
-      }
-      case '2': {
-        this.text2 = e.target.value;
-        break;
-      }
-      case '3': {
-        this.text3 = e.target.value;
-        break;
-      }
-      case '4': {
-        this.text4 = e.target.value;
-        break;
-      }
-      case '5': {
-        this.text5 = e.target.value;
-        break;
-      }
-      case '6':
-        this.text6 = e.target.value;
-        break;
-      default:
-        this.text6 = e.target.value;
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
     }
+    return true;
+  }
+  onSubmit(){
+    console.log(this.verificationForm)
   }
 }

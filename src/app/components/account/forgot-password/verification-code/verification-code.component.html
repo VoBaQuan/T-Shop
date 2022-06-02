@@ -9,48 +9,48 @@
                 <p class="text-center text-body-1 font-regular text-neutral-1-500">Mã xác minh của bạn sẽ được gửi bằng
                     tin nhắn đến (+84) 090681202</p>
                 <div class="py-8">
-                    <div class="flex flex-row justify-center text-center px-2">
-                        <div class="flex flex-col justify-center items-center mr-5">
-                            <input autofocus #txt1 (keyup)="move($event,'',txt1,txt2,'1')"
-                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
-                                type="tel" inputmode="numeric" maxlength="1" />
-                            <div [ngClass]="text1!=''?'bg-primary-1':'bg-neutral-1-300'" class=" h-0.5 w-10"></div>
-                        </div>
-                        <div class="flex flex-col justify-center items-center mr-5">
-                            <input #txt2 (keyup)="move($event,txt1,txt2,txt3,'2')"
-                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
+                    <form [formGroup]="verificationForm" (ngSubmit)="onSubmit" class="flex gap-x-5 justify-center text-center px-6">
+                        <div class="w-1/6 flex flex-col justify-center items-center">
+                            <input autofocus #txt1 (keyup)="move($event,'',txt1,txt2)" (keypress)="numberOnly($event)" [required]="true" formControlName="code1"
+                                class="w-full text-neutral-1-900 font-medium text-header-2 h-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
                                 type="text" maxlength="1" />
-                            <div [ngClass]="text2!=''?'bg-primary-1':'bg-neutral-1-300'" class="h-0.5 w-10"></div>
+                            <div [ngClass]="txt1.value?'bg-primary-1':'bg-neutral-1-500'" class=" h-0.5 w-full rounded-full"></div>
                         </div>
-                        <div class="flex flex-col justify-center items-center mr-5">
-                            <input #txt3 (keyup)="move($event,txt2,txt3,txt4,'3')"
-                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
+                        <div class="w-1/6 flex flex-col justify-center items-center">
+                            <input #txt2 (keyup)="move($event,txt1,txt2,txt3)" (keypress)="numberOnly($event)" [required]="true" formControlName="code2"
+                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-full text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
                                 type="text" maxlength="1" />
-                            <div [ngClass]="text3!=''?'bg-primary-1':'bg-neutral-1-300'" class="h-0.5 w-10"></div>
+                            <div [ngClass]="txt2.value?'bg-primary-1':'bg-neutral-1-500'" class=" h-0.5 w-full rounded-full"></div>
                         </div>
-                        <div class="flex flex-col justify-center items-center mr-5">
-                            <input #txt4 (keyup)="move($event,txt3,txt4,txt5,'4')"
-                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
+                        <div class="w-1/6 flex flex-col justify-center items-center">
+                            <input #txt3 (keyup)="move($event,txt2,txt3,txt4)" (keypress)="numberOnly($event)" [required]="true" formControlName="code3"
+                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-full text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
                                 type="text" maxlength="1" />
-                            <div [ngClass]="text4!=''?'bg-primary-1':'bg-neutral-1-300'" class="h-0.5 w-10"></div>
+                            <div [ngClass]="txt3.value?'bg-primary-1':'bg-neutral-1-500'" class=" h-0.5 w-full rounded-full"></div>
                         </div>
-                        <div class="flex flex-col justify-center items-center mr-5">
-                            <input #txt5 (keyup)="move($event,txt4,txt5,txt6,'5')"
-                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
+                        <div class="w-1/6 flex flex-col justify-center items-center"> 
+                            <input #txt4 (keyup)="move($event,txt3,txt4,txt5)" (keypress)="numberOnly($event)" [required]="true" formControlName="code4"
+                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-full text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
                                 type="text" maxlength="1" />
-                            <div [ngClass]="text5!=''?'bg-primary-1':'bg-neutral-1-300'" class="h-0.5 w-10"></div>
+                            <div [ngClass]="txt4.value?'bg-primary-1':'bg-neutral-1-500'" class=" h-0.5 w-full rounded-full"></div>
                         </div>
-                        <div class="flex flex-col justify-center items-center mr-5">
-                            <input #txt6 (keyup)="move($event,txt5,txt6,'','6')"
-                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-10 text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
+                        <div class="w-1/6 flex flex-col justify-center items-center">
+                            <input #txt5 (keyup)="move($event,txt4,txt5,txt6)" (keypress)="numberOnly($event)" [required]="true" formControlName="code5"
+                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-full text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
                                 type="text" maxlength="1" />
-                            <div [ngClass]="text6!=''?'bg-primary-1':'bg-neutral-1-300'" class="h-0.5 w-10"></div>
+                            <div [ngClass]="txt5.value?'bg-primary-1':'bg-neutral-1-500'" class=" h-0.5 w-full rounded-full"></div>
                         </div>
-                    </div>
+                        <div class="w-1/6 flex flex-col justify-center items-center">
+                            <input #txt6 (keyup)="move($event,txt5,txt6,'')" (keypress)="numberOnly($event)" [required]="true" formControlName="code6"
+                                class="text-neutral-1-900 font-medium text-header-2 h-10 w-full text-center bg-transparent border-transparent focus:border-transparent focus:ring-0"
+                                type="text" maxlength="1" />
+                            <div [ngClass]="txt6.value?'bg-primary-1':'bg-neutral-1-500'" class=" h-0.5 w-full rounded-full"></div>
+                        </div>
+                    </form>
                 </div>
                 <span class="text-title-1 text-neutral-1-500">Yêu cầu một mã mới sau <span
                         class="text-primary-1">30</span> giây</span>
-                <button routerLink="/account/tao-matkhau-moi"
+                <button (click)="onSubmit" [disabled]="!verificationForm.valid" routerLink="/account/dang-ky/thongtin-dangky"
                     class="w-full mt-8 text-title-1 font-medium flex justify-center items-center" tds-button
                     color="primary">Tiếp tục</button>
             </div>

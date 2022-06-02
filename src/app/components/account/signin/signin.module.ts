@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninNumberphoneComponent } from './signin-numberphone/signin-numberphone.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -46,7 +46,8 @@ import { VerificationSigninComponent } from './verification-signin/verification-
     TDSDatePickerModule,
     TDSStepsModule,
     TDSRateModule,
-    TDSEmptyModule
+    TDSEmptyModule,
+    ReactiveFormsModule
   ]
 })
 export class SigninModule { }

@@ -11,26 +11,29 @@
             </div>
         </div>
         <div class="w-1/2">
-            <div class="shadow-md border border-neutral-2-200 rounded-md px-8 py-8 mt-16">
+            <form [formGroup]="numberPhoneForm" (ngSubmit)="onSubmit"
+                class="shadow-md border border-neutral-2-200 rounded-md px-8 py-8 mt-16">
                 <h1 class="text-heading-2 font-semibold text-neutral-1-800 text-center mb-8">Đăng ký</h1>
                 <label class="text-body-2 font-medium text-neutral-1-900">Số điện thoại</label>
                 <tds-form-field class="w-full mt-2">
-                    <input tdsInput class="text-neutral-1-600" autocomplete="off" />
+                    <input tdsInput class="text-neutral-1-600" [required]="true" formControlName="numberPhone" />
                     <span class="flex items-center" tdsPrefix>
                         <div>
                             <img src="/assets/img/Frame 11143.png" alt="">
                         </div>
-                        <tds-select valueField="id" textField="name" [ngModel]="pageSize" placeholder='select item'
-                            [data]="listPageSize" (ngModelChange)="onChangePageSize($event)"
-                            classIcon="tdsi-arrow-down-fill">
+                        <tds-select valueField="id" textField="name" [ngModel]="pageSize" [data]="listPageSize"
+                            (ngModelChange)="onChangePageSize($event)" classIcon="tdsi-arrow-down-fill" [ngModelOptions]="{standalone: true}">
                         </tds-select>
                     </span>
+                    <tds-error>Vui lòng nhập điện thoại</tds-error>
                 </tds-form-field>
-                <button routerLink="/account/dang-ky/nhap-ma-xac-minh" class="flex justify-center items-center w-full mt-8 text-title-1 font-medium" tds-button
+                <button (click)="onSubmit" [disabled]="!numberPhoneForm.valid"
+                    routerLink="/account/dang-ky/nhap-ma-xac-minh"
+                    class="flex justify-center items-center w-full mt-8 text-title-1 font-medium" tds-button
                     color="primary">
                     Xác nhận
                 </button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

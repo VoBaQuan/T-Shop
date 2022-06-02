@@ -4,56 +4,68 @@
             <img src="/assets/img/Waiting Approve 2.png" alt="">
         </div>
         <div class="w-1/2 flex flex-col justify-center px-16 overflow-hidden h-full py-5">
-            <div
+            <form [formGroup]="createNewShopForm" (ngSubmit)="onSubmit"
                 class="w-full overflow-auto tds-custom-scroll text-body-2 font-medium text-neutral-1-900 border border-neutral-2-200 shadow-md rounded p-8">
+
                 <h1 class="text-heading-2 font-semibold mb-9 text-center">Đăng ký shop mới</h1>
+
                 <tds-form-field class="mb-6">
-                    <tds-label>Tên shop <span class="text-error-500">*</span> </tds-label>
-                    <input tdsInput autocomplete="off" placeholder="Nhập tên shop" />
+                    <tds-label>Tên shop</tds-label>
+                    <input tdsInput autocomplete="off" placeholder="Nhập tên shop" [required]="true"
+                        formControlName="shopname" />
+                        <tds-error>Vui lòng nhập tên shop</tds-error>
                 </tds-form-field>
 
                 <label for="">Tỉnh thành</label>
                 <tds-form-field class="mb-6 mt-2">
                     <tds-select valueField="id" textField="name" placeholder='Chọn tỉnh thành' disabledField="isActive"
-                        [formControl]="persondisplayWith" [required]='true' [data]="contactOptions" [allowClear]="true">
+                        [required]='true' [data]="contactOptions" [allowClear]="true">
                     </tds-select>
-                    <tds-error>Validation message text</tds-error>
                 </tds-form-field>
 
                 <label for="">Quận huyện</label>
                 <tds-form-field class="mb-6 mt-2">
                     <tds-select valueField="id" textField="name" placeholder='Chọn Quận huyện' disabledField="isActive"
-                        [formControl]="persondisplayWith" [required]='true' [data]="contactOptions" [allowClear]="true">
+                        [required]='true' [data]="contactOptions" [allowClear]="true">
                     </tds-select>
-                    <tds-error>Validation message text</tds-error>
                 </tds-form-field>
 
                 <label for="">Phường xã</label>
                 <tds-form-field class="mb-6 mt-2">
                     <tds-select valueField="id" textField="name" placeholder='Chọn phường xã' disabledField="isActive"
-                        [formControl]="persondisplayWith" [required]='true' [data]="contactOptions" [allowClear]="true">
+                        [required]='true' [data]="contactOptions" [allowClear]="true">
                     </tds-select>
-                    <tds-error>Validation message text</tds-error>
                 </tds-form-field>
 
                 <tds-form-field class="mb-6 mt-2">
-                    <tds-label>Tên shop <span class="text-error-500">*</span> </tds-label>
-                    <input tdsInput autocomplete="off" placeholder="Số nhà, tên phường, thôn/ấp..." />
+                    <tds-label>Địa chỉ</tds-label>
+                    <input tdsInput autocomplete="off" placeholder="Số nhà, tên phường, thôn/ấp..." [required]="true"
+                        formControlName="address" />
+                        <tds-error>Vui lòng nhập địa chỉ</tds-error>
                 </tds-form-field>
 
                 <tds-form-field>
                     <tds-label>Địa chỉ email</tds-label>
-                    <input tdsInput autocomplete="off" placeholder="Nhập email liên hệ của shop" [formControl]="email"
+                    <input tdsInput autocomplete="off" placeholder="Nhập email liên hệ của shop" formControlName="email"
                         [required]='true' />
-                    <tds-error *ngIf="email.invalid">{{getErrorMessage(email)}}</tds-error>
+                        <tds-error>
+                            <span *ngIf="createNewShopForm.controls.email.hasError('required')">Vui lòng nhập email</span>
+                            <span *ngIf="createNewShopForm.controls.email.hasError('email')">Email không hợp lệ</span>
+                        </tds-error>
                 </tds-form-field>
 
                 <tds-form-field class="mt-6">
-                    <tds-label>Số điện thoại <span class="text-error-500">*</span> </tds-label>
-                    <input tdsInput autocomplete="off" placeholder="Nhập số điện thoại liên hệ của shop" />
+                    <tds-label>Số điện thoại</tds-label>
+                    <input tdsInput autocomplete="off" placeholder="Nhập số điện thoại liên hệ của shop"
+                        [required]="true" formControlName="numberphone" />
+                        <tds-error>Số điện thoại không hợp lệ</tds-error>
                 </tds-form-field>
-                <button routerLink="/pages/trangchu" class="w-full text-title-1 font-medium mt-9 flex justify-between items-center" tds-button color="primary">Đăng nhập</button>
-            </div>
+
+                <button (click)="onSubmit" routerLink="/pages/trangchu" [disabled]="!createNewShopForm.valid"
+                    class="w-full text-title-1 font-medium mt-9 flex justify-between items-center" tds-button
+                    color="primary">Đăng nhập</button>
+
+            </form>
         </div>
     </div>
 </div>

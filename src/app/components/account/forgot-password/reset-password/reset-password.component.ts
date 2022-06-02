@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class ResetPasswordComponent implements OnInit {
+  resetPassForm!: FormGroup
+
   pageSize = 20;
   listPageSize = [
     { id: 10, name: 10 },
@@ -17,11 +20,21 @@ export class ResetPasswordComponent implements OnInit {
     { id: 100, name: 100 },
     { id: 200, name: 200 },
   ]
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.resetPassForm = this.fb.group({
+      numberPhone: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^[0-9]{10}$/i)
+      ])]
+    })
   }
+
   onChangePageSize(data: any) {
     console.log(data);
+  }
+  onSubmit(){
+    console.log(this.resetPassForm)
   }
 }

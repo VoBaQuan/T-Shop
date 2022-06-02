@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 // import { TDSHeaderModule, TDSFormFieldModule, TDSInputModule, TDSDropDownModule, TDSButtonModule, TDSButtonMenuModule } from 'tmt-tang-ui';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -47,8 +48,8 @@ import { FormsModule } from '@angular/forms';
     TDSDatePickerModule,
     TDSStepsModule,
     TDSRateModule,
-    TDSEmptyModule
-    
+    TDSEmptyModule,
+    ReactiveFormsModule
   ]
 })
 export class ForgotPasswordModule { }
