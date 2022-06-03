@@ -1,3 +1,4 @@
+import { CustomerService } from './../services/customer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class CustomerListComponent implements OnInit {
+  customers: any;
   expandSet = new Set<number>();
 
   listOfData = [
@@ -329,9 +331,13 @@ export class CustomerListComponent implements OnInit {
     },
     
   ]
-  constructor() { }
+  constructor(private customer: CustomerService) { }
 
   ngOnInit(): void {
+    this.customer.getCustomerList().subscribe(res => {  
+      // console.log(res)
+      this.customers = res
+    })
   }
   onExpandChange(id: number, checked: boolean): void {
     if (checked) {

@@ -3,7 +3,7 @@ import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 import { TDSButtonModule, TDSButtonMenuModule, TDSFormFieldModule, TDSInputModule, TDSCheckBoxModule, TDSSelectModule, TDSHeaderModule, TDSAvatarModule } from 'tmt-tang-ui';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AccountRoutingModule } from './account-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreatNewShopComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     AccountRoutingModule,
     FormsModule,

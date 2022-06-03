@@ -21,7 +21,7 @@ import { CustomerListComponent } from './layout/customer-list/customer-list.comp
 import { PurchasingHistoryComponent } from './layout/purchasing-history/purchasing-history.component';
 import { TDSFormFieldModule, TDSInputModule, TDSPageHeaderModule, TDSHeaderModule, TDSButtonModule, TDSButtonMenuModule, TDSButtonSplit, TDSButtonSpitModule, TDSBreadCrumbModule, TDSCheckBoxModule, TDSTabsModule, TDSDropDownModule, TDSTagModule, TDSAvatarModule, TDSModalModule, TDSSwitchModule, TDSTimePickerModule, TDSCollapseModule, TDSTableModule, TDSFilterStatusModule, TDSBadgeModule, TDSTimelineModule, TDSSelectModule, TDSDatePickerModule, TDSRateModule } from 'tmt-tang-ui';
 import { MarketingComponent } from './layout/marketing/marketing.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { MarketingComponent } from './layout/marketing/marketing.component';
        MarketingComponent,
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     FormsModule,
     PagesRoutingModule,
