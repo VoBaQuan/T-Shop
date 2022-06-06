@@ -1,6 +1,5 @@
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { CustomValidators } from '../providers/CustomValidators';
 const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
 
 
@@ -26,21 +25,20 @@ export class SigninFormComponent implements OnInit {
           Validators.pattern(PASSWORD_PATTERN)
         ])
       ],
-      retype: new FormControl (
+      retype: [
         '',
         Validators.compose([
           Validators.required,
           Validators.minLength(8),
           Validators.pattern(PASSWORD_PATTERN),
         ])
-      )
+      ]
     },
-    {
-      validator: this.checkPassword
-    }
-    // CustomValidators.mustMatch('password', 'retype')
-);
-    
+      {
+        validator: this.checkPassword
+      }
+    );
+
   }
 
   ngOnInit(): void {
@@ -52,6 +50,24 @@ export class SigninFormComponent implements OnInit {
   checkPassword(group: FormGroup) {
     let pass = group.controls.password.value;
     let confirmPassword = group.controls.retype.value;
-    return pass === confirmPassword ? null : { notSame: true }
+
+    const error = pass === confirmPassword ? null : { notSame: true }
+    let errorOfRetype = {
+      ...group.controls.retype.errors
+    }
+    if (error != null) {
+      errorOfRetype = {
+        ...errorOfRetype,
+        ...error
+      }
+    } else {
+      delete errorOfRetype['notSame'];
+    }
+    if (Object.keys(errorOfRetype).length == 0) {
+      group.controls.retype.setErrors(null);
+    } else {
+      group.controls.retype.setErrors(errorOfRetype);
+    }
+    return error;
   }
 }

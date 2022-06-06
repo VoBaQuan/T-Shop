@@ -1,5 +1,12 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
+export interface userDTO {
+  phoneNumber: string,
+  password: string,
+}
 
 @Component({
   selector: 'app-login',
@@ -11,16 +18,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup
-  constructor(private fb: FormBuilder) { }
+  loginWithPasswordData: userDTO = {phoneNumber: '', password: ''}
+  // loginWithPasswordData!: userDTO 
+  constructor(
+    private fb: FormBuilder, 
+    private auth: AuthService,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.compose([Validators.required, Validators.pattern(/^[0-9]{10}$/i)])],
       password: ['', [Validators.required]]
     })
   }
 
   onSubmit() {
     console.log(this.loginForm)
+    this.loginWithPassword();
   }
+
+  loginWithPassword() {
+    const model = this.perModel();
+    this.auth.loginUser(model)
+      .subscribe(
+        res => {
+          localStorage.setItem('accessToken', res.accessToken)
+          this.router.navigate(['/account/dang-nhap/chon-cua-hang'])
+        },
+        err => console.log(err),
+      )
+  }
+
+  perModel() {
+    if (this.loginForm.value.username) {
+      this.loginWithPasswordData.phoneNumber = this.loginForm.value.username
+    }
+    if (this.loginForm.value.password) {
+      this.loginWithPasswordData.password = this.loginForm.value.password
+    }
+    return this.loginWithPasswordData;
+  }
+
 }
+

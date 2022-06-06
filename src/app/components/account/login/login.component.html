@@ -19,8 +19,8 @@
 
                 <tds-form-field class="mt-9">
                     <tds-label>Tài khoản</tds-label>
-                    <input tdsInput placeholder="Nhập email" size="md" formControlName="username" [required]="true" />
-                    <tds-error>Vui lòng nhập Email</tds-error>
+                    <input tdsInput placeholder="Nhập số điện thoại" size="md" formControlName="username" [required]="true" />
+                    <tds-error>Số điện thoại không hợp lệ</tds-error>
                 </tds-form-field>
 
                 <tds-form-field class="mt-9">
@@ -34,7 +34,7 @@
                     <a routerLink="/account/quenmatkhau/dat-lai-mat-khau" class="text-primary-1 text-body-1 font-regular">Quên mật khẩu</a>
                 </div>
 
-                <button routerLink="/account/dang-nhap/chon-cua-hang" (click)="onSubmit" [disabled]="!loginForm.valid" type="submit" class="w-full mt-9" tds-button color="primary">Đăng nhập</button>
+                <button (click)="loginWithPassword()" type="button" class="w-full mt-9" tds-button color="primary">Đăng nhập</button>
 
             </form>
         </div>

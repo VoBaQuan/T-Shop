@@ -45,9 +45,8 @@
                     <input type="text" tdsInput placeholder="Nhập mật khẩu" size="md" [required]="true"
                         formControlName="retype" />
                     <tds-error>
-                        <span *ngIf="infoSigninForm.controls.retype.hasError('required')">Vui lòng nhập lại mật
-                            khẩu</span>
-                        <span *ngIf="infoSigninForm.controls.retype.hasError('pattern')">Mật khẩu không khớp</span>
+                        <span *ngIf="infoSigninForm.controls.retype.hasError('required')">Vui lòng nhập lại mật khẩu</span>
+                        <span *ngIf="infoSigninForm.controls.retype.hasError('notSame')">Mật khẩu không khớp</span>
                     </tds-error>
                 </tds-form-field>
                 <button (click)="onSubmit" [disabled]="!infoSigninForm.valid" routerLink="/account/dang-nhap"
