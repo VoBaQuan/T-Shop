@@ -1,8 +1,6 @@
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
-
-
 @Component({
   selector: 'app-signin-form',
   templateUrl: './signin-form.component.html',
@@ -70,4 +68,5 @@ export class SigninFormComponent implements OnInit {
     }
     return error;
   }
+  
 }

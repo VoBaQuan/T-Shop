@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.compose([Validators.required, Validators.pattern(/^[0-9]{10}$/i)])],
       password: ['', [Validators.required]]
     })
+    
   }
 
   onSubmit() {

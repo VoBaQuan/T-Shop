@@ -1,3 +1,4 @@
+import { UserServiceService } from './../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseStoreComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserServiceService) { }
 
   ngOnInit(): void {
+    this.getDataUser()
   }
-
+  getDataUser(){
+    localStorage.getItem('accessToken');
+    this.userService.getDataUser().subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
+  }
 }
