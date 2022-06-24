@@ -1,3 +1,4 @@
+import { OrderListService } from './../../services/order-list.service';
 import { Component, OnInit } from '@angular/core';
 import { TDSSafeAny } from 'tmt-tang-ui';
 @Component({
@@ -7,7 +8,7 @@ import { TDSSafeAny } from 'tmt-tang-ui';
 })
 export class OrderListComponent implements OnInit {
   expandSet = new Set<number>();
-
+  orderlists = []
   listOfData = [
     // id = 1
     {
@@ -381,13 +382,19 @@ export class OrderListComponent implements OnInit {
       total: '1.500.000'
     },
   ]
-  constructor() { }
+  constructor(private orderlist: OrderListService) { }
 
   ngOnInit(): void {
+    this.orderlist.getOrderList().subscribe(res =>{
+      this.orderlists = res
+      // console.log(res)
+    })
   }
+
   onSelectChange(value: TDSSafeAny) {
     console.log(value);
   }
+
   onExpandChange(id: number, checked: boolean): void {
     if (checked) {
       this.expandSet.add(id);
@@ -395,4 +402,5 @@ export class OrderListComponent implements OnInit {
       this.expandSet.delete(id);
     }
   }
+
 }

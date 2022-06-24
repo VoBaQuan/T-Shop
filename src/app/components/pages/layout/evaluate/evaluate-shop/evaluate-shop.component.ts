@@ -1,6 +1,9 @@
+import { ReviewShopService } from './../../services/review-shop.service';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
+import { TDSSafeAny, TDSTableQueryParams } from 'tmt-tang-ui';
 import { TDSModalRef, TDSModalService } from 'tmt-tang-ui';
+// import { listReviewShop, ReviewShopService } from '../../services/review-shop.service';
 
 interface FilterStatusItemDTO {
   name: string;
@@ -8,152 +11,33 @@ interface FilterStatusItemDTO {
   count: number,
   disabled: boolean,
 }
+
 @Component({
   selector: 'app-evaluate-shop',
   templateUrl: './evaluate-shop.component.html',
   styleUrls: ['./evaluate-shop.component.scss'],
-  host:{
+  host: {
     class: 'h-full w-full flex'
   }
 })
+
 export class EvaluateShopComponent implements OnInit {
-  public selected1 =1;
-    public listData = [
-        { id: 1, name: 'Bình luận hông đúng sự thiệt' },
-        { id: 2, name: 'Elvis Presley' },
-        { id: 3, name: 'Paul McCartney' },
-        { id: 4, name: 'Elton John' },
-        { id: 5, name: 'Elvis Presley' },
-        { id: 6, name: 'Paul McCartney' }
-    ]
+  listOfReviewShop = []
+  public selected1 = 1;
+  public listData = [
+    { id: 1, name: 'Bình luận hông đúng sự thiệt' },
+    { id: 2, name: 'Elvis Presley' },
+    { id: 3, name: 'Paul McCartney' },
+    { id: 4, name: 'Elton John' },
+    { id: 5, name: 'Elvis Presley' },
+    { id: 6, name: 'Paul McCartney' }
+  ]
 
   isVisibleReply = false;
   isVisibleReport = false;
 
   value: number = 4;
-  listOfData: Array<TDSSafeAny> = [
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 2,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ, nói chuyện rất dễ thương, rep tin nhắn nhanh nhẹn, Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ, Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ, Shop trả lời rất nhiệt tình, giải đáp thắc...',
-      evaluatedate: '20/10/2021',
-      status: 'Đã ẩn',
-      operationReply: 'Trả lời',
-      operationReport: 'Đã báo cáo'
-    },
-    {
-      id: 3,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Đã trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-    {
-      id: 1,
-      name: 'Sun Happy',
-      numberphone: '+84941641408',
-      content: 'Shop trả lời rất nhiệt tình, giải đáp thắc mắc vui vẻ',
-      evaluatedate: '20/10/2021',
-      status: 'Chưa trả lời',
-      operationReply: 'Trả lời',
-      operationReport: 'Báo cáo'
-    },
-  ];
-
+  //Filter trạng thái
   selected = 0;
   lstData: Array<FilterStatusItemDTO> = [
     {
@@ -181,18 +65,66 @@ export class EvaluateShopComponent implements OnInit {
       disabled: true
     },
   ]
-  constructor(private modalService: TDSModalService) { }
+  //Filter đánh giá
+  star = 0;
+  lstStar: Array<FilterStatusItemDTO> = [
+    {
+      name: 'Tất cả',
+      value: 0,
+      count: 100,
+      disabled: false
+    },
+    {
+      name: '1',
+      value: 1,
+      count: 20,
+      disabled: false
+    },
+    {
+      name: '2',
+      value: 2,
+      count: 60,
+      disabled: false
+    },
+    {
+      name: '3',
+      value: 3,
+      count: 20,
+      disabled: false
+    },
+    {
+      name: '4',
+      value: 4,
+      count: 20,
+      disabled: false
+    },
+
+    {
+      name: '5',
+      value: 5,
+      count: 20,
+      disabled: false
+    },
+  ]
+  constructor(private modalService: TDSModalService, private reviewshop: ReviewShopService) { }
 
   ngOnInit(): void {
-
+    this.loadListReviewShop()
   }
+
+  loadListReviewShop(){
+    this.reviewshop.getListReviewShop().subscribe(res => {
+      console.log(res)
+      // this.listOfReviewShop = res
+    })
+  }
+
   onSelectChange(value: TDSSafeAny) {
     console.log('selectChange', value)
   }
   onModelChange(value: TDSSafeAny) {
     console.log('ngModelChange', value)
   }
-
   onChange(e: any) {
     console.log(e);
   }
@@ -216,7 +148,6 @@ export class EvaluateShopComponent implements OnInit {
       this.isVisibleReport = true
     }
   }
-
   handleOk(isShow: any): void {
     setTimeout(() => {
       if (isShow == 'comment') {
@@ -227,7 +158,6 @@ export class EvaluateShopComponent implements OnInit {
       }
     }, 3000);
   }
-
   handleCancel(isShow: any): void {
     if (isShow == 'comment') {
       this.isVisibleReply = false

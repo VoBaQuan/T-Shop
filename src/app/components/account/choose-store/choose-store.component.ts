@@ -1,3 +1,4 @@
+import { ListShopService } from './../services/list-shop.service';
 import { UserServiceService } from './../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,11 +11,15 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class ChooseStoreComponent implements OnInit {
-
-  constructor(private userService: UserServiceService) { }
-
+  listShop: any = []
+  constructor(
+    private userService: UserServiceService,
+    private listShopService: ListShopService
+    ) { }
+    
   ngOnInit(): void {
-    this.getDataUser()
+    this.ChooseShopList()
+    // this.getDataUser()
   }
   getDataUser(){
     localStorage.getItem('accessToken');
@@ -22,5 +27,13 @@ export class ChooseStoreComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     )
+  }
+
+  ChooseShopList(){
+    // localStorage.getItem('accessToken');
+    this.listShopService.getListShop().subscribe(res =>{
+      this.listShop = [...res.items]
+      console.log(this.listShop)
+    })
   }
 }

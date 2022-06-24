@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.compose([Validators.required, Validators.pattern(/^[0-9]{10}$/i)])],
       password: ['', [Validators.required]]
     })
-    
   }
 
   onSubmit() {
@@ -41,14 +40,17 @@ export class LoginComponent implements OnInit {
 
   loginWithPassword() {
     const model = this.perModel();
+    // console.log(1)
     this.auth.loginUser(model)
       .subscribe(
+        // console.log('xyz')
         res => {
           localStorage.setItem('accessToken', res.accessToken)
           this.router.navigate(['/account/dang-nhap/chon-cua-hang'])
         },
         err => console.log(err),
       )
+      // console.log('bac')
   }
 
   perModel() {

@@ -10,7 +10,7 @@ export class AuthService {
 
   loginUser(user: any){
     // console.log(user)
-    return this.http.post<any>(this.loginUrl, user); 
+    return this.http.post<any>(this.loginUrl, user);
   }
 
 }

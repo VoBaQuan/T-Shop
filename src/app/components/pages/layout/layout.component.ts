@@ -17,7 +17,7 @@ export class LayoutComponent implements OnInit {
     { id: 6, name: 'Paul McCartney' }
   ]
 
-  isCollapsed = true;
+  isCollapsed = false;
     lstMenu =  Data;
     activeTab = 1;
     active = 1;
