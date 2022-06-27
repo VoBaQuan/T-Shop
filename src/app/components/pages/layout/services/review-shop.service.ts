@@ -15,25 +15,14 @@ export class ReviewShopService {
 
   constructor(private http: HttpClient) { }
   
-  getListReviewShop(
-    pageIndex: number,
-    pageSize: number,
-    // sortField: string | null,
-    // sortOrder: string | null,
-    // filters: Array<{ key: string; value: string[] }>
-  ): Observable<DTO> {
-    let params = new HttpParams()
-      .append('page', `${pageIndex}`)
-      .append('results', `${pageSize}`);
-      // .append('sortField', `${sortField}`)
-      // .append('sortOrder', `${sortOrder}`);
-    // filters.forEach(filter => {
-    //   filter.value.forEach(value => {
-    //     params = params.append(filter.key, value);
-    //   });
-    // });
-    let url =  `${this.listReviewShopUrl}?SkipCount=${pageIndex}&MaxResultCount=${pageSize}`
-    return this.http.get<DTO>(`${url}`, { params })
+  getListReviewShop(pageIndex: number,pageSize: number,search: string): Observable<DTO> {
+    let url =  `${this.listReviewShopUrl}${this.getParams(pageIndex, pageSize, search)}`;
+    return this.http.get<DTO>(`${url}`);
+  }
+
+  getParams(pageIndex:number, pageSize:number, searchText?: string){
+    let url = `?SkipCount=${pageIndex}&MaxResultCount=${pageSize}&filter=customerName~contains~${searchText}`;
+    return url;
   }
 
 }
