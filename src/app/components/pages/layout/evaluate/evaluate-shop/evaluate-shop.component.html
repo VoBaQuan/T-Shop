@@ -60,7 +60,13 @@
                 </tds-form-field>
             </div>
             <div class="w-full h-full">
-                <tds-table #basicTable [listData]="listOfReviewShop" [scroll]="{y:'auto'}">
+                <tds-table #basicTable [listData]="listOfReviewShop" [scroll]="{y:'auto'}" showSizeChanger
+                [frontPagination]="false"
+                [loading]="loading"
+                [total]="total"
+                [(pageSize)]="pageSize"
+                [(pageIndex)]="pageIndex"
+                (queryParams)="onQueryParamsChange($event)">
                     <thead>
                         <tr>
                             <th width="196px">Khách hàng</th>
@@ -75,21 +81,21 @@
                         <ng-template ngFor let-data [ngForOf]="basicTable.data">
                             <tr>
                                 <td>
-                                    
+                                    {{data.customerName}}
                                     <div class="flex justify-start items-center">
                                         <i class="tdsi-call-fill text-neutral-1-500 mr-1"></i>
-                                        <span class="text-neutral-1-400"></span>
+                                        <span class="text-neutral-1-400">{{data.customerPhoneNumber}}</span>
                                     </div>
                                 </td>
                                 <td>
-                                    <!-- <tds-rate [ngModel]="data.rating" disabled></tds-rate> -->
+                                    <tds-rate [ngModel]="data.rating" disabled></tds-rate>
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{data.reviewMessage}}</td>
+                                <td>{{data.creationTime | date: 'dd-MM-YYYY'}}</td>
                                 <td>
-                                    <!-- <tds-tag *ngIf="data.status==1" status='info' type="outline">Chưa trả lời</tds-tag>
+                                    <tds-tag *ngIf="data.status==1" status='info' type="outline">Chưa trả lời</tds-tag>
                                     <tds-tag *ngIf="data.status==2" status='success' type="outline">Đã trả lời</tds-tag>
-                                    <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag> -->
+                                    <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag>
                                 </td>
                                 <td>
                                     <button (click)="showModal('comment')" tds-flat-button size="sm"
