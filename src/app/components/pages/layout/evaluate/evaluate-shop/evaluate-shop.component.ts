@@ -111,7 +111,8 @@ export class EvaluateShopComponent implements OnInit {
   ngOnInit(): void {
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.status)
   }
-  loadListReviewShop( pageIndex: number, pageSize: number, search?: string, status?: number): void {
+  
+  loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number): void {
     this.loading = true;
     this.reviewshop.getListReviewShop(pageIndex, pageSize, search, status).subscribe((res: DTO) => {
       if (res) {
@@ -135,17 +136,17 @@ export class EvaluateShopComponent implements OnInit {
   resetPage() {
     this.pageIndex = 1;
   }
-  searchCustomerName(){
+  searchCustomerName() {
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search)
   }
   onSelectChange(value: TDSSafeAny) {
-    if(value){
-      this.loadListReviewShop(this.pageIndex, this.pageSize, '',this.value)
+    if (value) {
+      this.loadListReviewShop(this.pageIndex, this.pageSize, '', this.value)
+      console.log('selectChange', value)
     }
-    
   }
   onSelectChangeRating(value: TDSSafeAny) {
-    if(value){
+    if (value) {
       this.loadListReviewShop(this.pageIndex, this.pageSize, '', value)
       // console.log('selectChange', value)
     }
