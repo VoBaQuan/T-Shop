@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="flex justify-between items-center bg-white px-4">
-        <tds-filter-status [(ngModel)]='star' (ngModelChange)="onModelChange($event)"(selectChange)="onSelectChange($event)">
+        <tds-filter-status [(ngModel)]='star' (selectChange)="onSelectChange($event)">
             <ng-template ngFor let-item [ngForOf]="lstStar" let-i="index">
                 <tds-filter-status-item [name]='item.name' [count]='item.count' [value]="item.value">
                     <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count' let-name='name' let-value>
@@ -43,7 +43,7 @@
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
             <div class="flex justify-between items-center pr-2">
 
-                <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)" (selectChange)="onSelectChange($event)">
+                <tds-filter-status [(ngModel)]='selected'  (selectChange)="onSelectChange($event)">
                     <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
                         <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
                         </tds-filter-status-item>
@@ -213,7 +213,7 @@
             <div class="mt-4">
                 <tds-form-field>
                     <tds-select valueField="id" textField="name" placeholder='select item' [(ngModel)]="selected1"
-                        (ngModelChange)="onModelChange($event)" [allowClear]="true" [data]="listData">
+                         [allowClear]="true" [data]="listData">
                     </tds-select>
                 </tds-form-field>
             </div>

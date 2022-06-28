@@ -36,7 +36,7 @@ export class EvaluateShopComponent implements OnInit {
   ]
   isVisibleReply = false;
   isVisibleReport = false;
-  value: number = 4;
+  // value: number = 4;
   //Filter trạng thái
   selected = 0;
   lstData: Array<FilterStatusItemDTO> = [
@@ -108,10 +108,9 @@ export class EvaluateShopComponent implements OnInit {
   ]
   constructor(private modalService: TDSModalService, private reviewshop: ReviewShopService) { }
 
-  ngOnInit(): void {
-    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.status)
-  }
-  
+  ngOnInit(): void {}
+
+  // lấy data list review shop
   loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number): void {
     this.loading = true;
     this.reviewshop.getListReviewShop(pageIndex, pageSize, search, status).subscribe((res: DTO) => {
@@ -129,31 +128,23 @@ export class EvaluateShopComponent implements OnInit {
       this.total = 0;
     })
   }
+  // phân trang
   onQueryParamsChange(params: TDSTableQueryParams): void {
     const { pageSize, pageIndex } = params;
     this.loadListReviewShop(pageIndex, pageSize);
   }
-  resetPage() {
-    this.pageIndex = 1;
-  }
+  // tìm kiếm theo tên khách hàng
   searchCustomerName() {
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search)
   }
-  onSelectChange(value: TDSSafeAny) {
-    if (value) {
-      this.loadListReviewShop(this.pageIndex, this.pageSize, '', this.value)
-      console.log('selectChange', value)
-    }
-  }
-  onSelectChangeRating(value: TDSSafeAny) {
-    if (value) {
-      this.loadListReviewShop(this.pageIndex, this.pageSize, '', value)
-      // console.log('selectChange', value)
-    }
-  }
-  onModelChange(value: TDSSafeAny) {
+  // lọc theo trạng thái
+  onSelectChange(value: number) {
+    this.resetPage()
     this.loadListReviewShop(this.pageIndex, this.pageSize, '', value)
-    // console.log('ngModelChange', value)
+    console.log('selectChange', value)
+  }
+  resetPage() {
+    this.pageIndex = 1;
   }
   onChange(e: any) {
     console.log(e);
