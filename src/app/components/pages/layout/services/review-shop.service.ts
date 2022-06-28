@@ -11,18 +11,26 @@ import { DTO } from '../../dto/evalute-shop/evalute-shop.dto';
 
 export class ReviewShopService {
 
+  // url API
   private listReviewShopUrl = 'https://tshop-dev.tpos.dev/api/v1/appshop-review/list-review-shop'
 
   constructor(private http: HttpClient) { }
-  
-  getListReviewShop(pageIndex: number,pageSize: number,search: string): Observable<DTO> {
-    let url =  `${this.listReviewShopUrl}${this.getParams(pageIndex, pageSize, search)}`;
-    return this.http.get<DTO>(`${url}`);
+
+  getListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number): Observable<DTO> {
+    let result = `${this.listReviewShopUrl}${this.getParams(pageIndex, pageSize, search, status)}`;
+    return this.http.get<DTO>(`${result}`);
   }
 
-  getParams(pageIndex:number, pageSize:number, searchText?: string){
-    let url = `?SkipCount=${pageIndex}&MaxResultCount=${pageSize}&filter=customerName~contains~${searchText}`;
-    return url;
+  getParams(pageIndex: number, pageSize: number, searchText?: string, statusFilter?: number) {
+    let skipCount = (pageIndex-1)*pageSize
+    let result = `?SkipCount=${skipCount}&MaxResultCount=${pageSize}`
+    if (searchText) {
+      result += `&filter=customerName~contains~${searchText}`
+    }
+    if (statusFilter) {
+      result += `&filter=status~eq~${statusFilter}`;
+    }
+    return result
   }
 
 }

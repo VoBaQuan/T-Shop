@@ -24,6 +24,7 @@ export class EvaluateShopComponent implements OnInit {
   pageSize = 10;
   pageIndex = 1;
   search = '';
+  status = 0;
   public selected1 = 1;
   public listData = [
     { id: 1, name: 'Bình luận hông đúng sự thiệt' },
@@ -61,7 +62,7 @@ export class EvaluateShopComponent implements OnInit {
       name: 'Đã ẩn',
       value: 3,
       count: 20,
-      disabled: true
+      disabled: false
     },
   ]
   //Filter đánh giá
@@ -108,14 +109,12 @@ export class EvaluateShopComponent implements OnInit {
   constructor(private modalService: TDSModalService, private reviewshop: ReviewShopService) { }
 
   ngOnInit(): void {
-    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search)
-    // console.log(this.loadListReviewShop)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.status)
   }
-  loadListReviewShop( pageIndex: number, pageSize: number, search: string): void {
+  loadListReviewShop( pageIndex: number, pageSize: number, search?: string, status?: number): void {
     this.loading = true;
-    this.reviewshop.getListReviewShop(pageIndex, pageSize, search).subscribe((res: DTO) => {
+    this.reviewshop.getListReviewShop(pageIndex, pageSize, search, status).subscribe((res: DTO) => {
       if (res) {
-        // debugger
         this.listOfReviewShop = res.items;
         this.total = res.totalCount;
       } else {
@@ -130,25 +129,30 @@ export class EvaluateShopComponent implements OnInit {
     })
   }
   onQueryParamsChange(params: TDSTableQueryParams): void {
-    // console.log(params);
     const { pageSize, pageIndex } = params;
-    // const currentSort = sort.find(item => item.value !== null);
-    // const sortField = (currentSort && currentSort.key) || null;
-    // const sortOrder = (currentSort && currentSort.value) || null;
-    this.loadListReviewShop(pageIndex, pageSize, this.search);
+    this.loadListReviewShop(pageIndex, pageSize);
   }
   resetPage() {
     this.pageIndex = 1;
   }
   searchCustomerName(){
-    let key = this.search
-    this.loadListReviewShop(this.pageIndex,this.pageSize, this.search)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search)
   }
   onSelectChange(value: TDSSafeAny) {
-    console.log('selectChange', value)
+    if(value){
+      this.loadListReviewShop(this.pageIndex, this.pageSize, '',this.value)
+    }
+    
+  }
+  onSelectChangeRating(value: TDSSafeAny) {
+    if(value){
+      this.loadListReviewShop(this.pageIndex, this.pageSize, '', value)
+      // console.log('selectChange', value)
+    }
   }
   onModelChange(value: TDSSafeAny) {
-    console.log('ngModelChange', value)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, '', value)
+    // console.log('ngModelChange', value)
   }
   onChange(e: any) {
     console.log(e);

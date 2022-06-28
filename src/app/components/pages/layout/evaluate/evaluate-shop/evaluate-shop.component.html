@@ -45,7 +45,7 @@
     </div>
     <div class="p-4 w-full h-full">
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center pr-2">
                 <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
                     (selectChange)="onSelectChange($event)">
                     <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
@@ -70,7 +70,7 @@
                     <thead>
                         <tr>
                             <th width="196px">Khách hàng</th>
-                            <th width="170px">Đánh giá</th>
+                            <th width="190px">Đánh giá</th>
                             <th width="576px">Nội dung</th>
                             <th width="156px">Ngày đánh giá</th>
                             <th width="156px">Trạng thái</th>
@@ -95,7 +95,7 @@
                                 <td>
                                     <tds-tag *ngIf="data.status==1" status='info' type="outline">Chưa trả lời</tds-tag>
                                     <tds-tag *ngIf="data.status==2" status='success' type="outline">Đã trả lời</tds-tag>
-                                    <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag>
+                                    <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag>   
                                 </td>
                                 <td>
                                     <button (click)="showModal('comment')" tds-flat-button size="sm"
