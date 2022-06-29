@@ -1,10 +1,8 @@
 import { ReviewShopService } from './../../services/review-shop.service';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny, TDSTableQueryParams } from 'tmt-tang-ui';
-import { TDSModalRef, TDSModalService } from 'tmt-tang-ui';
-import { DTO, FilterStatusItemDTO, listReviewShop } from '../../../dto/evalute-shop/evalute-shop.dto';
-// import { listReviewShop, ReviewShopService } from '../../services/review-shop.service';
+import { TDSTableQueryParams } from 'tmt-tang-ui';
+import { TDSModalService } from 'tmt-tang-ui';
+import { DTO, FilterStarItemDTO, FilterStatusItemDTO, listReviewShop } from '../../../dto/evalute-shop/evalute-shop.dto';
 
 
 
@@ -39,7 +37,6 @@ export class EvaluateShopComponent implements OnInit {
   ]
   isVisibleReply = false;
   isVisibleReport = false;
-  // value: number = 4;
   //Filter trạng thái
   selected = 0;
   lstStatusFilterReview: Array<FilterStatusItemDTO> = [
@@ -70,7 +67,7 @@ export class EvaluateShopComponent implements OnInit {
   ]
   //Filter đánh giá
   star = 0;
-  lstStarFilterReview: Array<FilterStatusItemDTO> = [
+  lstStarFilterReview: Array<FilterStarItemDTO> = [
     {
       name: 'Tất cả',
       value: 0,
@@ -111,7 +108,7 @@ export class EvaluateShopComponent implements OnInit {
   ]
   constructor(private modalService: TDSModalService, private reviewshop: ReviewShopService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // lấy data list review shop
   loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): void {
@@ -138,24 +135,31 @@ export class EvaluateShopComponent implements OnInit {
   }
   // tìm kiếm theo tên khách hàng
   searchCustomerName() {
-    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.filterStatus, this.filterRating)
   }
   // lọc theo trạng thái
   onSelectChangeStatus(value: number) {
     this.resetPage()
     this.filterStatus = value
-    this.loadListReviewShop(this.pageIndex, this.pageSize, '', value, 0)
-    console.log('selectChange status: ', value)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, value, this.filterRating)
+    // console.log('selectChange status: ', value)
   }
   // Lọc theo đánh giá
-  onSelectChangeRating(value: number){
+  onSelectChangeRating(value: number) {
     this.resetPage()
     this.filterRating = value
-    this.loadListReviewShop(this.pageIndex, this.pageSize, '', 0, value)
-    console.log('selectChange rating: ', value)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.filterStatus, value)
+    // console.log('selectChange rating: ', value)
   }
   resetPage() {
     this.pageIndex = 1;
+  }
+  private reloadDataReview() {
+    if (this.pageIndex != 1) {
+      this.pageIndex = 1;
+    } else {
+      this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.status, this.rating);
+    }
   }
   onChange(e: any) {
     console.log(e);

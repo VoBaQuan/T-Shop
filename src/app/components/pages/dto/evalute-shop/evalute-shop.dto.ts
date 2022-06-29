@@ -21,3 +21,10 @@ export interface listReviewShop {
     count: number,
     disabled: boolean,
   }
+
+  export interface FilterStarItemDTO {
+    name: string;
+    value: TDSSafeAny,
+    count: number,
+    disabled: boolean,
+  }
