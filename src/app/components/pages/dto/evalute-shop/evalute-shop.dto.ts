@@ -1,6 +1,6 @@
 import { TDSSafeAny } from "tmt-tang-ui"
 
-export interface listReviewShop {
+export interface DataListReviewShopDTO {
     customerName?: string
     customerPhoneNumber?: string
     rating?: number
@@ -9,16 +9,16 @@ export interface listReviewShop {
     status?: number
   }
   
-  export interface DTO {
+  export interface DataResultDTO {
     aggregates: any
-    items: listReviewShop[]
+    items: DataListReviewShopDTO[]
     totalCount:number
   }
 
   export interface FilterStatusItemDTO {
     name: string;
     value: TDSSafeAny,
-    count: number,
+    totalCount: number,
     disabled: boolean,
   }
 

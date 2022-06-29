@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { DTO } from '../../dto/evalute-shop/evalute-shop.dto';
+import { DataResultDTO } from '../../dto/evalute-shop/evalute-shop.dto';
 
 
 
@@ -13,12 +13,17 @@ export class ReviewShopService {
 
   //API url
   private listReviewShopUrl = 'https://tshop-dev.tpos.dev/api/v1/appshop-review/list-review-shop'
+  private listStatusForShopUrl = 'https://tshop-dev.tpos.dev/api/v1/appshop-review/status-list-forshop'
 
   constructor(private http: HttpClient) { }
 
-  getListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): Observable<DTO> {
+  getListDataReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): Observable<DataResultDTO> {
     let result = `${this.listReviewShopUrl}${this.getParams(pageIndex, pageSize, search, status, rating)}`;
-    return this.http.get<DTO>(`${result}`);
+    return this.http.get<DataResultDTO>(`${result}`);
+  }
+
+  getListStatusForShop( params: { ShopId: any, Rating: any } ): Observable<any> {
+    return this.http.get<any>(this.listStatusForShopUrl, params)
   }
 
   getParams(pageIndex: number, pageSize: number, searchText?: string, statusFilter?: number, ratingFilter?: number) {

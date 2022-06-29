@@ -50,7 +50,7 @@
 
                 <tds-filter-status [(ngModel)]='selected'  (selectChange)="onSelectChangeStatus($event)">
                     <ng-template ngFor let-item [ngForOf]="lstStatusFilterReview" let-i="index">
-                        <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
+                        <tds-filter-status-item [name]='item.name' [count]='item.totalCount' [disabled]="item.disabled" [value]="item.value">
                         </tds-filter-status-item>
                     </ng-template>
                 </tds-filter-status>
