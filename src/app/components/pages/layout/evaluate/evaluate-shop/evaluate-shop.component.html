@@ -13,8 +13,8 @@
         </div>
     </div>
     <div class="flex justify-between items-center bg-white px-4">
-        <tds-filter-status [(ngModel)]='star' (selectChange)="onSelectChange($event)">
-            <ng-template ngFor let-item [ngForOf]="lstStar" let-i="index">
+        <tds-filter-status [(ngModel)]='star' (selectChange)="onSelectChangeRating($event)">
+            <ng-template ngFor let-item [ngForOf]="lstStarFilterReview" let-i="index">
                 <tds-filter-status-item [name]='item.name' [count]='item.count' [value]="item.value">
                     <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count' let-name='name' let-value>
                         <div class="p-4 flex items-center" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 hover:border-primary-1 group':!disabled}">
@@ -43,8 +43,8 @@
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
             <div class="flex justify-between items-center pr-2">
 
-                <tds-filter-status [(ngModel)]='selected'  (selectChange)="onSelectChange($event)">
-                    <ng-template ngFor let-item [ngForOf]="lstData" let-i="index">
+                <tds-filter-status [(ngModel)]='selected'  (selectChange)="onSelectChangeStatus($event)">
+                    <ng-template ngFor let-item [ngForOf]="lstStatusFilterReview" let-i="index">
                         <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
                         </tds-filter-status-item>
                     </ng-template>

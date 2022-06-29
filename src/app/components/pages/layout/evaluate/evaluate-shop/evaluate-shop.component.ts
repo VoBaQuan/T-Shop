@@ -19,12 +19,15 @@ import { DTO, FilterStatusItemDTO, listReviewShop } from '../../../dto/evalute-s
 
 export class EvaluateShopComponent implements OnInit {
   listOfReviewShop: listReviewShop[] = []
-  total = 1;
+  total = 0;
   loading = true;
   pageSize = 10;
   pageIndex = 1;
   search = '';
   status = 0;
+  rating = 0;
+  filterStatus = 0
+  filterRating = 0
   public selected1 = 1;
   public listData = [
     { id: 1, name: 'Bình luận hông đúng sự thiệt' },
@@ -39,7 +42,7 @@ export class EvaluateShopComponent implements OnInit {
   // value: number = 4;
   //Filter trạng thái
   selected = 0;
-  lstData: Array<FilterStatusItemDTO> = [
+  lstStatusFilterReview: Array<FilterStatusItemDTO> = [
     {
       name: 'Tất cả',
       value: 0,
@@ -67,7 +70,7 @@ export class EvaluateShopComponent implements OnInit {
   ]
   //Filter đánh giá
   star = 0;
-  lstStar: Array<FilterStatusItemDTO> = [
+  lstStarFilterReview: Array<FilterStatusItemDTO> = [
     {
       name: 'Tất cả',
       value: 0,
@@ -77,32 +80,32 @@ export class EvaluateShopComponent implements OnInit {
     {
       name: '1',
       value: 1,
-      count: 20,
+      count: 0,
       disabled: false
     },
     {
       name: '2',
       value: 2,
-      count: 60,
+      count: 0,
       disabled: false
     },
     {
       name: '3',
       value: 3,
-      count: 20,
+      count: 0,
       disabled: false
     },
     {
       name: '4',
       value: 4,
-      count: 20,
+      count: 0,
       disabled: false
     },
 
     {
       name: '5',
       value: 5,
-      count: 20,
+      count: 0,
       disabled: false
     },
   ]
@@ -111,9 +114,9 @@ export class EvaluateShopComponent implements OnInit {
   ngOnInit(): void {}
 
   // lấy data list review shop
-  loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number): void {
+  loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): void {
     this.loading = true;
-    this.reviewshop.getListReviewShop(pageIndex, pageSize, search, status).subscribe((res: DTO) => {
+    this.reviewshop.getListReviewShop(pageIndex, pageSize, search, status, rating).subscribe((res: DTO) => {
       if (res) {
         this.listOfReviewShop = res.items;
         this.total = res.totalCount;
@@ -131,17 +134,25 @@ export class EvaluateShopComponent implements OnInit {
   // phân trang
   onQueryParamsChange(params: TDSTableQueryParams): void {
     const { pageSize, pageIndex } = params;
-    this.loadListReviewShop(pageIndex, pageSize);
+    this.loadListReviewShop(pageIndex, pageSize, this.search, this.filterStatus, this.filterRating);
   }
   // tìm kiếm theo tên khách hàng
   searchCustomerName() {
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search)
   }
   // lọc theo trạng thái
-  onSelectChange(value: number) {
+  onSelectChangeStatus(value: number) {
     this.resetPage()
-    this.loadListReviewShop(this.pageIndex, this.pageSize, '', value)
-    console.log('selectChange', value)
+    this.filterStatus = value
+    this.loadListReviewShop(this.pageIndex, this.pageSize, '', value, 0)
+    console.log('selectChange status: ', value)
+  }
+  // Lọc theo đánh giá
+  onSelectChangeRating(value: number){
+    this.resetPage()
+    this.filterRating = value
+    this.loadListReviewShop(this.pageIndex, this.pageSize, '', 0, value)
+    console.log('selectChange rating: ', value)
   }
   resetPage() {
     this.pageIndex = 1;
