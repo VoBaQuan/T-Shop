@@ -15,8 +15,7 @@
     <div class="flex justify-between items-center bg-white px-4">
         <tds-filter-status [(ngModel)]='star' (selectChange)="onSelectChangeRating($event)">
             <ng-template ngFor let-item [ngForOf]="lstStarFilterReview" let-i="index">
-                <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
-                    [value]="item.value">
+                <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
                     <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
                         let-name='name' let-value>        
                         <div class="p-4 flex items-center"
@@ -50,7 +49,7 @@
 
                 <tds-filter-status [(ngModel)]='selected'  (selectChange)="onSelectChangeStatus($event)">
                     <ng-template ngFor let-item [ngForOf]="lstStatusFilterReview" let-i="index">
-                        <tds-filter-status-item [name]='item.name' [count]='item.totalCount' [disabled]="item.disabled" [value]="item.value">
+                        <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
                         </tds-filter-status-item>
                     </ng-template>
                 </tds-filter-status>

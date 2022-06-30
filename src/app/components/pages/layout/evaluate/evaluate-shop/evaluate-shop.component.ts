@@ -1,11 +1,8 @@
 import { ReviewShopService } from './../../services/review-shop.service';
 import { Component, OnInit } from '@angular/core';
-import { TDSTableQueryParams } from 'tmt-tang-ui';
+import { TDSSafeAny, TDSTableQueryParams } from 'tmt-tang-ui';
 import { TDSModalService } from 'tmt-tang-ui';
 import { DataResultDTO, FilterStarItemDTO, FilterStatusItemDTO, DataListReviewShopDTO } from '../../../dto/evalute-shop/evalute-shop.dto';
-import { number } from 'echarts';
-
-
 
 @Component({
   selector: 'app-evaluate-shop',
@@ -29,6 +26,7 @@ export class EvaluateShopComponent implements OnInit {
   filterStatus = 0
   filterRating = 0
   starFilterReview = 0;
+  shopId:TDSSafeAny;
 
   public selected1 = 1;
   public listData = [
@@ -43,39 +41,14 @@ export class EvaluateShopComponent implements OnInit {
   isVisibleReport = false;
   //Filter trạng thái
   selected = 0;
-  lstStatusFilterReview: Array<FilterStatusItemDTO> = [
-    {
-      name: 'Tất cả',
-      value: 0,
-      totalCount: 100,
-      disabled: false
-    },
-    {
-      name: 'Chưa trả lời',
-      value: 1,
-      totalCount: 20,
-      disabled: false
-    },
-    {
-      name: 'Đã trả lời',
-      value: 2,
-      totalCount: 60,
-      disabled: false
-    },
-    {
-      name: 'Đã ẩn',
-      value: 3,
-      totalCount: 20,
-      disabled: false
-    },
-  ]
+  lstStatusFilterReview: Array<FilterStatusItemDTO> = []
   //Filter đánh giá
   star = 0;
   lstStarFilterReview: Array<FilterStarItemDTO> = [
     {
       name: 'Tất cả',
       value: 0,
-      count: 100,
+      count: 0,
       disabled: false
     },
     {
@@ -113,15 +86,15 @@ export class EvaluateShopComponent implements OnInit {
   constructor(private modalService: TDSModalService, private reviewshop: ReviewShopService) { }
 
   ngOnInit(): void { 
-    // this.loadStatusReview()
+    this.loadStatusReview(this.shopId)
   }
 
   // lấy data list review shop
   loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): void {
     this.loading = true;
     this.reviewshop.getListDataReviewShop(pageIndex, pageSize, search, status, rating).subscribe((res: DataResultDTO) => {
+      // this.loadStatusReview(res)
       if (res) {
-        // this.totalRatingAverage = res.aggregates.totalRatingAverage;
         this.listOfReviewShop = res.items;
         this.total = res.totalCount;
       } else {
@@ -139,9 +112,8 @@ export class EvaluateShopComponent implements OnInit {
   //load trạng thái
   loadStatusReview(shopId: any) {
     let rating = this.starFilterReview > 0 ? [this.starFilterReview] : [];
-    //lấy api trạng thái
-    this.reviewshop.getListStatusForShop({ ShopId: shopId, Rating:rating }).subscribe(res => {
-      console.log(res)
+    this.reviewshop.getListStatusForShop( { ShopId: shopId, Rating: rating } ).subscribe(res => {
+      // console.log(res)
       this.lstStatusFilterReview = [];
       if (res) {
         let lstStatus = res.map((item: any) => {
@@ -155,17 +127,19 @@ export class EvaluateShopComponent implements OnInit {
         let countAll = 0;
         lstStatus.forEach((f: any) => {
           countAll += f.count;
+          // console.log(countAll)
         });
         this.lstStatusFilterReview = [
           {
             name: 'Tất cả',
-            value: -1,
+            value: 0,
             count: countAll,
             disabled: false
           },
           ...lstStatus
         ]
-
+        // console.log(lstStatus)
+        // console.log(this.lstStatusFilterReview)
       }
     })
   }
@@ -182,9 +156,10 @@ export class EvaluateShopComponent implements OnInit {
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.filterStatus, this.filterRating)
   }
 
-  // Lọc theo đánh giá
+  // Lọc theo sao
   onSelectChangeRating(value: number) {
     this.resetPage()
+    this.loadStatusReview(this.shopId)
     this.filterRating = value
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.filterStatus, value)
     // console.log('selectChange rating: ', value)
@@ -195,19 +170,12 @@ export class EvaluateShopComponent implements OnInit {
     this.resetPage()
     this.filterStatus = value
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, value, this.filterRating)
-    // console.log('selectChange status: ', value)
+    console.log('selectChange status: ', value)
   }
 
   // reset trang
   resetPage() {
     this.pageIndex = 1;
-  }
-  private reloadDataReview() {
-    if (this.pageIndex != 1) {
-      this.pageIndex = 1;
-    } else {
-      this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.status, this.rating);
-    }
   }
   onChange(e: any) {
     console.log(e);

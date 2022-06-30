@@ -23,7 +23,7 @@ export class ReviewShopService {
   }
 
   getListStatusForShop( params: { ShopId: any, Rating: any } ): Observable<any> {
-    return this.http.get<any>(this.listStatusForShopUrl, params)
+    return this.http.post<any>(this.listStatusForShopUrl, params)
   }
 
   getParams(pageIndex: number, pageSize: number, searchText?: string, statusFilter?: number, ratingFilter?: number) {

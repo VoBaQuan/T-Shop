@@ -18,7 +18,7 @@ export interface DataListReviewShopDTO {
   export interface FilterStatusItemDTO {
     name: string;
     value: TDSSafeAny,
-    totalCount: number,
+    count: number,
     disabled: boolean,
   }
 
