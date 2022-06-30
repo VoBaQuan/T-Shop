@@ -55,8 +55,8 @@
                 </tds-filter-status>
 
                 <tds-form-field class="w-96">
-                    <input autocomplete="off" [(ngModel)]="search" [tdsInputDebounce]="750"
-                        (inputKeyup)="searchCustomerName()" tdsInput placeholder="Tìm kiếm" [required]='true' />
+                    <input autocomplete="off" [(ngModel)]="searchOfCustomerName"  [tdsInputDebounce]="750"
+                        (inputKeyup)="searchCustomerName()"  tdsInput placeholder="Tìm kiếm" />
                     <span tdsPrefix><i class="tdsi-search-fill"></i></span>
                 </tds-form-field>
 

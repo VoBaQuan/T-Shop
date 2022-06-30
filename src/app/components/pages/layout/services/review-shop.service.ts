@@ -17,8 +17,8 @@ export class ReviewShopService {
 
   constructor(private http: HttpClient) { }
 
-  getListDataReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): Observable<DataResultDTO> {
-    let result = `${this.listReviewShopUrl}${this.getParams(pageIndex, pageSize, search, status, rating)}`;
+  getListDataReviewShop(pageIndex: number, pageSize: number, searchText?: string, searchNumberPhone?: string, status?: number, rating?: number): Observable<DataResultDTO> {
+    let result = `${this.listReviewShopUrl}${this.getParams(pageIndex, pageSize, searchText, searchNumberPhone, status, rating)}`;
     return this.http.get<DataResultDTO>(`${result}`);
   }
 
@@ -26,16 +26,27 @@ export class ReviewShopService {
     return this.http.post<any>(this.listStatusForShopUrl, params)
   }
 
-  getParams(pageIndex: number, pageSize: number, searchText?: string, statusFilter?: number, ratingFilter?: number) {
+  getParams(pageIndex: number, pageSize: number, searchText?: string, searchNumberPhone?: string, statusFilter?: number, ratingFilter?: number) {
     let skipCount = (pageIndex - 1) * pageSize
     let result = `?SkipCount=${skipCount}&MaxResultCount=${pageSize}`
 
-    if (searchText || statusFilter || ratingFilter) {
+    if (searchText || searchNumberPhone || statusFilter || ratingFilter) {
       result += '&filter='
     }
 
     if (searchText) {
       result += `customerName~contains~%27${searchText}%27`
+      if (ratingFilter) {
+        result += `~and~rating~eq~${ratingFilter}`
+      }
+      if (statusFilter) {
+        result += `~and~status~eq~${statusFilter}`;
+      }
+      return result
+    }
+
+    if (searchNumberPhone) {
+      result += `customerPhoneNumber~contains~%27${searchNumberPhone}%27`
       if (ratingFilter) {
         result += `~and~rating~eq~${ratingFilter}`
       }

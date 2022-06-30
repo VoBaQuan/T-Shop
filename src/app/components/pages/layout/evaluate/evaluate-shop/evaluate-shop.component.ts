@@ -14,20 +14,24 @@ import { DataResultDTO, FilterStarItemDTO, FilterStatusItemDTO, DataListReviewSh
 })
 
 export class EvaluateShopComponent implements OnInit {
+
+  // Declare
+  isVisibleReply = false;
+  isVisibleReport = false;
   listOfReviewShop: DataListReviewShopDTO[] = []
   total = 0;
   totalRatingAverage = 0;
   loading = true;
   pageSize = 10;
   pageIndex = 1;
-  search = '';
+  searchOfCustomerName = '';
+  searchOfNumberPhone = '';
   status = 0;
   rating = 0;
   filterStatus = 0
   filterRating = 0
   starFilterReview = 0;
-  shopId:TDSSafeAny;
-
+  shopId: TDSSafeAny;
   public selected1 = 1;
   public listData = [
     { id: 1, name: 'Bình luận hông đúng sự thiệt' },
@@ -37,8 +41,6 @@ export class EvaluateShopComponent implements OnInit {
     { id: 5, name: 'Elvis Presley' },
     { id: 6, name: 'Paul McCartney' }
   ]
-  isVisibleReply = false;
-  isVisibleReport = false;
   //Filter trạng thái
   selected = 0;
   lstStatusFilterReview: Array<FilterStatusItemDTO> = []
@@ -83,17 +85,17 @@ export class EvaluateShopComponent implements OnInit {
       disabled: false
     },
   ]
+
   constructor(private modalService: TDSModalService, private reviewshop: ReviewShopService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadStatusReview(this.shopId)
   }
 
   // lấy data list review shop
-  loadListReviewShop(pageIndex: number, pageSize: number, search?: string, status?: number, rating?: number): void {
+  loadListReviewShop(pageIndex: number, pageSize: number, searchOfText?: string, searchOfNumberPhone?: string, status?: number, rating?: number): void {
     this.loading = true;
-    this.reviewshop.getListDataReviewShop(pageIndex, pageSize, search, status, rating).subscribe((res: DataResultDTO) => {
-      // this.loadStatusReview(res)
+    this.reviewshop.getListDataReviewShop(pageIndex, pageSize, searchOfText, searchOfNumberPhone, status, rating).subscribe((res: DataResultDTO) => {
       if (res) {
         this.listOfReviewShop = res.items;
         this.total = res.totalCount;
@@ -112,8 +114,7 @@ export class EvaluateShopComponent implements OnInit {
   //load trạng thái
   loadStatusReview(shopId: any) {
     let rating = this.starFilterReview > 0 ? [this.starFilterReview] : [];
-    this.reviewshop.getListStatusForShop( { ShopId: shopId, Rating: rating } ).subscribe(res => {
-      // console.log(res)
+    this.reviewshop.getListStatusForShop({ ShopId: shopId, Rating: rating }).subscribe(res => {
       this.lstStatusFilterReview = [];
       if (res) {
         let lstStatus = res.map((item: any) => {
@@ -127,7 +128,6 @@ export class EvaluateShopComponent implements OnInit {
         let countAll = 0;
         lstStatus.forEach((f: any) => {
           countAll += f.count;
-          // console.log(countAll)
         });
         this.lstStatusFilterReview = [
           {
@@ -138,8 +138,6 @@ export class EvaluateShopComponent implements OnInit {
           },
           ...lstStatus
         ]
-        // console.log(lstStatus)
-        // console.log(this.lstStatusFilterReview)
       }
     })
   }
@@ -147,52 +145,42 @@ export class EvaluateShopComponent implements OnInit {
   // phân trang
   onQueryParamsChange(params: TDSTableQueryParams): void {
     const { pageSize, pageIndex } = params;
-    this.loadListReviewShop(pageIndex, pageSize, this.search, this.filterStatus, this.filterRating);
+    this.loadListReviewShop(pageIndex, pageSize, this.searchOfCustomerName, this.searchOfNumberPhone, this.filterStatus, this.filterRating);
   }
 
   // tìm kiếm theo tên khách hàng
   searchCustomerName() {
     this.resetPage()
-    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.filterStatus, this.filterRating)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.searchOfCustomerName, '', this.filterStatus, this.filterRating)
   }
+
+  //  Tìm kiếm theo số điện thoại
+  // searchNumberPhone() {
+  //   this.resetPage()
+  //   this.loadListReviewShop(this.pageIndex, this.pageSize, '', this.searchOfNumberPhone, this.filterStatus, this.filterRating)
+  // }
 
   // Lọc theo sao
   onSelectChangeRating(value: number) {
     this.resetPage()
     this.loadStatusReview(this.shopId)
     this.filterRating = value
-    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, this.filterStatus, value)
-    // console.log('selectChange rating: ', value)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.searchOfCustomerName, this.searchOfNumberPhone, this.filterStatus, value)
   }
 
   // lọc theo trạng thái
   onSelectChangeStatus(value: number) {
     this.resetPage()
     this.filterStatus = value
-    this.loadListReviewShop(this.pageIndex, this.pageSize, this.search, value, this.filterRating)
-    console.log('selectChange status: ', value)
+    this.loadListReviewShop(this.pageIndex, this.pageSize, this.searchOfCustomerName, this.searchOfNumberPhone, value, this.filterRating)
   }
 
-  // reset trang
+  // reset page
   resetPage() {
     this.pageIndex = 1;
   }
- 
-  onChange(e: any) {
-    console.log(e);
-  }
-  onFocus(e: any) {
-    console.log("onFocus", e)
-  }
-  onBlur(e: any) {
-    console.log("onBlur", e)
-  }
-  onKeyDown(e: any) {
-    console.log("onKeyDown", e)
-  }
-  onItemHover(e: any) {
-    console.log("onItemHover", e)
-  }
+
+  // Hiển thị Modal comment, Report
   showModal(isShow: any): void {
     if (isShow == 'comment') {
       this.isVisibleReply = true
@@ -201,6 +189,8 @@ export class EvaluateShopComponent implements OnInit {
       this.isVisibleReport = true
     }
   }
+
+  // Gửi dữ liệu Modal
   handleOk(isShow: any): void {
     setTimeout(() => {
       if (isShow == 'comment') {
@@ -211,6 +201,8 @@ export class EvaluateShopComponent implements OnInit {
       }
     }, 3000);
   }
+
+  // Hủy Modal
   handleCancel(isShow: any): void {
     if (isShow == 'comment') {
       this.isVisibleReply = false
