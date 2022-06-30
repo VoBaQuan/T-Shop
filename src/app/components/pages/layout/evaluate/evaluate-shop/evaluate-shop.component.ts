@@ -177,6 +177,7 @@ export class EvaluateShopComponent implements OnInit {
   resetPage() {
     this.pageIndex = 1;
   }
+ 
   onChange(e: any) {
     console.log(e);
   }

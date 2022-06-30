@@ -15,14 +15,13 @@
     <div class="flex justify-between items-center bg-white px-4">
         <tds-filter-status [(ngModel)]='star' (selectChange)="onSelectChangeRating($event)">
             <ng-template ngFor let-item [ngForOf]="lstStarFilterReview" let-i="index">
-                <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
-                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled" let-count='count'
-                        let-name='name' let-value>        
-                        <div class="p-4 flex items-center"
-                            [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
+                <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                    [value]="item.value">
+                    <ng-template tds-filter-status-template let-active='active' let-disabled="disabled"
+                        let-count='count' let-name='name' let-value>
+                        <div class="p-4 flex items-center text-body-2 font-medium" [ngClass]="{'border-b-3 border-primary-1':active,'hover:border-b-3 
                             hover:border-primary-1 group':!disabled}">
-                            <div class="text-body-2 mr-2 font-semibold"
-                                [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
+                            <div class="text-body-2 mr-2 font-semibold" [ngClass]="{'text-neutral-1-900':active,'text-neutral-1-400 
                                 group-hover:text-neutral-1-900':!active}">
                                 {{name}}</div>
                             <div>
@@ -47,28 +46,25 @@
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
             <div class="flex justify-between items-center pr-2">
 
-                <tds-filter-status [(ngModel)]='selected'  (selectChange)="onSelectChangeStatus($event)">
+                <tds-filter-status [(ngModel)]='selected' (selectChange)="onSelectChangeStatus($event)">
                     <ng-template ngFor let-item [ngForOf]="lstStatusFilterReview" let-i="index">
-                        <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled" [value]="item.value">
+                        <tds-filter-status-item [name]='item.name' [count]='item.count' [disabled]="item.disabled"
+                            [value]="item.value">
                         </tds-filter-status-item>
                     </ng-template>
                 </tds-filter-status>
 
                 <tds-form-field class="w-96">
-                    <input autocomplete="off" [(ngModel)]="search" [tdsInputDebounce]="750" (inputKeyup)="searchCustomerName()" tdsInput placeholder="Tìm kiếm" [required]='true' />
+                    <input autocomplete="off" [(ngModel)]="search" [tdsInputDebounce]="750"
+                        (inputKeyup)="searchCustomerName()" tdsInput placeholder="Tìm kiếm" [required]='true' />
                     <span tdsPrefix><i class="tdsi-search-fill"></i></span>
                 </tds-form-field>
-                
+
             </div>
             <div class="w-full h-full">
-                <tds-table #basicTable [listData]="listOfReviewShop" [scroll]="{y:'auto'}" 
-                showSizeChanger 
-                [frontPagination]="false"
-                [loading]="loading"
-                [total]="total"
-                [(pageSize)]="pageSize"
-                [(pageIndex)]="pageIndex"
-                (queryParams)="onQueryParamsChange($event)">
+                <tds-table #basicTable [listData]="listOfReviewShop" [scroll]="{y:'auto'}" showSizeChanger
+                    [frontPagination]="false" [loading]="loading" [total]="total" [(pageSize)]="pageSize"
+                    [(pageIndex)]="pageIndex" (queryParams)="onQueryParamsChange($event)">
                     <thead>
                         <tr>
                             <th width="196px">Khách hàng</th>
@@ -92,12 +88,14 @@
                                 <td>
                                     <tds-rate [ngModel]="data.rating" disabled></tds-rate>
                                 </td>
-                                <td>{{data.reviewMessage}}</td>
+                                <td>
+                                    <p tds-typography ellipsis expandable [ellipsisRows]="2" [contentCollapse]="'Thu gọn'">{{data.reviewMessage | formatContent}}</p>
+                                </td>
                                 <td>{{data.creationTime | date: 'dd-MM-YYYY'}}</td>
                                 <td>
                                     <tds-tag *ngIf="data.status==1" status='info' type="outline">Chưa trả lời</tds-tag>
                                     <tds-tag *ngIf="data.status==2" status='success' type="outline">Đã trả lời</tds-tag>
-                                    <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag>   
+                                    <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag>
                                 </td>
                                 <td>
                                     <button (click)="showModal('comment')" tds-flat-button size="sm"
@@ -218,7 +216,7 @@
             <div class="mt-4">
                 <tds-form-field>
                     <tds-select valueField="id" textField="name" placeholder='select item' [(ngModel)]="selected1"
-                         [allowClear]="true" [data]="listData">
+                        [allowClear]="true" [data]="listData">
                     </tds-select>
                 </tds-form-field>
             </div>

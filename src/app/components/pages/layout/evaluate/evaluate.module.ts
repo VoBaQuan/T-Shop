@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { EvaluateShopComponent } from './evaluate-shop/evaluate-shop.component';
 import { EvaluateProductComponent } from './evaluate-product/evaluate-product.component';
 import { EvaluateTransportComponent } from './evaluate-transport/evaluate-transport.component';
-import { TDSFormFieldModule, TDSInputModule, TDSPageHeaderModule, TDSHeaderModule, TDSButtonModule, TDSButtonMenuModule, TDSButtonSplit, TDSButtonSpitModule, TDSBreadCrumbModule, TDSCheckBoxModule, TDSTabsModule, TDSDropDownModule, TDSTagModule, TDSAvatarModule, TDSModalModule, TDSSwitchModule, TDSTimePickerModule, TDSCollapseModule, TDSTableModule, TDSFilterStatusModule, TDSBadgeModule, TDSTimelineModule, TDSSelectModule, TDSUploadModule, TDSRadioModule, TDSRateModule, TDSSkeletonModule } from 'tmt-tang-ui';
+import { TDSFormFieldModule, TDSInputModule, TDSPageHeaderModule, TDSHeaderModule, TDSButtonModule, TDSButtonMenuModule, TDSButtonSplit, TDSButtonSpitModule, TDSBreadCrumbModule, TDSCheckBoxModule, TDSTabsModule, TDSDropDownModule, TDSTagModule, TDSAvatarModule, TDSModalModule, TDSSwitchModule, TDSTimePickerModule, TDSCollapseModule, TDSTableModule, TDSFilterStatusModule, TDSBadgeModule, TDSTimelineModule, TDSSelectModule, TDSUploadModule, TDSRadioModule, TDSRateModule, TDSSkeletonModule, TDSTypographyModule } from 'tmt-tang-ui';
 import { FormsModule } from '@angular/forms';
+import { FormatContentPipe } from '../pipes/format-content.pipe';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     EvaluateShopComponent,
     EvaluateProductComponent,
-    EvaluateTransportComponent
+    EvaluateTransportComponent,
+    FormatContentPipe
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     TDSUploadModule,
     TDSRadioModule,
     TDSRateModule,
-    TDSSkeletonModule
+    TDSSkeletonModule,
+    TDSTypographyModule
   ]
 })
 export class EvaluateModule { }
