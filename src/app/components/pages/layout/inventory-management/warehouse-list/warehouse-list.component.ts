@@ -1,7 +1,7 @@
 import { ModalAddWarehouseComponent } from './../modal-add-warehouse/modal-add-warehouse.component';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
-import { TDSHelperObject, TDSModalService } from 'tmt-tang-ui';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
+import { TDSModalService } from 'tds-ui/modal';
 
 interface FilterStatusItemDTO {
   name: string;

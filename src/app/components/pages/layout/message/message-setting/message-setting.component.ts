@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { en_US, TDSI18nService, vi_VN } from 'tmt-tang-ui';
+import { TDSI18nService } from 'tds-ui/i18n';
 @Component({
   selector: 'app-message-setting',
   templateUrl: './message-setting.component.html',

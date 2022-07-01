@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
-import { TDSModalService, TDSTabsCanDeactivateFn } from 'tmt-tang-ui';
-import { Observable } from 'rxjs';
+import { TDSModalService } from 'tds-ui/modal';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 
 @Component({
   selector: 'app-product-list',

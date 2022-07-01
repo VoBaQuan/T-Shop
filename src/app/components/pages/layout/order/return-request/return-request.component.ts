@@ -1,7 +1,7 @@
 import { ComplainModalComponent } from './../complain-modal/complain-modal.component';
 import { SuggestionsOtherModalComponent } from './../suggestions-other-modal/suggestions-other-modal.component';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { TDSHelperObject, TDSModalService } from 'tmt-tang-ui';
+import { TDSModalService } from 'tds-ui/modal';
 @Component({
   selector: 'app-return-request',
   templateUrl: './return-request.component.html',

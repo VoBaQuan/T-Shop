@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
 import { FormControl, Validators } from '@angular/forms';
-import { InputBoolean, TDSModalRef } from 'tmt-tang-ui';
+import { TDSModalRef } from 'tds-ui/modal';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 @Component({
   selector: 'app-modal-edit-staff',
   templateUrl: './modal-edit-staff.component.html',

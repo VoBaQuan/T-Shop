@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="p-4 w-full h-full bg-light-50">
-        <div class="bg-white border rounded-md pb-2">
+        <div class="bg-white border rounded-md pb-2 h-full">
             <div class="flex justify-between">
                 <div>
                     <tds-filter-status [(ngModel)]='selected' (ngModelChange)="onModelChange($event)"
@@ -41,7 +41,7 @@
                     </tds-form-field>
                 </div>
             </div>
-            <div class="w-full" style="height: 700px;">
+            <div class="w-full h-full" style="height: 700px;">
                 <tds-table #basicTable [listData]="listOfData" [scroll]="{y:'auto'}">
                     <thead>
                         <tr>
@@ -75,7 +75,7 @@
                                 <td>{{data.inventory}}</td>
                                 <td>{{data.evaluateInventory}}</td>
                                 <td>{{data.minimumInventory}}</td>
-                                <td><button (click)="showModal('edit')" tds-flat-button size="sm"
+                                <td><button (click)="showModal('edit')" tds-button-flat size="sm"
                                         class="text-info-400">{{data.operation}}</button></td>
                             </tr>
                         </ng-template>

@@ -87,9 +87,14 @@
                                         {{data.status}}</tds-tag>
                                 </td>
                                 <td>
-                                    <button tds-flat-button size="sm" class="text-info-500">{{data.operationReply}}</button>
-                                    <span class="text-info-500">|</span> <button tds-flat-button size="sm"
-                                        class="text-info-500">{{data.operationReport}}</button>
+                                    <button tds-button-flat color="info">
+                                        <span class="flex items-center"> Trả lời </span>
+                                    </button>
+                                    <span class="text-info-500">|</span>
+                                    <button tds-button-flat
+                                        color="info">
+                                        <span class="flex items-center"> Báo cáo </span>
+                                    </button>
                                 </td>
                             </tr>
                         </ng-template>

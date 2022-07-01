@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { InputBoolean, TDSModalRef } from 'tmt-tang-ui';
+import { TDSModalRef } from 'tds-ui/modal';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 @Component({
   selector: 'app-suggestions-other-modal',
   templateUrl: './suggestions-other-modal.component.html',

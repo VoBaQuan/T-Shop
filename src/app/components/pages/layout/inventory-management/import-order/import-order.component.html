@@ -16,7 +16,7 @@
             </button>
         </div>
     </div>
-    <div class="px-4 py-4 w-full h-full">
+    <div class="p-4 w-full h-full">
         <div class="border rounded-md bg-white pb-2 h-full flex flex-col">
             <div class="flex justify-between items-center">
                 <tds-filter-status [ngModel]="1" (selectChange)="onSelectChange($event)"
@@ -87,7 +87,7 @@
                             <td>{{ data.trans }}</td>
                             <td>{{ data.orderdate }}</td>
                             <td>
-                                <button (click)="openEditOrder()" tds-flat-button size="sm"
+                                <button (click)="openEditOrder()" tds-button-flat size="sm"
                                     class="text-info-500">{{data.operration}}</button>
                             </td>
                         </tr>

@@ -1,8 +1,9 @@
 import { ReviewShopService } from './../../services/review-shop.service';
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny, TDSTableQueryParams } from 'tmt-tang-ui';
-import { TDSModalService } from 'tmt-tang-ui';
 import { DataResultDTO, FilterStarItemDTO, FilterStatusItemDTO, DataListReviewShopDTO } from '../../../dto/evalute-shop/evalute-shop.dto';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
+import { TDSModalService } from 'tds-ui/modal';
+import { TDSTableQueryParams } from 'tds-ui/table';
 
 @Component({
   selector: 'app-evaluate-shop',
@@ -153,12 +154,6 @@ export class EvaluateShopComponent implements OnInit {
     this.resetPage()
     this.loadListReviewShop(this.pageIndex, this.pageSize, this.searchOfCustomerName, '', this.filterStatus, this.filterRating)
   }
-
-  //  Tìm kiếm theo số điện thoại
-  // searchNumberPhone() {
-  //   this.resetPage()
-  //   this.loadListReviewShop(this.pageIndex, this.pageSize, '', this.searchOfNumberPhone, this.filterStatus, this.filterRating)
-  // }
 
   // Lọc theo sao
   onSelectChangeRating(value: number) {

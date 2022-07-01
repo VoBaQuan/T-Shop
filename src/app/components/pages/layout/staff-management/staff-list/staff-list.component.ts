@@ -3,8 +3,8 @@ import { ModalEditStaffComponent } from './../modal-edit-staff/modal-edit-staff.
 import { ModalAddStaffComponent } from './../modal-add-staff/modal-add-staff.component';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
-import { TDSModalService } from 'tmt-tang-ui';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
+import { TDSModalService } from 'tds-ui/modal';
 @Component({
   selector: 'app-staff-list',
   templateUrl: './staff-list.component.html',

@@ -1,9 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
-import { FormControl, Validators } from '@angular/forms';
-import { getISOWeek } from 'date-fns';
-import { en_US, TDSI18nService, vi_VN } from 'tmt-tang-ui';
+import { TDSI18nService } from 'tds-ui/i18n';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 
 interface ItemData {
   id: number;

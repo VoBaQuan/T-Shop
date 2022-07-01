@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { TDSTableComponent } from 'tmt-tang-ui';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 @Component({
   selector: 'app-add-new-product',
   templateUrl: './add-new-product.component.html',

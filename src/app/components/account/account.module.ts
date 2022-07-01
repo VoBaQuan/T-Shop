@@ -1,6 +1,5 @@
 import { SigninModule } from './signin/signin.module';
 import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
-import { TDSButtonModule, TDSButtonMenuModule, TDSFormFieldModule, TDSInputModule, TDSCheckBoxModule, TDSSelectModule, TDSHeaderModule, TDSAvatarModule } from 'tmt-tang-ui';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -11,6 +10,14 @@ import { ChooseStoreComponent } from './choose-store/choose-store.component';
 import { CreatNewShopComponent } from './creat-new-shop/creat-new-shop.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyInterceptor } from './interceptor/interceptor';
+import { TDSAvatarModule } from 'tds-ui/avatar';
+import { TDSButtonModule } from 'tds-ui/button';
+import { TDSButtonMenuModule } from 'tds-ui/button-menu';
+import { TDSFormFieldModule } from 'tds-ui/form-field';
+import { TDSHeaderModule } from 'tds-ui/header';
+import { TDSSelectModule } from 'tds-ui/select';
+import { TDSCheckBoxModule } from 'tds-ui/tds-checkbox';
+import { TDSInputModule } from 'tds-ui/tds-input';
 
 
 @NgModule({
@@ -36,8 +43,6 @@ import { MyInterceptor } from './interceptor/interceptor';
     FormsModule,
     ReactiveFormsModule,
     TDSHeaderModule,
-    ForgotPasswordModule,
-    SigninModule,
     TDSAvatarModule
   ],
   providers: [

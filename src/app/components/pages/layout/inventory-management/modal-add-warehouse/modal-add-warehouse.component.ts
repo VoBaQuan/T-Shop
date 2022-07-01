@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TDSModalRef } from 'tmt-tang-ui';
-import { TDSSafeAny } from 'tmt-tang-ui';
 import { FormBuilder } from '@angular/forms';
+import { TDSModalRef } from 'tds-ui/modal';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 
 @Component({
   selector: 'app-modal-add-warehouse',

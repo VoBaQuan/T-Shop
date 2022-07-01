@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { TDSModalService } from 'tmt-tang-ui';
+import { TDSModalService } from 'tds-ui/modal';
 @Component({
   selector: 'app-message-list',
   templateUrl: './message-list.component.html',

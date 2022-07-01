@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
 interface ItemData {
   id: number;
   productCode: string;

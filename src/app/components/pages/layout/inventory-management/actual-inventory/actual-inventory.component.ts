@@ -1,6 +1,6 @@
 import { Data } from './../../data';
 import { Component, OnInit } from '@angular/core';
-import { TDSSafeAny } from 'tmt-tang-ui';
+import { TDSSafeAny } from 'tds-ui/shared/utility';
 
 interface FilterStatusItemDTO {
   name: string;
@@ -8,16 +8,6 @@ interface FilterStatusItemDTO {
   count: number,
   disabled: boolean,
 }
-
-// interface ItemData{
-//   duringSevenDay: string,
-//   duringThirtyDay: string,
-//   position: string,
-//   inventory: string,
-//   evaluateInventory: string,
-//   minimumInventory: string,
-//   operation: string,
-// }
 
 @Component({
   selector: 'app-actual-inventory',

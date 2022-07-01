@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InputBoolean, TDSModalRef } from 'tmt-tang-ui';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TDSModalRef } from 'tds-ui/modal';
 @Component({
   selector: 'app-modal-add-staff',
   templateUrl: './modal-add-staff.component.html',

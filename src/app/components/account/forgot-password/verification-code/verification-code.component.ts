@@ -1,6 +1,5 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TDSHelperString } from 'tmt-tang-ui';
 
 @Component({
   selector: 'app-verification-code',

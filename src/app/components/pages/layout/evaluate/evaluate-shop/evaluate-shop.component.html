@@ -55,8 +55,8 @@
                 </tds-filter-status>
 
                 <tds-form-field class="w-96">
-                    <input autocomplete="off" [(ngModel)]="searchOfCustomerName"  [tdsInputDebounce]="750"
-                        (inputKeyup)="searchCustomerName()"  tdsInput placeholder="Tìm kiếm" />
+                    <input autocomplete="off" [(ngModel)]="searchOfCustomerName" [tdsInputDebounce]="750"
+                        (inputKeyup)="searchCustomerName()" tdsInput placeholder="Tìm kiếm" />
                     <span tdsPrefix><i class="tdsi-search-fill"></i></span>
                 </tds-form-field>
 
@@ -89,7 +89,8 @@
                                     <tds-rate [ngModel]="data.rating" disabled></tds-rate>
                                 </td>
                                 <td>
-                                    <p tds-typography ellipsis expandable [ellipsisRows]="2" [contentCollapse]="'Thu gọn'">{{data.reviewMessage | formatContent}}</p>
+                                    <p tds-typography ellipsis expandable [ellipsisRows]="2"
+                                        [contentCollapse]="'Thu gọn'">{{data.reviewMessage | formatContent}}</p>
                                 </td>
                                 <td>{{data.creationTime | date: 'dd-MM-YYYY'}}</td>
                                 <td>
@@ -98,10 +99,14 @@
                                     <tds-tag *ngIf="data.status==3" status='secondary' type="outline">Đã ẩn</tds-tag>
                                 </td>
                                 <td>
-                                    <button (click)="showModal('comment')" tds-flat-button size="sm"
-                                        class="text-info-500">Trả lời</button> <span class="text-info-500">|</span>
-                                    <button (click)="showModal('report')" tds-flat-button size="sm"
-                                        class="text-info-500">Báo cáo</button>
+                                    <button (click)="showModal('comment')" tds-button-flat color="info">
+                                        <span class="flex items-center"> Trả lời </span>
+                                    </button>
+                                    <span class="text-info-500">|</span>
+                                    <button (click)="showModal('report')" tds-button-flat
+                                        color="info">
+                                        <span class="flex items-center"> Báo cáo </span>
+                                    </button>
                                 </td>
                             </tr>
                         </ng-template>

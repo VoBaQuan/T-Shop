@@ -10,15 +10,15 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~12.2.0",
-    "@angular/cdk": "^11.2.10",
-    "@angular/common": "~12.2.0",
-    "@angular/compiler": "~12.2.0",
-    "@angular/core": "~12.2.0",
-    "@angular/forms": "~12.2.0",
-    "@angular/platform-browser": "~12.2.0",
-    "@angular/platform-browser-dynamic": "~12.2.0",
-    "@angular/router": "~12.2.0",
+    "@angular/animations": "~13.3.11",
+    "@angular/cdk": "^13.3.9",
+    "@angular/common": "~13.3.11",
+    "@angular/compiler": "~13.3.11",
+    "@angular/core": "~13.3.11",
+    "@angular/forms": "~13.3.11",
+    "@angular/platform-browser": "~13.3.11",
+    "@angular/platform-browser-dynamic": "~13.3.11",
+    "@angular/router": "~13.3.11",
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/typography": "^0.5.2",
     "angular-code-input": "^1.6.0",
@@ -26,14 +26,14 @@
     "echarts": "^5.2.2",
     "rxjs": "~6.6.0",
     "tds-report": "https://tang-ui.tpos.dev/lib/tds-report-1.1.0.tgz",
-    "tmt-tang-ui": "https://tang-ui.tpos.dev/lib/tmt-tang-ui-1.3.0.tgz",
+    "tds-ui": "https://tang-ui.tpos.dev/lib/tds-ui-2.0.0.tgz",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.17",
-    "@angular/cli": "~12.2.17",
-    "@angular/compiler-cli": "~12.2.0",
+    "@angular-devkit/build-angular": "~13.3.8",
+    "@angular/cli": "~13.3.8",
+    "@angular/compiler-cli": "~13.3.11",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "autoprefixer": "^10.4.7",
@@ -45,6 +45,6 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.4",
-    "typescript": "~4.3.5"
+    "typescript": "~4.6.4"
   }
 }
